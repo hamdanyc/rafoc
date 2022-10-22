@@ -1,0 +1,32 @@
+# app.R
+# Majlis Makan Malam Tahunan `22`
+
+library(shiny)
+library(mongolite)
+
+# Connect to the database
+# mongodb://[username:password@]host1[:port1]/?authSource=user-data
+connection_string = 'mongodb://abi:80907299@139.162.17.142:27017/?authSource=user-data'
+db <- mongolite::mongo(collection="mm", db="oa", url=connection_string)
+
+# mm <- read.csv("mmmt_22_Kehadiran.csv")
+mm <- db$find()
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+    titlePanel("MMMT `22: Kehadiran & Meja Tetamu/pasangan"),
+    titlePanel("Run on MongoDB **"),
+    fluidRow(
+        column(12,
+               DT::dataTableOutput('table')
+        )
+    )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+    output$table <- DT::renderDataTable(mm)
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)

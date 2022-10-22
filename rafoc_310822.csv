@@ -1,0 +1,720 @@
+"","No Ahli","Pangkat","Gelaran","Nama","No. KP","Khidmat","No Mykad"
+"1","LMA 114","Jeneral","Tan Sri Dato' Seri","Abd Aziz bin Hj Zainal","510826-05-5121","TDM",NA
+"2","LMB 006","Jeneral","Tan Sri Dato’ Seri","Borhan bin Ahmad",NA,"TDM","391212035055"
+"3","LMI 007","Jeneral","Tan Sri Dato’","Ismail bin Hassan",NA,"TDM","421018035443"
+"4","LMI 006","Jeneral","Tan Sri Dato’ Seri","Ismail bin Hj Omar",NA,"TDM",NA
+"5","LMM 106","Jeneral","Tan Sri","Md Hashim bin Hussein",NA,"TDM","470602016103"
+"6","LMM 035","Jeneral","Tun Dr","Mohamed Hashim bin Mohd Ali",NA,"TDM",NA
+"7","LMM 104","Jeneral","Tan Sri Dato’ Seri","Mohd Azumi bin Mohamed",NA,"TDM","480802086463"
+"8","LMM 036","Jeneral","Tan Sri Dato’ Seri Dr.","Mohd Shahrom bin Dato’ Hj Nordin",NA,"TDM",NA
+"9","LMM 054","Jeneral","Tan Sri Dato' Seri DiRaja","Mohd Zahidi bin Hj Zainuddin",NA,"TDM",NA
+"10","LMY 006","Jeneral","Tan Sri Dr.","Yaacob bin Mat Zain",NA,"TDM","351216035005"
+"11","LMZ 035","Jeneral","Tan Sri Dato' Seri Hj","Zulkifli bin Hj Zainal Abidin","581130-10-5619","TDM",NA
+"12","LMA 024","Lt Jen","Dato'","Abd Aziz bin Hassan","460315-05-5151","TDM",NA
+"13","LMA 046","Lt Jen","Dato'","Abd Ghani bin Abdullah",NA,"TDM",NA
+"14","LMA 028","Lt Jen","Datuk Seri","Abd Manap bin Ibrahim",NA,"TDM",NA
+"15","LMA 135","Lt Jen","Dato' Sri","Abd Aziz bin Ibrahim","540516-03-5579","TDM",NA
+"16","LMA 005","Lt Jen","Datuk","Abdullah bin Samsudin",NA,"TDM","301020075245"
+"17","LMJ 003","Lt Jen","Dato’","Jaffar bin Mohamed",NA,"TDM",NA
+"18","LMM 043","Lt Jen","Dato’ Wira","Masood bin Hj Zainal Abidin","520921-01-6429","TDM","520921016429"
+"19","LMM 067","Lt Jen","Dato’ Seri","Mohammad Ali bin Alwi","410628-08-5559","TDM","410628085559"
+"20","LMM 114","Lt Jen","Dato'","Mohd Salleh bin Ismail",NA,"TDM","510918105851"
+"21","LMM 040","Lt Jen","Dato'","Muhamad Effendi bin Mustaffa","520108-06-5105","TDM","520108065105"
+"22","LMS 063","Lt Jen","Datuk, Dr.","Stevenson, William, R.","551228-04-5469","TDM",NA
+"23","LMZ 007","Lt Jen","Dato’ Seri Panglima","Zaini bin Mohd Said","460815-05-5449","TDM",NA
+"24","LMA 026","Mej Jen","Dato'","Abd Ghani bin Yunus","430624-05-5123","TDM",NA
+"25","LMA 170","Mej Jen","Dato’","Abd Rahim bin Mohd Yusoff","560709-06-5537","TDM",NA
+"26","LMA 101","Mej Jen","Dato’","Abd Rahman bin Daud","450611-11-5383","TDM",NA
+"27","LMA 031","Mej Jen","Dato’","Abd Shukor bin Hj Jaafar",NA,"TDM",NA
+"28","LMA 052","Mej Jen","Dato’","Abd Wahid bin Hj Anwar",NA,"TDM",NA
+"29","LMA 125","Mej Jen","Dato'","Abdullah bin Abdul Ghani","460328-66-5039","TDM",NA
+"30","LMA 019","Mej Jen","Dato'","Ahmad bin Ibrahim",NA,"TDM",NA
+"31","LMA 066","Mej Jen","Dato’","Ahmad Rodi bin Zakaria","490818-02-5867","TDM",NA
+"32","LMA 039","Mej Jen","Dato’","Amir bin Baharudin","460110-06-5479","TDM",NA
+"33","LMA 076","Mej Jen","Dato’","Amirudin Mahmud bin Aladad Khan","500714-08-5781","TDM",NA
+"34","LMB 013","Mej Jen","Dato'","Badrulzaman bin Hj A. Rani","490705-06-5379","TDM",NA
+"35","LMB 007","Mej Jen","Datuk","Baharuddin bin Abd Kadir","440701-43-5007","TDM",NA
+"36","LMC 013","Mej Jen","Dato’ Paduka","Che Hasni bin Che Ahmad",NA,"TDM",NA
+"37","LMG 008","Mej Jen","Dato’","Ghazali bin Ibrahim",NA,"TDM",NA
+"38","LMH 020","Mej Jen","Dato’","Hashim bin Yahaya",NA,"TDM",NA
+"39","LMI 017","Mej Jen","Dato'","Ishak bin Yeop Hamzah","570307-08-6967","TDM",NA
+"40","LMK 014","Mej Jen","Dato’","Khairuddin bin Hj Abu Bakar","500513-02-5539","TDM",NA
+"41","LMM 166","Mej Jen","Datuk","Mahadi bin Abdul","540916-04-5485","TDM",NA
+"42","LMM 090","Mej Jen","Dato’","Mamat Ariffin bin Abdullah","490609-03-5479","TDM",NA
+"43","LMM 095","Mej Jen","Dato’","Mat Rashid bin Ashaari","530221-07-5435","TDM",NA
+"44","LMM 149","Mej Jen","Dato'","Md Dzahir bin Abd Rashid","550411-025939","TDM",NA
+"45","LMM 129","Mej Jen","Dato'","Md Rozi bin Baharom","510314-02-5877","TDM",NA
+"46","LMM 076","Mej Jen","Dato’","Megat Mohd Yusof bin Megat Mahmud","500515-08-6319","TDM",NA
+"47","LMM 038","Mej Jen","Dato’ Dr","Mohamad Termidzi bin Junaidi","530228-13-5947","TDM",NA
+"48","LMM 056","Mej Jen","Dato’","Mohamed Isa bin Che Kak",NA,"TDM",NA
+"49","LMM 027","Mej Jen","Dato' Dr","Mohanadas a/l Ramasamy","480315-07-5417","TDM",NA
+"50","LMM 064","Mej Jen","Dato'","Mohd Ariff bin Mohd Ali","420125-11-5209","TDM",NA
+"51","LMM 097","Mej Jen","Dato’","Mohd Azman bin Hj Rosli",NA,"TDM",NA
+"52","LMM 181","Mej Jen","Dato' Seri","Mohd Noor bin Daud","560825-01-6353","TDM",NA
+"53","LMM 093","Mej Jen","Dato’ Ir.","Mohd Salim bin Ali","540119-06-5475","TDM",NA
+"54","LMM 057","Mej Jen","Datuk (Dr)","Mohd Salleh bin Mohd Sam","450730-01-5393","TDM",NA
+"55","LMM 047","Mej Jen","Dato’","Mohd Yunus bin Long","510330-05-5515","TDM",NA
+"56","LMM 139","Mej Jen","Dato' Dr.","Mohd Zin bin Bidin","540527-10-5843","TDM",NA
+"57","LMM 070","Mej Jen","Dato’","Mokhtar bin Perman","521208-01-5951","TDM",NA
+"58","LMN 030","Mej Jen","Dato'","Nordin bin Rahok",NA,"TDM",NA
+"59","LMN 006","Mej Jen","Dato'","Nordin bin Yusof","560107-05-5753","TDM",NA
+"60","LMO 002","Mej Jen","Dato’","Oseman bin Chik","530222-11-5259","TDM",NA
+"61","LMO 005","Mej Jen","Dato’","Osman bin Mohd Zain",NA,"TDM",NA
+"62","LMR 034","Mej Jen","Dato’","Raja Ibrahim bin Raja Shariman",NA,"TDM",NA
+"63","LMR 002","Mej Jen","Dato’","Ramli bin Harun","490111-03-5279","TDM",NA
+"64","LMR 032","Mej Jen","Datuk","Ranjit Singh Ramday","550617-12-5433","TDM",NA
+"65","LMR 037","Mej Jen","Dato’","Roshidah bt Ishak","570501-07-6148","TDM",NA
+"66","LMS 018","Mej Jen","Dato’","Sulaiman bin Kudus",NA,"TDM",NA
+"67","LMS 016","Mej Jen","Dato’","Sulaiman bin Yusof","461213-04-5395","TDM",NA
+"68","LMZ 030","Mej Jen","Dato'","Zaharin bin Din",NA,"TDM",NA
+"69","LMZ 028","Mej Jen","Dato'","Zulkiflee bin Mazlan","541209-01-6073","TDM",NA
+"70","LMZ 033","Mej Jen","Dato'","Zulkifli bin Mansor","560828-02-5693","TDM",NA
+"71","LMH 040","Mej Jen","Dato' Hj","Hassan bin Loman","610802-03-5159","TDM",NA
+"72","LMA 004","Brig Jen","Datuk","A. Arulpragasam",NA,"TDM",NA
+"73","LMA 078","Brig Jen","Dato’","Abd Hamid bin Mohd Zain",NA,"TDM",NA
+"74","LMA 027","Brig Jen","Dato'","Abd Jalil bin Hj Hasbullah",NA,"TDM",NA
+"75","LMA 147","Brig Jen","Dato'","Abd Rani bin Hj Ismail",NA,"TDM",NA
+"76","LMA 055","Brig Jen","Dato’","Adnan bin Ali",NA,"TDM","500508025403"
+"77","LMA 037","Brig Jen","Dato'","Ahmad Lathfi bin Kamarul Bahrim",NA,"TDM",NA
+"78","LMA 085","Brig Jen","Dato’","Ahmad Zahudi bin Salleh",NA,"TDM","510930025635"
+"79","LMA 144","Brig Jen","Dato'","Ahmad Zaki bin Mahmud",NA,"TDM","461214115359"
+"80","LMA 140","Brig Jen","Dato'","Ali bin Hj Musa","420726-01-5625","TDM",NA
+"81","LMA 063","Brig Jen","Dato’","Ameerudeen bin Mohamed Noor","460516-07-5407","TDM",NA
+"82","LMA 109","Brig Jen","Dato’ (Dr)","Arichandra a/l Nadarajah","500429-08-5993","TDM",NA
+"83","LMD 002","Brig Jen","Dato’","Daud bin Ariffin",NA,"TDM","451201086377"
+"84","LME 002","Brig Jen","Dato'","Emran bin Yusoff","540406-01-6211","TDM","540406016211"
+"85","LMH 019","Brig Jen","Dato’","Harun bin Hitam",NA,"TDM","510125055313"
+"86","LMH 021","Brig Jen","Dato’","Hidayat Shariff bin Abd Ghaffur",NA,"TDM",NA
+"87","LMH 025","Brig Jen","Dato’","Hussein Kamal bin Hazizi",NA,"TDM","470611086103"
+"88","LMI 004","Brig Jen","Dato'","Idris bin Ahmad",NA,"TDM","380420015557"
+"89","LMI 010","Brig Jen","Dato’","Ismail bin Darus","490301-07-5773","TDM","490301075773"
+"90","LMJ 008","Brig Jen","Dato’ Pahlawan","Jamel bin Hj Ahmad","490923-01-5935","TDM",NA
+"91","LMJ 005","Brig Jen","Dato’","Jamil Rais bin Abdullah","500427-05-5109","TDM","500427055109"
+"92","LMK 018","Brig Jen",NA,"Kamarudin bin Mustapha",NA,"TDM","591130055665"
+"93","LML 020","Brig Jen","Dr","Leong Weng Foon",NA,"TDM","410319085563"
+"94","LMM 050","Brig Jen","Dato’","Mahmood bin Ibrahim",NA,"TDM","511014015671"
+"95","LMM 112","Brig Jen","Datuk","Mazlan bin Baharuddin","461127-10-5929","TDM","461127105929"
+"96","LMM 155","Brig Jen","Dato'","Mohamed bin Batcha","581217-04-5457","TDM","581217045479"
+"97","LMM 127","Brig Jen",NA,"Mohamed bin Yusoh","350121-05-5017","TDM","350121055017"
+"98","LMM 101","Brig Jen","Dato’","Mohammed Hassan bin Hj Ibrahim",NA,"TDM",NA
+"99","LMM 028","Brig Jen","Dato'","Mohammed Shukor bin Haji Abdullah",NA,"TDM",NA
+"100","LMM 074","Brig Jen","Datuk","Mohd Ariffin bin Mohd Rosli","400920-10-5239","TDM",NA
+"101","LMM 033","Brig Jen","Dato’","Mohd Ariffin bin Yacob",NA,"TDM",NA
+"102","LMM 023","Brig Jen","Dato'","Mohd Arshad bin Mohd Raji",NA,"TDM",NA
+"103","LMM 158","Brig Jen","Dato' (Dr)","Mohd Farid bin Yahaya","560215-07-5575","TDM","560215075575"
+"104","LMM 046","Brig Jen","Dato’","Mohd Radzi bin Ahmad",NA,"TDM",NA
+"105","LMM 055","Brig Jen","Dato’","Mohd Zamri bin Hj Ismail",NA,"TDM","460701086263"
+"106","LMM 173","Brig Jen","Dato'","Muhammad Daniel@Damien bin Abdullah","550616-13-5525","TDM",NA
+"107","LMM 029","Brig Jen","Dato'","Mushardin Mohd Said",NA,"TDM",NA
+"108","LMM 041","Brig Jen","Dato'","Mustapha Khalil bin Ismail",NA,"TDM","420706085589"
+"109","LMN 009","Brig Jen","Dato’","Najmi bin Ahmad",NA,"TDM",NA
+"110","LMN 027","Brig Jen","Dato'","Ng Chin Huat","550421-08-6583","TDM","550421086583"
+"111","LMN 007","Brig Jen","Dato'","Nik Mohd Zaaba bin Nik Daud",NA,"TDM","480503035439"
+"112","LMN 032","Brig Jen","Dato'","Norhuda bt Ahmad","570625-01-7668","TDM",NA
+"113","LMR 015","Brig Jen","Prof Datuk (Dr)","Rajagopal, N","470624-08-5935","TDM",NA
+"114","LMR 024","Brig Jen","Dato'","Roslan bin Abd Rashid",NA,"TDM",NA
+"115","LMS 014","Brig Jen","Dato’","Saifuddin bin Hj Abd Ghani","470306-09-5089","TDM",NA
+"116","LMS 010","Brig Jen","Dato' Dr","Samsudin bin Hussain",NA,"TDM","431027025369"
+"117","LMS 062","Brig Jen","Dato'","Shaharuddin bin Abu Bakar",NA,"TDM",NA
+"118","LMS 029","Brig Jen","Dato’","Shahbani bin Ali","530416-02-5817","TDM","530416025817"
+"119","LMS 052","Brig Jen","Dato’","Shahruddin bin Abdullah",NA,"TDM",NA
+"120","LMS 025","Brig Jen","Dato’ Pahlawan","Shamsudin bin Abbas","460905-08-6353","TDM","460905086353"
+"121","LMS 020","Brig Jen",NA,"Sharom bin Hashim","500516-08-5967","TDM","500516085967"
+"122","LMS 017","Brig Jen","Dato’","Sunar bin Morlin",NA,"TDM","491108106069"
+"123","LMY 005","Brig Jen","Dato’ Pahlawan","Yazam bin Mahmood",NA,"TDM","481206015663"
+"124","LMZ 022","Brig Jen","Dato'","Zulkefly bin Hj Mahiyuddin","520304-06-5313","TDM","520304065313"
+"125","LMK 028","Brig Jen",NA,"Kamarudin bin Mustafa","591130-05-5665","TDM",NA
+"126","LMS 043","Brig Jen","Dato'","Syed Hamzah bin Syed Abu Bakar",NA,"TDM",NA
+"127","LMA 020","Kol",NA,"Abbas bin Ibrahim",NA,"TDM","390615085255"
+"128","LMA 106","Kol",NA,"Abd Kadir bin Babudin","520216-05-5393","TDM",NA
+"129","LMA 128","Kol",NA,"Abd Malik @ Saidi bin Mohd Alwi",NA,"TDM",NA
+"130","LMA 073","Kol",NA,"Abd Rahim bin Abd Majid","440818-04-5301","TDM",NA
+"131","LMA 111","Kol",NA,"Abdullah bin Yatim","490802-01-5875","TDM","490802015875"
+"132","LMA 145","Kol",NA,"Abu Bakar bin Mohd Salleh","410209-01-5177","TDM",NA
+"133","LMA 050","Kol",NA,"Ahmad Zehnun bin Abd Majid",NA,"TDM",NA
+"134","LMA 139","Kol",NA,"Aluwi bin Yunos","530106-03-5403","TDM",NA
+"135","LMA 149","Kol",NA,"Aznan bin Ahmad Mahayuddin","470321-08-5583","TDM","470321085583"
+"136","LMC 009","Kol",NA,"Che Maghtar bin Ibrahim","530807-03-5561","TDM","530807035561"
+"137","LMC 002","Kol","Dato' Ir","Cheng Wah",NA,"TDM","390320065097"
+"138","LMD 003","Kol",NA,"Dunstan Nyaring ak Nanking",NA,"TDM",NA
+"139","LMG 004","Kol","Ir","Goh Boon Pah, Raymond",NA,"TDM",NA
+"140","LMG 006","Kol",NA,"Goh Chu Ting","411107-02-5299","TDM","411107025299"
+"141","LMH 013","Kol",NA,"Hamzah bin Hassan",NA,"TDM",NA
+"142","LMH 039","Kol",NA,"Hanef bin Badar","460310-05-5355","TDM",NA
+"143","LMH 022","Kol","Dato’","Harbans Singh a/p Chanan Singh","550209-01-5024","TDM",NA
+"144","LMH 005","Kol",NA,"Hew Kiang Tham",NA,"TDM",NA
+"145","LMH 029","Kol",NA,"Hussin bin Awang Senik",NA,"TDM","440409115065"
+"146","LMJ 004","Kol","Dato’ Dr","Jaseemuddeen bin Abu Bakar","661126-08-5483","TDM",NA
+"147","LMJ 010","Kol",NA,"Joseph, Anthony Edgar",NA,"TDM",NA
+"148","LMK 012","Kol","Dr","Kok Choong Seng","630912-08-6211","TDM",NA
+"149","LMK 001","Kol","Dr","Kwong Sea Yoong, Jimmy","291217-04-5035","TDM",NA
+"150","LML 007","Kol",NA,"Lai Kim Hinn, Allen","440805-10-5539","TDM",NA
+"151","LMM 138","Kol",NA,"Md Nor Azam bin Ariffin","590627-02-5897","TDM","590627025897"
+"152","LMM 008","Kol",NA,"Mohamad Ismail bin Omar","310125-07-5043","TDM",NA
+"153","LMM 063","Kol",NA,"Mohamad Zaini bin Hj Hashim","470620-08-6279","TDM",NA
+"154","LMM 171","Kol",NA,"Mohamed bin Maidin","450801-01-5527","TDM",NA
+"155","LMM 175","Kol",NA,"Mohamed Iqbal bin Atta Muhammad","400927-02-5143","TDM","400927025143"
+"156","LMM 168","Kol",NA,"Mohamed Shaffieq bin Ismail",NA,"TDM","450110105849"
+"157","LMM 178","Kol",NA,"Mohd Kamal bin Omar","480903-11-5147","TDM","480903115147"
+"158","LMM 177","Kol",NA,"Mohd Yasin bin Usop","571218-05-5127","TDM","571218055127"
+"159","LMN 023","Kol",NA,"Naharuddin bin Shaari","521020-08-7099","TDM","521020087099"
+"160","LMN 020","Kol",NA,"Nik Zainin bin Nik Abdul Rahman","440815-03-5079","TDM","440815035079"
+"161","LMP 002","Kol","Dr.","Ponijan bin Hj Pardi",NA,"TDM",NA
+"162","LMR 009","Kol",NA,"Ramli bin Hj Nik","490608-11-5151","TDM","490608115151"
+"163","LMS 036","Kol",NA,"Sofian bin Kamaruddin","530922-08-6209","TDM","530922086209"
+"164","LMS 066","Kol","Dr.","Sukhilmi bin Othman","590625-09-5197","TDM",NA
+"165","LMS 022","Kol","Dato'","Syed Othman bin Syed Ali Alsagoff","431018-01-5361","TDM","431018015361"
+"166","LMY 008","Kol",NA,"Yusof bin Mat Ramli","440527-04-5213","TDM","440527045213"
+"167","LMZ 015","Kol",NA,"Zain K. N","380219-05-5039","TDM",NA
+"168","LMZ 004","Kol",NA,"Zainal Abidin bin Dato' Ahmad",NA,"TDM",NA
+"169","LMA 116","Lt Kol",NA,"Ab Hadi bin Mad Yusop",NA,"TDM","410430045199"
+"170","LMA 077","Lt Kol",NA,"Abd Aziz bin Abas",NA,"TDM",NA
+"171","LMA 080","Lt Kol",NA,"Abd Aziz bin Abd Rahman","440527-08-5127","TDM",NA
+"172","LMA 151","Lt Kol",NA,"Abd Aziz bin Ahmad","430627-01-5581","TDM",NA
+"173","LMA 105","Lt Kol",NA,"Abd Manaf bin Kasmuri","550528-10-5991","TDM",NA
+"174","LMA 029","Lt Kol",NA,"Abd Mutalib bin Mohd Salleh",NA,"TDM",NA
+"175","LMA 134","Lt Kol",NA,"Abd Rahim bin Ahmad",NA,"TDM","570719075957"
+"176","LMA 134","Lt Kol",NA,"Abd Rahim bin Ahmad",NA,"TDM","640121025833"
+"177","LMA 090","Lt Kol",NA,"Abd Rahman bin Abdullah","440531-01-5391","TDM",NA
+"178","LMA 102","Lt Kol",NA,"Abd Rahman bin Adam",NA,"TDM",NA
+"179","LMA 142","Lt Kol",NA,"Abd Rahman bin Alavi","570730-01-7491","TDM",NA
+"180","LMA 059","Lt Kol","Dato’ Seri","Abd Rahman bin Tan Sri Mohd Yatim",NA,"TDM",NA
+"181","LMA 071","Lt Kol",NA,"Abd Rahman @ Kamil bin Yaacob",NA,"TDM",NA
+"182","LMA 082","Lt Kol",NA,"Abd Rani bin Shamsudin",NA,"TDM",NA
+"183","LMA 133","Lt Kol",NA,"Abd Razak bin Abdullah",NA,"TDM",NA
+"184","LMA 012","Lt Kol",NA,"Abd Samad bin Ayob",NA,"TDM",NA
+"185","LMA 058","Lt Kol",NA,"Abdullah bin Mohd Ali",NA,"TDM",NA
+"186","LMA 096","Lt Kol","Hj","Abdullah bin Mohd Yunus","380721-07-5211","TDM",NA
+"187","LMA 127","Lt Kol",NA,"Abdullah bin Othman",NA,"TDM","510120025801"
+"188","LMA 044","Lt Kol",NA,"Adam Hon",NA,"TDM",NA
+"189","LMA 141","Lt Kol",NA,"Ahmad Ghazali bin Abu Hassan","560825-08-7039","TDM","560825087039"
+"190","LMA 130","Lt Kol",NA,"Ahmad Kushairi bin Zainuddin",NA,"TDM",NA
+"191","LMA 162","Lt Kol",NA,"Ahmad Zubir bin Hashim","600310-02-6193","TDM","600310026093"
+"192","LMA 143","Lt Kol",NA,"Ahmad Zubir bin Mohamed","500127-08-5613","TDM",NA
+"193","LMA 124","Lt Kol","Datuk Dr.","Aiyaroo Palayah Thevar","440523-07-5087","TDM",NA
+"194","LMA 165","Lt Kol",NA,"Aminordin bin Dasuki","600727-10-6279","TDM",NA
+"195","LMA 006","Lt Kol",NA,"Amir Hamzah bin Mohd Khalid",NA,"TDM","430828085287"
+"196","LMA 097","Lt Kol","Hj","Amiruddin bin Mohd Basir","491122-10-5839","TDM","491122105839"
+"197","LMA 137","Lt Kol",NA,"Amirudin bin Mohd Ali","510206-10-5853","TDM",NA
+"198","LMA 121","Lt Kol",NA,"Amreek Singh a/l Partap Singh","500831-07-5363","TDM",NA
+"199","LMA 075","Lt Kol","Hj","Annuar bin Ariffin","481226-08-5765","TDM",NA
+"200","LMA 103","Lt Kol","Dato'","Arsad bin Abd Salam",NA,"TDM",NA
+"201","LMB 017","Lt Kol",NA,"Bhajan Singh Sidhu",NA,"TDM",NA
+"202","LMC 012","Lt Kol","Dato'","Che Dan bin Mat",NA,"TDM",NA
+"203","LMC 010","Lt Kol",NA,"Choy Siew Pun, Joseph","391115-10-5349","TDM",NA
+"204","LMD 005","Lt Kol",NA,"Dzulkarnain bin Abdullah","560615-13-6349","TDM","560615136349"
+"205","LME 006","Lt Kol",NA,"Esah bt Sulaiman","571211-01-6504","TDM",NA
+"206","LMF 002","Lt Kol",NA,"Fernandez, A. Floyd B.","340611-10-5057","TDM",NA
+"207","LMG 009","Lt Kol",NA,"Ganase a/l Jaganathan","581003-10-6213","TDM",NA
+"208","LMG 007","Lt Kol","Dato’ Dr","Goh Boon Huat","520622-07-5293","TDM","520622075293"
+"209","LMG 005","Lt Kol","Dr. Prof.","Gomez, Andrew Charles","501023-01-5949","TDM",NA
+"210","LMH 002","Lt Kol","KM","Hamid bin Mohamed",NA,"TDM",NA
+"211","LMH 028","Lt Kol",NA,"Hamzah bin Ibrahim",NA,"TDM",NA
+"212","LMH 037","Lt Kol",NA,"Hanafi bin Bakar",NA,"TDM","440415095013"
+"213","LMH 008","Lt Kol",NA,"Harbans Singh",NA,"TDM",NA
+"214","LMH 009","Lt Kol","Dato’","Harith bin Hj Othman","600404-07-5703","TDM",NA
+"215","LMH 031","Lt Kol","Dr","Harjandar Singh a/l Bhag Singh","490510-08-6225","TDM",NA
+"216","LMH 030","Lt Kol",NA,"Hassim bin Harun","500409-01-5509","TDM","500409015509"
+"217","LMH 035","Lt Kol",NA,"Heera Singh",NA,"TDM",NA
+"218","LMH 023","Lt Kol",NA,"Hermon, David Louise",NA,"TDM",NA
+"219","LMH 016","Lt Kol",NA,"Ho Chee Pong",NA,"TDM","460128015859"
+"220","LMI 015","Lt Kol",NA,"Ilias bin Mohideen",NA,"TDM",NA
+"221","LMI 011","Lt Kol",NA,"Ismail bin Itam Daim",NA,"TDM","470101085717"
+"222","LMJ 014","Lt Kol","(Dr)","Jaswant Singh","410930-05-5027","TDM",NA
+"223","LMJ 007","Lt Kol",NA,"Johan Chin @ Chin Khee Fong","420910-12-5023","TDM","420910125023"
+"224","LMJ 013","Lt Kol",NA,"Johar bin Abdullah","530430-04-5355","TDM",NA
+"225","LMK 003","Lt Kol","Dato'","Kam Yoon Sang, Martin",NA,"TDM",NA
+"226","LMK 002","Lt Kol",NA,"Kamalulariffin bin Ibrahim",NA,"TDM","390909015041"
+"227","LMK 013","Lt Kol",NA,"Kamarol Ariffin bin Mohammad Nin","440323-08-5133","TDM","440323085133"
+"228","LMK 006","Lt Kol",NA,"Kamarudin bin Hj Sakhari",NA,"TDM",NA
+"229","LMK 007","Lt Kol",NA,"Kamarudzaman bin Ismail",NA,"TDM",NA
+"230","LMK 022","Lt Kol","Puan Sri","Kamzaini bt Kamal","610925-04-6568","TDM",NA
+"231","LMK 026","Lt Kol",NA,"Karupiah a/l R. Arumugam","600828-05-5669","TDM",NA
+"232","LMK 027","Lt Kol",NA,"Khalid bin Ismail","610715-04-5359","TDM",NA
+"233","LMK 009","Lt Kol",NA,"Kong Chue, Andrew","391202-10-5099","TDM",NA
+"234","LML 018","Lt Kol",NA,"Lee Yeok Meng","390614-10-5031","TDM","390614105031"
+"235","LML 011","Lt Kol",NA,"Liew Ng Seong",NA,"TDM","461111065475"
+"236","LML 017","Lt Kol",NA,"Loo Lee Fum","560826-02-5868","TDM","560826025868"
+"237","LMM 146","Lt Kol",NA,"Mahyuddin bin Abdul Razak","550822-02-5685","TDM",NA
+"238","LMM 098","Lt Kol",NA,"Manjit Singh",NA,"TDM",NA
+"239","LMM 109","Lt Kol",NA,"Marzuki @ Mohd Rusli bin Hj Ahmad",NA,"TDM",NA
+"240","LMM 018","Lt Kol",NA,"Marzuki bin Taharim","490131-09-5009","TDM","490131095009"
+"241","LMM 030","Lt Kol",NA,"Maskan bin Katan",NA,"TDM",NA
+"242","LMM 116","Lt Kol",NA,"Masuod bin Sukhimi","470921-01-5183","TDM",NA
+"243","LMM 031","Lt Kol",NA,"Mat Lazan bin Hamzah",NA,"TDM","470513105999"
+"244","LMM 172","Lt Kol",NA,"Mazlan bin Abu Bakar",NA,"TDM","580626095165"
+"245","LMM 107","Lt Kol","Dato'","Md Rashid bin Abd Wahab",NA,"TDM",NA
+"246","LMM 021","Lt Kol",NA,"Meor Adam bin Meor Sapi",NA,"TDM",NA
+"247","LMM 130","Lt Kol",NA,"Mior Hashim bin Adinan","470102-08-6017","TDM",NA
+"248","LMM 094","Lt Kol",NA,"Mohamad Ariffin bin Nurudin","410128-08-5173","TDM","410128085173"
+"249","LMM 119","Lt Kol",NA,"Mohamad bin Muda","530420-11-5225","TDM","610505036139"
+"250","LMM 119","Lt Kol",NA,"Mohamad bin Muda","530420-11-5225","TDM","530420115225"
+"251","LMM 159","Lt Kol",NA,"Mohamad Sohami bin Shamsuddin",NA,"TDM",NA
+"252","LMM 131","Lt Kol",NA,"Mohammad Yunus bin Ahmad Ali","490909-06-5469","TDM",NA
+"253","LMM 108","Lt Kol",NA,"Mohammed bin Hj Abdullah",NA,"TDM",NA
+"254","LMM 163","Lt Kol",NA,"Mohd Amin bin Abu Bakar",NA,"TDM","570907015433"
+"255","LMM 034","Lt Kol",NA,"Mohd Azudin bin Othman Fuad",NA,"TDM",NA
+"256","LMM 132","Lt Kol",NA,"Mohd Azzam bin Mohd Hanif",NA,"TDM",NA
+"257","LMM 117","Lt Kol",NA,"Mohd Idris bin Hassan","410928-06-5015","TDM","410928065015"
+"258","LMM 051","Lt Kol",NA,"Mohd Jamal bin IM Salleh",NA,"TDM",NA
+"259","LMM 103","Lt Kol",NA,"Mohd Nasir bin Mohd Ali",NA,"TDM","590630086121"
+"260","LMM 089","Lt Kol",NA,"Mohd Noor bin Ismail",NA,"TDM",NA
+"261","LMM 065","Lt Kol",NA,"Mohd Ronnie Koay bin Abdullah","470710-08-5667","TDM",NA
+"262","LMM 052","Lt Kol",NA,"Mohd Thiyahuddin bin Embi",NA,"TDM",NA
+"263","LMM 071","Lt Kol",NA,"Mohd Yusof bin Abd Razak","490209-10-5765","TDM",NA
+"264","LMM 083","Lt Kol","Hj","Mohd Yusof bin Hj Dahaman","450212-08-5447","TDM",NA
+"265","LMM 102","Lt Kol","Dato’ Dr.","Muthiah a/l Alagappa","420414-71-5171","TDM",NA
+"266","LMN 031","Lt Kol",NA,"Nasaruddin bin Che Om",NA,"TDM","600915086607"
+"267","LMN 003","Lt Kol","Dato’","Nawawi bin Mat Desa",NA,"TDM",NA
+"268","LMN 015","Lt Kol",NA,"Nik Ibrahim bin Che Hassan","500407-03-5549","TDM","500407035549"
+"269","LMN 026","Lt Kol",NA,"Nik Mohd Zaki bin Nik Abdullah",NA,"TDM",NA
+"270","LMN 016","Lt Kol",NA,"Nik Omar Alhadad bin Nik Mohamed Salleh",NA,"TDM",NA
+"271","LMN 025","Lt Kol",NA,"Noor Ikhsan bin Raffii","410101-02-5285","TDM","410101025285"
+"272","LMN 002","Lt Kol",NA,"Nor Hafidz Low",NA,"TDM","300208025069"
+"273","LMN 028","Lt Kol",NA,"Nor Mazlizzah Seet bt Abdullah","610129-14-5516","TDM",NA
+"274","LMO 012","Lt Kol",NA,"Omar bin Ismail","461122-01-5289","TDM",NA
+"275","LMO 006","Lt Kol",NA,"Ooi Yam San","481229-07-5159","TDM","481229075159"
+"276","LMO 007","Lt Kol",NA,"Osman @ John Derick bin Abd Jalil","511008-08-5235","TDM",NA
+"277","LMO 013","Lt Kol",NA,"Othman bin Hj Yaacob","540308-03-5451","TDM","540308035451"
+"278","LMP 007","Lt Kol",NA,"Paneerselvam a/l K Perambalam","471008-05-5235","TDM",NA
+"279","LMR 013","Lt Kol",NA,"Raja Abdullah bin Raja Baharudin",NA,"TDM",NA
+"280","LMR 005","Lt Kol",NA,"Ramli bin Kinta",NA,"TDM",NA
+"281","LMR 007","Lt Kol",NA,"Ramli bin Omar","530408-03-5417","TDM","530408035417"
+"282","LMR 026","Lt Kol",NA,"Robert Rizal bin Abdullah",NA,"TDM","481006135089"
+"283","LMR 004","Lt Kol",NA,"Roseli bin Abd Gani",NA,"TDM",NA
+"284","LMR 012","Lt Kol",NA,"Roslan bin Hj Abd Shukor","521206-01-6053","TDM",NA
+"285","LMR 021","Lt Kol",NA,"Roslly bin Yusoff",NA,"TDM","460826035363"
+"286","LMS 024","Lt Kol",NA,"Saidin bin Ahmad","510725-08-6279","TDM","510725086279"
+"287","LMS 059","Lt Kol",NA,"Santhanan Richard a/l Anthony Selvaraju","570413-10-5201","TDM",NA
+"288","LMS 047","Lt Kol","Dr","Santherabalan a/l Subramaniam","450525-10-5461","TDM",NA
+"289","LMS 064","Lt Kol",NA,"Satwant Singh a/l Harbans Singh",NA,"TDM",NA
+"290","LMS 051","Lt Kol",NA,"Sazali bin Sukardi",NA,"TDM","640129055703"
+"291","LMS 028","Lt Kol","Dato’ Dr","Selvaraju a/l Govindaraju","420531-71-5007","TDM",NA
+"292","LMS 015","Lt Kol","Dato’","Shafii bin Hj Roshad",NA,"TDM",NA
+"293","LMS 030","Lt Kol",NA,"Shahrir bin Abd Ghani","500425-02-5627","TDM",NA
+"294","LMS 007","Lt Kol",NA,"Sheikh Ahmad Nordin bin Abdullah",NA,"TDM",NA
+"295","LMS 053","Lt Kol",NA,"Sidambaram a/l Torosamy","460913-08-5473","TDM",NA
+"296","LMS 050","Lt Kol","Dr.","Surjeet Sungh Jeggy","570429-07-5959","TDM",NA
+"297","LMS 069","Lt Kol",NA,"Syed Haidzir bin Syed Ahmad","410318-05-5063","TDM",NA
+"298","LMS 032","Lt Kol","Dr","Syed Othman bin Syed Omar","530106-08-6324","TDM","530106086075"
+"299","LMT 023","Lt Kol",NA,"Tan Too Kee","410617-07-5099","TDM",NA
+"300","LMT 012","Lt Kol",NA,"Tan Siew Soo","381122-07-5089","TDM","381122075089"
+"301","LMT 005","Lt Kol",NA,"Tan Yew Lay, Michael",NA,"TDM",NA
+"302","LMT 002","Lt Kol",NA,"Tengku Ismit bin Tengku Suleiman",NA,"TDM","430710715167"
+"303","LMW 003","Lt Kol","Datuk","Wahiruddin bin Abd Wahid","590705-03-5397","TDM",NA
+"304","LMW 001","Lt Kol",NA,"Wan Idris bin Wan Mustapha",NA,"TDM",NA
+"305","LMW 007","Lt Kol","Dr","Wong Ah Chin @ Wong Chin Cheong","440521-08-5417","TDM",NA
+"306","LMW 008","Lt Kol",NA,"Wong Ah Jit","501226-04-5259","TDM",NA
+"307","LMW 011","Lt Kol",NA,"Wong Boon Soon, Fabian",NA,"TDM",NA
+"308","LMY 017","Lt Kol",NA,"Yaacob bin Jaafar",NA,"TDM",NA
+"309","LMZ 011","Lt Kol",NA,"Zainal Abidin bin Hj Meon","460225-05-5123","TDM",NA
+"310","LMZ 010","Lt Kol",NA,"Zainal Azzudin bin Idris","430922-05-5105","TDM","430922055105"
+"311","LMZ 020","Lt Kol",NA,"Zainal bin Yan",NA,"TDM","481015085351"
+"312","LMZ 019","Lt Kol",NA,"Zaini bin Hj Hasim","550912-04-5567","TDM",NA
+"313","LMZ 029","Lt Kol","Dato'","Zarazilah bin Mohd Ali",NA,"TDM",NA
+"314","LMZ 013","Lt Kol",NA,"Zulkipeli bin Mohad Said","550727-05-5691","TDM","550727055691"
+"315","LMM 060","Lt Kol",NA,"Mohamad Sohami bin Shamsuddin","501224-08-6145","TDM",NA
+"316","LMA 081","Mej",NA,"Abd Aziz bin Din","590413-02-6325","TDM","590413026325"
+"317","LMA 166","Mej",NA,"Abd Aziz bin Yusoff",NA,"TDM",NA
+"318","LMA 157","Mej",NA,"Abd Aziz bin Muda",NA,"TDM","610622036007"
+"319","LMA 072","Mej",NA,"Abd Halim bin Mohd Noor",NA,"TDM",NA
+"320","LMA 099","Mej",NA,"Abd Malik bin Omar","530131-04-5531","TDM",NA
+"321","LMA 112","Mej",NA,"Abd Malik bin Omar",NA,"TDM",NA
+"322","LMA 089","Mej",NA,"Abd Manan bin Abas","241101-10-5045","TDM",NA
+"323","LMA 146","Mej",NA,"Abd Menon bin Arsad",NA,"TDM",NA
+"324","LMA 051","Mej","Dato'","Abd Rahim bin Hj Saad",NA,"TDM",NA
+"325","LMA 172","Mej",NA,"Abd Rahman bin Ab Samad","440731-04-5085","TDM","440731045085"
+"326","LMA 158","Mej","Dato'","Abd Wahid bin Bidin","570508-01-6877","TDM",NA
+"327","LMA 003","Mej",NA,"Abdullah bin Jaafar",NA,"TDM",NA
+"328","LMA 033","Mej",NA,"Abu Talib bin Yahaya",NA,"TDM","550921075573"
+"329","LMA 048","Mej","Prof. Dr","Adlina bt Suleiman",NA,"TDM",NA
+"330","LMA 053","Mej","Dato’","Adnan bin Hashim",NA,"TDM",NA
+"331","LMA 107","Mej",NA,"Adnan bin Yaakub","550719-06-5339","TDM","550719065339"
+"332","LMA 119","Mej",NA,"Ahmad bin Hj Din",NA,"TDM",NA
+"333","LMA 169","Mej",NA,"Ahmad bin Sarkun",NA,"TDM","550412025375"
+"334","LMA 065","Mej",NA,"Ahmad Ghuzal bin Tahir","490416-05-5377","TDM",NA
+"335","LMA 038","Mej",NA,"Ahmad Tahir bin Mohd Said",NA,"TDM","581124045453"
+"336","LMA 093","Mej",NA,"Amat Suyoto bin Sulaiman","431023-01-5593","TDM",NA
+"337","LMA 069","Mej",NA,"Aminshah bin Shahludin",NA,"TDM",NA
+"338","LMA 074","Mej",NA,"Amir Ahmad bin Abd Majid","530810-07-5281","TDM",NA
+"339","LMA 117","Mej",NA,"Amir bin Alias",NA,"TDM",NA
+"340","LMA 002","Mej","Datuk","Annuar bin Adam",NA,"TDM",NA
+"341","LMA 123","Mej",NA,"Awanudin bin Limi","540704-01-5559","TDM",NA
+"342","LMA 040","Mej","KM","Ayeop Abd Khalil bin Mat Takong",NA,"TDM",NA
+"343","LMA 011","Mej","KM","Aziz bin Othman",NA,"TDM",NA
+"344","LMA 110","Mej",NA,"Azlan bin Omar",NA,"TDM","591019095175"
+"345","LMB 012","Mej",NA,"Baharuddin bin Hj Noordin","561121-01-6157","TDM",NA
+"346","LMB 010","Mej",NA,"Baharuddin bin Jamil","461010-10-5669","TDM","461010105669"
+"347","LMB 009","Mej",NA,"Balakrishnan Alwar","480927-08-5333","TDM",NA
+"348","LMB 005","Mej",NA,"Baldev Singh",NA,"TDM",NA
+"349","LMB 003","Mej",NA,"Basiran bin Supardi",NA,"TDM",NA
+"350","LMB 016","Mej",NA,"Bhagat Ram Thailoo",NA,"TDM",NA
+"351","LMB 011","Mej","Dato’","Bhaskaran Pillai",NA,"TDM",NA
+"352","LMB 015","Mej",NA,"Bibi Zarjaan bt Akhbar Khan","601208-07-5954","TDM",NA
+"353","LMC 004","Mej","Tan Sri","Campos, E,",NA,"TDM",NA
+"354","LMC 016","Mej",NA,"Chang, Godfrey","480820-08-5149","TDM",NA
+"355","LMC 011","Mej",NA,"Che Anuar bin Razali",NA,"TDM",NA
+"356","LMC 018","Mej",NA,"Che Shamsuddin bin Che Ngah","550304-03-5373","TDM","550304035373"
+"357","LMC 015","Mej",NA,"Cheong Sang","410629-05-5001","TDM","410629055001"
+"358","LMC 003","Mej",NA,"Chew Choon Fatt",NA,"TDM","341018085053"
+"359","LMC 005","Mej",NA,"Chow Yoon Wah",NA,"TDM","460115045055"
+"360","LMC 022","Mej",NA,"Chow Yun Kai","490824-10-5249","TDM","490824105249"
+"361","LMC 007","Mej",NA,"Christoper, Anthony",NA,"TDM",NA
+"362","LME 007","Mej",NA,"Eruthianathan, Francis","480905-02-5655","TDM",NA
+"363","LME 003","Mej",NA,"Ezzudin bin Abdullah",NA,"TDM","540917016029"
+"364","LMF 003","Mej",NA,"Fatimah Khatijah bt Musa","541115-05-5442","TDM",NA
+"365","LMG 002","Mej",NA,"Ganeson Alwar","500916-08-5173","TDM",NA
+"366","LMG 001","Mej",NA,"Goh Teik Huat",NA,"TDM","470816075547"
+"367","LMH 004","Mej",NA,"Hakim Mazhar bin Mohd Johar",NA,"TDM","450730085201"
+"368","LMH 026","Mej","Dato' Dr.","Hamzah bin Ahmad",NA,"TDM","500223015957"
+"369","LMH 026","Mej","Dato' Dr.","Hamzah bin Ahmad",NA,"TDM","440409025289"
+"370","LMH 014","Mej",NA,"Haramugam a/l Suppiah","530619-10-6457","TDM",NA
+"371","LMH 034","Mej",NA,"Harbans Kaur ap Chanan Singh",NA,"TDM",NA
+"372","LMH 015","Mej",NA,"Hassan bin Zainudin",NA,"TDM","471226135129"
+"373","LMH 038","Mej",NA,"Hassan Sabri bin Sallehuddin",NA,"TDM","491003015363"
+"374","LMH 011","Mej",NA,"Hussain bin Nayan",NA,"TDM","530220085885"
+"375","LMI 009","Mej",NA,"Iskandar W.H. Crafter","300225-71-5539","TDM",NA
+"376","LMI 005","Mej",NA,"Ismail bin Ahmad",NA,"TDM","590101026473"
+"377","LMI 005","Mej",NA,"Ismail bin Ahmad",NA,"TDM","490106085757"
+"378","LMI 012","Mej",NA,"Ismail bin Hj Hassan","481029-01-5135","TDM",NA
+"379","LMI 014","Mej",NA,"Ismail bin Kamat","530413-01-5445","TDM",NA
+"380","LMJ 006","Mej",NA,"Jamal bin Ghazali",NA,"TDM","440429085887"
+"381","LMK 018","Mej",NA,"Kadir Sultan bin Abd Majid",NA,"TDM","500205045319"
+"382","LMK 020","Mej",NA,"Kamalanathan a/l Muthupandian","540325-05-5331","TDM",NA
+"383","LMK 023","Mej",NA,"Khairuddin bin Yang",NA,"TDM",NA
+"384","LMK 019","Mej",NA,"Krishna Subramaniam","520701-05-5063","TDM",NA
+"385","LMK 010","Mej",NA,"Krishnan Nambia",NA,"TDM",NA
+"386","LML 013","Mej",NA,"Law Kim Sew","531223-02-5735","TDM",NA
+"387","LML 019","Mej",NA,"Lee Hock Sun","540109-07-5805","TDM","540109075805"
+"388","LML 010","Mej",NA,"Lee Kong Kok",NA,"TDM",NA
+"389","LML 014","Mej",NA,"Ling Heng Woon","450729-08-5183","TDM",NA
+"390","LMM 161","Mej",NA,"Mahamud bin Hamzah",NA,"TDM","560425025963"
+"391","LMM 011","Mej",NA,"Mahmood bin Ismail",NA,"TDM","440510055159"
+"392","LMM 092","Mej",NA,"Mahmood Kamsani bin Hj Mustapha","520321-03-5255","TDM",NA
+"393","LMM 140","Mej",NA,"Maznan bin Noordin","530102-10-5937","TDM",NA
+"394","LMM 152","Mej","Dato'","Md Dakhiyar bin Hj Amir",NA,"TDM",NA
+"395","LMM 068","Mej",NA,"Md Jani bin Md Dom",NA,"TDM",NA
+"396","LMM 176","Mej",NA,"Mohamad Rom bin Ismail",NA,"TDM","510128115123"
+"397","LMM 014","Mej","Datuk","Mohamed bin Hj Awang","441010-11-5201","TDM",NA
+"398","LMM 048","Mej",NA,"Mohamed bin Hj Mohd Nasir",NA,"TDM",NA
+"399","LMM 059","Mej",NA,"Mohamed Hussein bin Mohamed Said","460822-10-5379","TDM",NA
+"400","LMM 134","Mej",NA,"Mohd Fadzi bin Hj Mohd Yassin","500602-06-5153","TDM",NA
+"401","LMM 085","Mej","Dato’","Mohd Ismail bin Haniffa",NA,"TDM","501107015209"
+"402","LMM 085","Mej","Dato’","Mohd Ismail bin Haniffa",NA,"TDM","510407016005"
+"403","LMM 086","Mej",NA,"Mohd Iszeham bin Abd Hamid","510104-02-5529","TDM",NA
+"404","LMM 115","Mej",NA,"Mohd Johar bin Che Omar",NA,"TDM","471024025431"
+"405","LMM 013","Mej",NA,"Mohd Mukhtar bin Muda",NA,"TDM",NA
+"406","LMM 080","Mej",NA,"Mohd Razali bin Ibrahim","450701-08-5173","TDM","450701085173"
+"407","LMM 081","Mej",NA,"Mohd Rustam bin Mohd Ramli","520327-08-6395","TDM","520327086395"
+"408","LMM 020","Mej","Dato'","Mohd Said bin Harun",NA,"TDM",NA
+"409","LMM 037","Mej","Dato'","Mohd Sallehuddin bin Ab Ghani",NA,"TDM",NA
+"410","LMM 005","Mej",NA,"Mohd Yusof bin Sudin","380805-01-5371","TDM","380805015371"
+"411","LMM 151","Mej",NA,"Mohd Zainal bin Juni",NA,"TDM","600414016395"
+"412","LMM 179","Mej",NA,"Mua'azam bin Mohamad","710818-02-5447","TDM","710818025447"
+"413","LMM 148","Mej",NA,"Mukhtar bin Abd Razak",NA,"TDM",NA
+"414","LMM 142","Mej","Dato'","Murthi M.S.",NA,"TDM",NA
+"415","LMN 021","Mej",NA,"Nai Kin al Nai Chooi","561203-07-5601","TDM",NA
+"416","LMN 014","Mej",NA,"Ng Seng Eok","381104-01-5015","TDM","381104015015"
+"417","LMN 033","Mej",NA,"Noh bin Atan @ Khamis","561003-01-6447","TDM","561003016447"
+"418","LMO 009","Mej",NA,"Omar bin Hj Osman","390705-06-5047","TDM",NA
+"419","LMO 010","Mej",NA,"Oon Hoe Cheng",NA,"TDM","450526075049"
+"420","LMP 001","Mej",NA,"Pritam Singh Bal","590102-01-6613","TDM",NA
+"421","LMR 022","Mej",NA,"Ramachandran, A.R.",NA,"TDM",NA
+"422","LMR 029","Mej",NA,"Ramli bin Abu Bakar","500208-71-5331","TDM","500203715331"
+"423","LMR 038","Mej",NA,"Randhir Singh a/l Ajaib Singh","570515-08-6945","TDM",NA
+"424","LMR 017","Mej",NA,"Razali bin Ahmad",NA,"TDM","590302105311"
+"425","LMR 017","Mej",NA,"Razali bin Ahmad",NA,"TDM","590609075823"
+"426","LMR 023","Mej","Dato' Sri","Redzuan bin Sheikh Ahmad",NA,"TDM",NA
+"427","LMR 031","Mej",NA,"Roshdin bin Mohammed",NA,"TDM",NA
+"428","LMR 014","Mej",NA,"Rozni bin Hashim",NA,"TDM",NA
+"429","LMR 035","Mej",NA,"Rusmi bin Che Muhammad",NA,"TDM",NA
+"430","LMS 034","Mej","Dato'","Sadon bin Kaprawi",NA,"TDM",NA
+"431","LMS 072","Mej",NA,"Saiful Kadar bin Saifuddin","770609-03-6005","TDM","770609036005"
+"432","LMS 070","Mej",NA,"Salleh bin Ahmad","560925-01-6131","TDM","560925016131"
+"433","LMS 070","Mej",NA,"Salleh bin Ahmad","560925-01-6131","TDM","501113015731"
+"434","LMS 061","Mej",NA,"Salleh bin Ismail","510423-03-5513","TDM","510423035513"
+"435","LMS 039","Mej",NA,"Sam Tat Yau","351030-08-5135","TDM",NA
+"436","LMS 001","Mej",NA,"See Ah Chong @ See Ah Kaw","460210-05-5219","TDM",NA
+"437","LMS 019","Mej",NA,"Shaharum bin Ibrahim","480321-05-5113","TDM",NA
+"438","LMS 049","Mej",NA,"Sivarajan K M Ramanathan","420605-08-5141","TDM",NA
+"439","LMS 068","Mej","Tan Sri, Dr","Syed Azman bin Syed Ibrahim","600323-02-5421","TDM",NA
+"440","LMS 021","Mej",NA,"Syed Hussein bin Syed Nazimuddin","430409-10-5423","TDM","430409105423"
+"441","LMS 005","Mej",NA,"Syed Marzuki bin Syed Harun","421126-09-5005","TDM",NA
+"442","LMT 024","Mej",NA,"Tengku Razali bin Tengku Ros","470823-05-5069","TDM",NA
+"443","LMT 007","Mej",NA,"Teo Siang Kim, Willie","580401-13-5963","TDM",NA
+"444","LMT 014","Mej",NA,"Termizi bin Ahmad","540712-02-5001","TDM","540712025001"
+"445","LMT 006","Mej",NA,"Thilagaratnam M.F",NA,"TDM",NA
+"446","LMT 019","Mej",NA,"Tong How Seng","570204-08-5099","TDM",NA
+"447","LMV 003","Mej",NA,"Verasingam K.R.",NA,"TDM",NA
+"448","LMW 004","Mej","Dato’","Wan Mohamad Zin bin Mat Amin","470204-03-5325","TDM","470204035325"
+"449","LMW 010","Mej",NA,"Wan Norshahid bin Zainol",NA,"TDM",NA
+"450","LMW 002","Mej",NA,"Wan Rusdi bin Che Omar","590419-03-5687","TDM",NA
+"451","LMY 010","Mej","(Dr)","Yasmin bt Osman","640119-08-6274","TDM",NA
+"452","LMY 009","Mej",NA,"Yeap Hock Chai, Anthony",NA,"TDM",NA
+"453","LMY 014","Mej",NA,"Yew Kim Huat","450401-02-5021","TDM","450401025021"
+"454","LMY 001","Mej","(Dr)","Yim Khai Kee",NA,"TDM","361207085499"
+"455","LMZ 021","Mej","Dato’","Zahari bin Sulaiman",NA,"TDM","540924115279"
+"456","LMZ 009","Mej",NA,"Zainal Abidin bin Husin",NA,"TDM","480522105439"
+"457","LMZ 027","Mej",NA,"Zainal bin Abdullah",NA,"TDM","650224016349"
+"458","LMZ 005","Mej",NA,"Zainal bin Bador",NA,"TDM",NA
+"459","LMZ 003","Mej",NA,"Zainal bin Omar",NA,"TDM",NA
+"460","LMZ 032","Mej",NA,"Zainuddin bin Buyong",NA,"TDM",NA
+"461","LMZ 031","Mej",NA,"Zamani bin Johar","600703-08-6269","TDM","600703086269"
+"462","LMZ 008","Mej",NA,"Zulkarnain bin Yaakub",NA,"TDM",NA
+"463","LML 005","Mej",NA,"Lee Yen Wah","350514-07-5043","TDM","350514075043"
+"464","LMC 001","Mej",NA,"Christoper, Anthony",NA,"TDM",NA
+"465","LMS 042","Mej",NA,"Subramaniam a/l Balasingam",NA,"TDM",NA
+"466","LMA 079","Kapt",NA,"Ab Rashid bin Md Zain","610113-10-5465","TDM",NA
+"467","LMA 010","Kapt",NA,"Abd Halim bin Hamzah",NA,"TDM",NA
+"468","LMA 120","Kapt",NA,"Abd Wahid bin Abd Hamid",NA,"TDM",NA
+"469","LMA 148","Kapt","(Dr)","Abel W.K. Arumugam",NA,"TDM",NA
+"470","LMA 083","Kapt",NA,"Admi bin Othman","471105-07-5449","TDM","471105075449"
+"471","LMA 016","Kapt",NA,"Ahmad bin Gedang",NA,"TDM",NA
+"472","LMA 036","Kapt","Tan Sri Dato’ Seri","Ahmad bin Johan",NA,"TDM",NA
+"473","LMA 132","Kapt",NA,"Ahmad bin Othman","500407-07-5049","TDM","500502086141"
+"474","LMA 132","Kapt",NA,"Ahmad bin Othman","500407-07-5049","TDM","500407075049"
+"475","LMA 156","Kapt","Dato', (Dr)","Aplanaidu a/l Pathanaidu",NA,"TDM",NA
+"476","LMA 129","Kapt","Datuk Dr.","Arumugam a/l Ara Nachiappan","460423-71-5057","TDM",NA
+"477","LMA 084","Kapt",NA,"Asmah bt Abd Kadir",NA,"TDM",NA
+"478","LMA 126","Kapt","Datuk","Azmi bin Abd Hamid",NA,"TDM",NA
+"479","LMA 136","Kapt",NA,"Azmi bin Abdullah","700626-08-5251","TDM","700626085251"
+"480","LMB 004","Kapt",NA,"Badri bin Khalid","500810-08-5503","TDM","50081008550"
+"481","LMB 001","Kapt",NA,"Baharuddin bin Hj Abdullah",NA,"TDM",NA
+"482","LMC 017","Kapt","(Dr)","Chandran Rajagopal","451026-10-5293","TDM",NA
+"483","LMC 007","Kapt",NA,"Che Mat Din bin Mohd Yusoff","470526-07-5231","TDM","470526075231"
+"484","LMC 021","Kapt",NA,"Chong Ah Fatt, Edwin","440830-08-5453","TDM",NA
+"485","LME 005","Kapt",NA,"Elias bin Mohamed","550829-01-5009","TDM",NA
+"486","LMH 033","Kapt","Dr.","Harichandran a/l S. Velautham","471125-10-5377","TDM",NA
+"487","LMH 017","Kapt",NA,"Haridan bin Mohd Arif",NA,"TDM","590724085349"
+"488","LMH 018","Kapt",NA,"Hasbi bin Yusuf",NA,"TDM",NA
+"489","LMH 012","Kapt",NA,"Hussaini bin Abd Karim",NA,"TDM",NA
+"490","LMI 016","Kapt","Dr","Inderjit Singh Ludher a/l Pritam Singh","500327-10-5471","TDM",NA
+"491","LMJ 012","Kapt","Dr","Jeyaratnam a/l Kasipillai",NA,"TDM",NA
+"492","LMK 016","Kapt","Dr","Kamalanathan a/l Sappani",NA,"TDM",NA
+"493","LMK 015","Kapt",NA,"Kamarazaman bin Abd Rahman","530228-05-5509","TDM",NA
+"494","LMK 011","Kapt",NA,"Kamarudin bin Atan","640102-01-5293","TDM","640102015293"
+"495","LMK 025","Kapt",NA,"Ko Kok Pin","610420-03-5473","TDM","610420035479"
+"496","LMK 004","Kapt",NA,"Kung Boon Chin",NA,"TDM","480412025227"
+"497","LML 003","Kapt",NA,"Lee Wah",NA,"TDM","370814055093"
+"498","LML 009","Kapt","Dato'","Liew Siong Sing",NA,"TDM",NA
+"499","LML 015","Kapt",NA,"Lum Weng Kit, Danny","580212-08-5565","TDM",NA
+"500","LMM 145","Kapt",NA,"Mahadzir bin Tan Sri Mansor","530905-10-6183","TDM",NA
+"501","LMM 128","Kapt","Dr.","Manickam, Gerald Lawrence",NA,"TDM",NA
+"502","LMM 026","Kapt",NA,"Mazlan bin Jamaluddin",NA,"TDM","420405085681"
+"503","LMM 157","Kapt",NA,"Md Sulaiman bin Yusuf",NA,"TDM",NA
+"504","LMM 012","Kapt",NA,"Mohd Azman bin Hj Wan Hassan",NA,"TDM",NA
+"505","LMM 165","Kapt",NA,"Mohd Johari bin Ibrahim",NA,"TDM",NA
+"506","LMM 136","Kapt",NA,"Mohd Najid bin Md Yahya","650925-08-6673","TDM",NA
+"507","LMM 078","Kapt",NA,"Mohd Nasir bin Abdullah","620207-05-5437","TDM","620207055437"
+"508","LMM 088","Kapt",NA,"Mohd Nizar bin Mohd Zahari","420520-08-5361","TDM",NA
+"509","LMM 075","Kapt",NA,"Mohd Nor bin Bon","590919-01-5041","TDM","590919015041"
+"510","LMM 087","Kapt","Dr","Muhammad Gowdh bin Muhammed Jaffar","500525-71-5107","TDM",NA
+"511","LMN 001","Kapt",NA,"Nallaiah a/l Karuppanan",NA,"TDM",NA
+"512","LMN 012","Kapt",NA,"Nik Roffa bin Mat Daud","630105-03-6189","TDM",NA
+"513","LMN 022","Kapt","Dato'","Nordin bin Hj Mohamad",NA,"TDM",NA
+"514","LMP 008","Kapt",NA,"Panirchellvam a/l Velaitham",NA,"TDM",NA
+"515","LMP 003","Kapt",NA,"Pillay Soh Chin","480820-71-5091","TDM",NA
+"516","LMQ 001","Kapt",NA,"Quek Tee Chong",NA,"TDM","440308045053"
+"517","LMR 025","Kapt",NA,"Rahimah bt Ahmad",NA,"TDM",NA
+"518","LMR 036","Kapt",NA,"Raja Kobat Salehuddin bin Raja Musa",NA,"TDM","430130085525"
+"519","LMR 027","Kapt","Dr","Rajakumar Ramiah",NA,"TDM",NA
+"520","LMR 019","Kapt","KM","Ramakrishnan a/l Palaniappan","490920-01-5163","TDM",NA
+"521","LMR 028","Kapt",NA,"Renu Veeriah","630118-08-5377","TDM",NA
+"522","LMR 003","Kapt","Dato'","Roseley bin Omar",NA,"TDM",NA
+"523","LMR 033","Kapt",NA,"Rosli bin Hussein","490508-01-5217","TDM",NA
+"524","LMS 055","Kapt","Dr","Sarjeet Singh Sidhu",NA,"TDM",NA
+"525","LMS 045","Kapt","Datuk","Sharuddin bin Omar","591110-10-5709","TDM","591110105709"
+"526","LMS 008","Kapt",NA,"Sivaraman Kannan",NA,"TDM",NA
+"527","LMS 054","Kapt",NA,"Sudirman bin Hj Ahmad","480428-08-5427","TDM","480428035427"
+"528","LMS 065","Kapt",NA,"Suznan bin Saad","650115-71-5431","TDM",NA
+"529","LMS 023","Kapt",NA,"Syed Ali Al Jefri bin Syed Jan",NA,"TDM",NA
+"530","LMS 012","Kapt","DYMM Tuanku","Syed Sirajuddin Ibni Al-Mahrum",NA,"TDM",NA
+"531",NA,NA,NA,"Tuanku Syed Putra Jamalullail",NA,NA,NA
+"532","LMT 001","Kapt",NA,"Tahir bin Sulong",NA,"TDM",NA
+"533","LMT 011","Kapt",NA,"Taib bin Ibrahim",NA,"TDM","510709015243"
+"534","LMT 017","Kapt","Dr","Thanikasalam a/l Kathiresan Pillai",NA,"TDM",NA
+"535","LMT 018","Kapt",NA,"Tong Lye Hong","480219-04-5285","TDM",NA
+"536","LMV 002","Kapt","Dr","Venugopal al M Balachand",NA,"TDM",NA
+"537","LMV 001","Kapt","(Dr)","Vythilingam a/l V. Palaniandy Pillay","480508-08-5945","TDM",NA
+"538","LMW 006","Kapt",NA,"Wan Hock Leong",NA,"TDM",NA
+"539","LMY 013","Kapt",NA,"Yahaya bin Mohd Yusof","471106-10-5259","TDM","471106105259"
+"540","LMY 016","Kapt",NA,"Yahaya bin Othman",NA,"TDM","621208045649"
+"541","LMY 012","Kapt","Dr","Yanasakaran a/l Seenivasagam","471123-08-5093","TDM",NA
+"542","LMY 007","Kapt",NA,"Yassin bin Noor","490418-04-5447","TDM",NA
+"543","LMZ 023","Kapt",NA,"Zainal Bakri bin Zulkapli",NA,"TDM",NA
+"544","LMZ 001","Kapt",NA,"Zainal bin Hj Tamby",NA,"TDM",NA
+"545","LMZ 017","Kapt",NA,"Zakaria bin Ramli","480527-04-5199","TDM",NA
+"546","LMZ 014","Kapt",NA,"Zulkifli bin Mohamed","470908-01-5277","TDM","670123035629"
+"547","LMH 032","Kapt",NA,"Ho Fooi",NA,"TDM","461204105421"
+"548","LMZ 002","Kapt",NA,"Zainuddin bin Basar",NA,"TDM",NA
+"549","LMZ 025","Kapt","Dato'","Zahar bin Hashim",NA,"TDM",NA
+"550","LMA 034","Lt","Tan Sri Dato’ Wira","Abd Halim bin Hj Karim",NA,"TDM",NA
+"551","LMA 131","Lt",NA,"Abd Kadir bin Othman",NA,"TDM",NA
+"552","LMA 168","Lt",NA,"Amin bin Noerashid",NA,"TDM",NA
+"553","LMC 020","Lt",NA,"Cheng Yi","661124-08-5551","TDM",NA
+"554","LML 002","Lt",NA,"Lau Bik Yoon",NA,"TDM","500821085701"
+"555","LMM 167","Lt",NA,"Muhammad Ghazi bin Mahmod","440823-05-5141","TDM",NA
+"556","LMN 017","Lt",NA,"Nasir bin Abdullah",NA,"TDM","431125015623"
+"557","LMN 024","Lt",NA,"Ng Hock Leong, Robert","640129-01-5269","TDM",NA
+"558","LMT 008","Lt",NA,"Tunku Abd Rahman bin Tunku Ismail","420324-09-5175","TDM",NA
+"559","LMA 162","Laksamana","Tan Sri Dato' Seri Dr.","Abdul Aziz bin Jaafar",NA,"TLDM",NA
+"560","LMA 061","Laksamana","Tan Sri Dato' Seri","Abu Bakar bin Abd Jamal","461113-01-5885","TLDM",NA
+"561","LMM 137","Laksamana","Dato'","Mohammad bin Nik","510915-11-5309","TLDM",NA
+"562","LMM 105","Laksamana","Tan Sri Dato’ Setia","Mohd Anwar bin Haji Mohd Nor","500312-02-5515","TLDM",NA
+"563","LMM 079","Laksamana","Tan Sri Datuk","Mohd Ramly bin Abu Bakar","470625-05-5391","TLDM","470625055391"
+"564","LMR 020","Laksamana","Tan Sri Dato' Seri","Ramlan bin Mohamed Ali","520718-71-5013","TLDM","520718715013"
+"565","LMA 161","Laksamana","Tan Sri Dato' Seri Dr.","Abdul Aziz bin Jaafar",NA,"TLDM",NA
+"566","LMA 095","Laksdya","Tan Sri","Abd Wahab bin Hj Nawi",NA,"TLDM",NA
+"567","LMA 118","Laksdya","Tan Sri Dato' Seri","Ahmad Ramli bin Hj Mohd Nor","440114-38-5009","TLDM",NA
+"568","LMM 110","Laksdya","Datuk","Mat Rabi bin Abu Samah","501030-11-5235","TLDM",NA
+"569","LMD 004","Laksda","Dato' Pahlawan","Danyal Balagopal bin Abdullah","500706-08-6047","TLDM",NA
+"570","LMG 010","Laksda","Dato'","Gunaselan a/l Salamuthu","540303-07-5825","TLDM",NA
+"571","LMJ 009","Laksda","Dato’ Ir","Jasan Ahpandi bin Sulaiman","550709-01-5901","TLDM",NA
+"572","LMM 121","Laksda","Dato'","Musa bin Omar","540526-66-5011","TLDM",NA
+"573","LMT 013","Laksda","Tan Sri Dato’ Seri","Thanabalasingam, K.","360312-10-5303","TLDM",NA
+"574","LMY 003","Laksda","Dato'","Yaacob bin Hj Daud","420612-04-5121","TLDM",NA
+"575","LMT 016","Laksda","Dato'","Tuan Hashim bin Tuan Mohamed",NA,"TLDM",NA
+"576","LMA 068","Laksma","Dato’ Ir","Ahmad Murad bin Hj Omar","550102-01-6297","TLDM",NA
+"577","LMK 024","Laksma","Datuk","Kay Hai Thuan","560812-04-5497","TLDM","560812045497"
+"578","LMM 113","Laksma","Ir","Mohamad Imran bin Abd Hamid","540710-10-6449","TLDM",NA
+"579","LMP 005","Laksma","Datuk","Peterson, Nicholas E.","420901-10-5813","TLDM",NA
+"580","LMR 018","Laksma","Datuk","Ramli bin Shamsudin","460124-05-5175","TLDM","460124055175"
+"581","LMS 040","Laksma","Dato’","Subramaniam Raman",NA,"TLDM",NA
+"582","LMY 018","Laksma","Datuk","Yahya bin Hashim","580720-04-5551","TLDM","580720045551"
+"583","LMA 094","Kept",NA,"Abd Razak bin Yusof","490530-02-5569","TLDM",NA
+"584","LMA 015","Kept",NA,"Awaluddin bin Mohal",NA,"TLDM",NA
+"585","LMJ 002","Kept",NA,"Jallaluddin bin Idris",NA,"TLDM",NA
+"586","LML 012","Kept",NA,"Leong Seak Ming","550901-08-7155","TLDM","550901087155"
+"587","LMN 019","Kept",NA,"Noh bin Abdul",NA,"TLDM","490911045379"
+"588","LMR 010","Kept",NA,"Razali bin Mohd Nor","430920-08-6311","TLDM",NA
+"589","LMT 003","Kept",NA,"Tajudin bin Hj Yahya",NA,"TLDM",NA
+"590","LMA 057","Kdr",NA,"Abu Bakar bin Budin",NA,"TLDM",NA
+"591","LMS 037","Kdr",NA,"Syed Salim bin Syed Osman","430330-02-5033","TLDM",NA
+"592","LMT 020","Kdr",NA,"Tan Khai Poh","450715-07-5507","TLDM",NA
+"593","LMT 022","Kdr",NA,"Tang Jut Weng",NA,"TLDM","570327086411"
+"594","LMT 015","Kdr",NA,"Thayaparan a/l Sevanthynathan",NA,"TLDM",NA
+"595","LMT 009","Kdr",NA,"Toh Tiap Keng",NA,"TLDM","470725075779"
+"596","LMH 010","Lt Kdr",NA,"Hasraf bin Ithnin",NA,"TLDM",NA
+"597","LMK 021","Lt Kdr",NA,"Khiril Zafuan bin Kamarudin","710517-10-5603","TLDM",NA
+"598","LMM 124","Lt Kdr",NA,"Mui Yoke Loong, Tim","450122-08-5283","TLDM",NA
+"599","LMN 018","Lt Kdr",NA,"Ng Hock Huat, Winston","600921-01-5303","TLDM",NA
+"600","LMO 017","Lt Kdr",NA,"Ong Huat Leng","471209-10-5761","TLDM",NA
+"601","LMP 004","Lt Kdr",NA,"Phua Hean Sim","520101-04-5419","TLDM",NA
+"602","LMP 006","Lt Kdr",NA,"Puah Bok Chuan","561101-08-6975","TLDM",NA
+"603","LMR 039","Lt Kdr",NA,"Rabayah bt Rahmat","760922-12-5830","TLDM",NA
+"604","LMS 003","Lt Kdr",NA,"Syed Halim bin Syed A Hassan",NA,"TLDM",NA
+"605","LMY 011","Lt Kdr",NA,"Yusalie bin Yushak",NA,"TLDM",NA
+"606","LMZ 006","Lt Kdr",NA,"Zafri bin Mahfoz",NA,"TLDM",NA
+"607","LMM 120","Lt",NA,"Mohamed Hatimi bin Abas","570418-08-5019","TLDM","570418085019"
+"608","LMS 046","Lt",NA,"Selamat bin Mustamin","540209-10-5397","TLDM","540209105397"
+"609","LMA 032","Jeneral","Tan Sri Dato’ Seri","Abdullah bin Ahmad",NA,"TUDM",NA
+"610","LMA 049","Jeneral","Tan Sri Dato' Sri","Ahmad Saruji bin Che Rose",NA,"TUDM","460911086149"
+"611","LMA 153","Jeneral","Tan Sri Dato' Sri","Azizan bin Ariffin",NA,"TUDM",NA
+"612","LMN 010","Jeneral","Tan Sri Dato’ Sri","Nik Ismail bin Nik Mohamed",NA,"TUDM",NA
+"613","LMS 027","Jeneral","Tan Sri Dato’ Sri","Suleiman bin Mahmud",NA,"TUDM",NA
+"614","LMA 025","Lt Jen","Tan Sri Dato' Seri","Abd Ghani bin Abd Aziz",NA,"TUDM",NA
+"615","LMA 154","Lt Jen","Dato'","Abu Bakar bin Mohd Said","550102-04-5223","TUDM",NA
+"616","LMC 019","Lt Jen","Dato' Sri","Che Akmar bin Mohd Nor","551112-09-5093","TUDM","551112095093"
+"617","LMM 039","Lt Jen","Tan Sri Dato’ Seri","Mohd Yunus bin Mohd Tasi",NA,"TUDM","400903085141"
+"618","LMN 008","Lt Jen","Dato’","Nawi bin Alias","441101-03-5645","TUDM","441101035645"
+"619","LMA 041","Mej Jen","Dato’","Abd Malek Shahar bin Harun","460928-08-6129","TUDM",NA
+"620","LMA 043","Mej Jen","Datuk","Abd Razak bin Abd Aziz","500116-01-5951","TUDM",NA
+"621","LMA 160","Mej Jen","Dato’","Ahmad Anuar bin Ahmad","550328-10-6527","TUDM",NA
+"622","LMA 159","Mej Jen","Dato’","Azizool Arif bin Abd Ghani","550829-08-6317","TUDM",NA
+"623","LMI 013","Mej Jen","Dato'","Ismail bin Ibrahim","550121-07-5583","TUDM",NA
+"624","LMM 111","Mej Jen","Dato'","Mohamad Ali bin Wayat",NA,"TUDM",NA
+"625","LMM 045","Mej Jen","Dato’","Mohd Muslim bin Ayob",NA,"TUDM",NA
+"626","LMM 147","Mej Jen","Dato'","Mustak Ahmad bin Miandad","550107-01-6229","TUDM",NA
+"627","LMO 016","Mej Jen","Dato'","Othman bin Abdullah","550806-07-5607","TUDM",NA
+"628","LMS 035","Mej Jen","Dato’","Shahrudin bin Mohd Ali","410505-10-5249","TUDM",NA
+"629","LMS 026","Mej Jen","Tan Sri Dato’","Sulaiman bin Sujak","340325-71-5225","TUDM",NA
+"630","LMS 071","Mej Jen","Dato'","Syed Salim bin Syed Abu Bakar","571004-01-5541","TUDM",NA
+"631","LMY 004","Mej Jen","Datuk","Yahya bin Bidin",NA,"TUDM",NA
+"632","LMZ 034","Mej Jen","Datuk","Zaharin bin Ahmad","560730-05-5501","TUDM",NA
+"633","LMA 047","Brig Jen","Dato’","Abd Rahim bin Abd Rahman",NA,"TUDM",NA
+"634","LMA 087","Brig Jen","Dato’","Abd Rahman bin Ali",NA,"TUDM",NA
+"635","LMA 056","Brig Jen","Dato’","Abdullah bin Mohamed",NA,"TUDM","441025305059"
+"636","LMA 100","Brig Jen","Dato’","Abdullah bin Omar",NA,"TUDM",NA
+"637","LMA 062","Brig Jen","Dato’","Anim bin Harun",NA,"TUDM",NA
+"638","LMA 171","Brig Jen","Dato’","Azizon bin Ariffin","570819-02-6415","TUDM","570819026415"
+"639","LMG 003","Brig Jen","Datuk","Goh Seng Toh","450901-01-5321","TUDM","450901015321"
+"640","LMH 007","Brig Jen","Dato’","Huang Chew Siong",NA,"TUDM","381016035075"
+"641","LMJ 011","Brig Jen","Dato'","Jamaludin bin Shamsudin",NA,"TUDM",NA
+"642","LMM 060","Brig Jen","Dato’","Marzuki bin Hj Abu Bakar","490824-02-5695","TUDM",NA
+"643","LMM 096","Brig Jen","Dato’","Mior Azam bin Mior Safi","450104-08-5569","TUDM",NA
+"644","LMM 084","Brig Jen","Dato’","Mohamad Tazaai bin Lope Abd Rahman","490215-08-6361","TUDM",NA
+"645","LMM 062","Brig Jen","Dato’","Mohamed Idris bin Saman","450325-10-5643","TUDM",NA
+"646","LMO 014","Brig Jen","Dato'","Othman bin Abd Majid",NA,"TUDM","500314105691"
+"647","LMR 006","Brig Jen","Dato’","Robless, Richard. C","451124-07-5219","TUDM",NA
+"648","LMS 011","Brig Jen","Dato'","Soon Lian Cheng",NA,"TUDM",NA
+"649","LMZ 018","Brig Jen","Dato’","Zainal bin Abd Rahman",NA,"TUDM","520203015923"
+"650","LMA 163","Brig Jen","Dato'","Ali bin Karwi",NA,"TUDM","510809015961"
+"651","LMA 054","Kol","Dato’","Abd Hamid bin Abdullah",NA,"TUDM",NA
+"652","LMR 016","Kol",NA,"Ramli bin Robani","500116-01-5943","TUDM","500116015943"
+"653","LMS 044","Kol",NA,"Salleh bin Ahmad","570216-01-7501","TUDM",NA
+"654","LMA 091","Lt Kol",NA,"Abd Karim bin Md Noor","550105-08-6389","TUDM","550105086389"
+"655","LMA 108","Lt Kol",NA,"Abdullah Khir bin Mohd Saidi",NA,"TUDM",NA
+"656","LMA 035","Lt Kol",NA,"Ahmad Nadzri bin Mohamed Noor",NA,"TUDM","430713085287"
+"657","LMK 017","Lt Kol",NA,"Kamaruddin bin Kamarulzaman",NA,"TUDM",NA
+"658","LMK 008","Lt Kol",NA,"Khairudin bin Dahlan",NA,"TUDM","480404055151"
+"659","LMM 077","Lt Kol","Hj","Mior Mohamad Zubir bin Mior Yahya","480225-08-5451","TUDM",NA
+"660","LMM 143","Lt Kol","Dr","Mohamed Zainudin bin Hj Ismail","420310-07-5253","TUDM",NA
+"661","LMM 169","Lt Kol",NA,"Mohd Zakaria bin Mohd Yusof",NA,"TUDM",NA
+"662","LMM 154","Lt Kol",NA,"Mohan Singh Rendhawa","490122-71-5077","TUDM",NA
+"663","LMM 066","Lt Kol",NA,"Mustaffa bin Zakaria","451001-02-5115","TUDM","451001025115"
+"664","LMN 013","Lt Kol",NA,"Nookarajoo a/l Thathaiah",NA,"TUDM",NA
+"665","LMO 015","Lt Kol",NA,"Ong Hock Chye","421220-08-5153","TUDM","421220085153"
+"666","LMO 008","Lt Kol",NA,"Ooi Ah Ba","470405-07-5059","TUDM","470405075059"
+"667","LMS 038","Lt Kol",NA,"Selvaraja Singam a/l M. Narasingam",NA,"TUDM",NA
+"668","LMS 058","Lt Kol",NA,"Shahidan bin Abd Razak",NA,"TUDM",NA
+"669","LMS 060","Lt Kol",NA,"Sivaraj Kailasam Pillay","630424-07-6321","TUDM",NA
+"670","LMH 041","Lt kol",NA,"Hashimah bt Hj Hassan",NA,"TUDM",NA
+"671","LMA 022","Mej",NA,"Abd Razak bin Hashim",NA,"TUDM","530117086257"
+"672","LMA 122","Mej",NA,"Ahmad Nazri bin Zailani",NA,"TUDM",NA
+"673","LMA 167","Mej",NA,"Ahmad Radzi bin Hashim",NA,"TUDM",NA
+"674","LMA 113","Mej","Dato’","Alang Zari bin Ishak",NA,"TUDM","521124065169"
+"675","LMI 008","Mej",NA,"Ismail bin Abd Malek","470612-08-5591","TUDM","470612085591"
+"676","LMK 005","Mej",NA,"Kabol bin Surat",NA,"TUDM",NA
+"677","LMM 141","Mej",NA,"Mazlan bin Abd Majid","650201-11-5395","TUDM",NA
+"678","LMM 072","Mej",NA,"Mior Rosli bin Dato’ Mior Mohd Jaafar","560524-08-5937","TUDM",NA
+"679","LMM 122","Mej",NA,"Mohamed Khalid bin Che Wan",NA,"TUDM","520221035207"
+"680","LMM 162","Mej","Dato'","Mohd Jailani bin Said",NA,"TUDM","651019115297"
+"681","LMM 144","Mej",NA,"Mohd Jamal bin Idris","550908-10-6283","TUDM",NA
+"682","LMM 135","Mej",NA,"Mohd Kamal bin Mohd Khir","500327-02-5631","TUDM",NA
+"683","LMM 174","Mej",NA,"Muhamed Ghazali bin Taib",NA,"TUDM","530617035093"
+"684","LMM 053","Mej",NA,"Murali P.V. Bhaskaran",NA,"TUDM",NA
+"685","LMO 004","Mej",NA,"Onn bin Mohd Yusoff",NA,"TUDM",NA
+"686","LMR 011","Mej","Dato'","Ramli bin Jonid",NA,"TUDM","540724045093"
+"687","LMR 008","Mej",NA,"Rosli bin Kusri","571210-01-6895","TUDM","571210016895"
+"688","LMS 031","Mej",NA,"Sheo Aik Jong","470705-07-5085","TUDM","470705075085"
+"689","LMS 041","Mej",NA,"Sidek bin Abd Majid","660205-07-5799","TUDM",NA
+"690","LMS 067","Mej","Dato'","Sim Kian Peng",NA,"TUDM","490210715181"
+"691","LMS 048","Mej",NA,"Suppramaneam Kumaravehlu","490615-06-5017","TUDM",NA
+"692","LMY 015","Mej",NA,"Yong Choong Min, Philip",NA,"TUDM",NA
+"693","LMZ 016","Mej","Tan Sri Dato’ Sri","Zulhasnan bin Rafique","540920-10-5911","TUDM",NA
+"694","LMA 060","Kapt",NA,"Ab Manan bin Mansor",NA,"TUDM",NA
+"695","LMA 092","Kapt",NA,"Abd Aziz bin Othman","450908-07-5263","TUDM",NA
+"696","LMA 152","Kapt","Dato'","Abd Aziz bin Rahmat",NA,"TUDM","610628045043"
+"697","LMA 150","Kapt",NA,"Abd Razak bin Ibrahim","550207-07-5293","TUDM","550207075293"
+"698","LMA 155","Kapt",NA,"Ahmad Mustar bin Md Yunos","550514-01-5661","TUDM","550514015661"
+"699","LMA 164","Kapt",NA,"Aminudin bin Baba","610301-11-5003","TUDM",NA
+"700","LMA 064","Kapt","Dato’ Sri","Azri bin Murad","630416-02-5209","TUDM",NA
+"701","LMB 002","Kapt",NA,"Baharuddin bin Kamaruddin",NA,"TUDM",NA
+"702","LMC 014","Kapt",NA,"Choo Ah Chai",NA,"TUDM",NA
+"703","LMI 018","Kapt",NA,"Ismail bin Mohamed","500513-04-5249","TUDM",NA
+"704","LML 008","Kapt",NA,"Lukman bin Abd Rahman",NA,"TUDM",NA
+"705","LMM 118","Kapt",NA,"Mahamood bin Ibrahim",NA,"TUDM","570810026187"
+"706","LMM 024","Kapt","Dato'","Mohamed Razali bin Hj Ramli",NA,"TUDM",NA
+"707","LMM 069","Kapt",NA,"Mohd Fawzi bin Nahrawi",NA,"TUDM","370097500515"
+"708","LMM 150","Kapt",NA,"Mohd Nazir bin Kassim","551012-04-5187","TUDM","551012045187"
+"709","LMM 180","Kapt",NA,"Mohd Radzi bin Mohd Ali","650616-08-5693","TUDM","650616085693"
+"710","LMM 164","Kapt",NA,"Mohd Sharif bin Abbas",NA,"TUDM",NA
+"711","LMM 133","Kapt",NA,"Muhammad Din Fikri bin Zainal Abidin","600813-05-5121","TUDM","600813055121"
+"712","LMN 011","Kapt",NA,"Nazir bin Mansor","520612-05-5539","TUDM",NA
+"713","LMR 030","Kapt",NA,"Raja Mohamed bin Pheer Mohamed","460723-08-5173","TUDM","460723085173"
+"714","LMT 021","Kapt","Dr","Thirunavukkarasu a/l Krishnasamy","700907-02-6039","TUDM",NA
+"715","LMW 009","Kapt","Dato'","Wan Zali bin Wan Kadir",NA,"TUDM","550504115095"
+"716","LMA 115","Lt",NA,"Abd Aziz bin Ahmad","561001-01-5715","TUDM",NA
+"717","LMM 153","Lt","Datuk","Mohd Nawawi bin Awang","511114-11-5231","TUDM",NA
+"718","AB 001",NA,"Encik","Rajiani bin Abd Hamid","541104-01-5031","AB",NA
+"719","AB 002",NA,"Encik","Nik Hisyhamuddin Fathi bin Nik Husain",NA,"AB",NA
