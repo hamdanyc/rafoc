@@ -4,16 +4,21 @@ title: |
   \newline
   \normalsize 
   \textbf{PERSATUAN PEGAWAI-PEGAWAI BERSARA ANGKATAN TENTERA (RAFOC)} 
-  \textbf{MINIT MESYUARAT JAWATANKUASA SIRI 01/2022 PADA HARI SELASA 15 MAC 2022}
-  \textbf{JAM 10:00 PAGI DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR}
-  \newline
-  \hrule
 
 output:
   pdf_document: default
   html_document: default
 always_allow_html: true
+params:
+  siri: "03/2022"
+  tkh: "SELASA 20 SEP 2022 JAM 10:00"
+
 ---
+
+<!-- \fancyhead[L]{\textbf{MS ISO 9001:2015\\OpenApps Sdn Bhd (548151-W)\\`r params$doc_id`}} -->
+<!-- \fancyhead[R]{\textbf{No: Keluaran: 01\\No Pindaan: 00\\Tarikh Kuatkuasa: `r params$doc_date`}} -->
+\textbf{MINIT MESYUARAT JAWATANKUASA SIRI `r params$siri`, `r params$tkh`}
+\textbf{DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, comment=NA)
@@ -22,10 +27,10 @@ library(jsonlite)
 library(kableExtra)
 library(dplyr)
 
-minit <- read_json("minit_exco_1_22.json")
+minit <- read_json("minit_exco_3_22.json")
 ```
 
-### Hadir: 
+### HADIR: 
 
 ```{r hadir}
 # lst <- paste(minit$Hadir$nama,minit$Hadir$Singkatan,minit$Hadir$Jawatan,sep = " - ")
@@ -35,7 +40,7 @@ lst %>%
   kable_styling(latex_options = "hold_position",position = "left")
 ```
 
-### Tidak Hadir (dengan maaf)
+### TIDAK HADIR (DENGAN MAAF)
 
 ```{r tidak hadir}
 nst <- tibble("Nama"=unlist(minit$`Tidak hadir (dengan maaf)`$Nama),"Singkatan"=unlist(minit$`Tidak hadir (dengan maaf)`$Singkatan),"Jawatan"=unlist(minit$`Tidak hadir (dengan maaf)`$Jawatan))
