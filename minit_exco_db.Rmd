@@ -1,9 +1,6 @@
 ---
 title: |
-  ![](logo_rafoc.png){width=1in}
-  \newline
-  \normalsize 
-  \textbf{PERSATUAN PEGAWAI-PEGAWAI BERSARA ANGKATAN TENTERA (RAFOC)} 
+  ![](logo_srt_rasmi.png){width=6.5in}
 
 output:
   pdf_document: default
@@ -30,7 +27,7 @@ minit <- db$find('{"Siri": "1/22", "Jenis": "exco"}')
 **MINIT MESYUARAT JAWATANKUASA SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000**  
 **DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR**
 
-### HADIR: 
+### HADIR
 
 ```{r hadir}
 lst <- tibble("Nama"=unlist(minit$Hadir$nama),"Singkatan"=unlist(minit$Hadir$Singkatan),"Jawatan"=unlist(minit$Hadir$Jawatan)) 

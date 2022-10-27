@@ -1,10 +1,7 @@
 ---
 title: |
-  ![](logo_rafoc.png){width=1in}
-  \newline
-  \normalsize 
-  \textbf{PERSATUAN PEGAWAI-PEGAWAI BERSARA ANGKATAN TENTERA (RAFOC)} 
-
+  ![](logo_srt_rasmi.png){width=6.5in}
+ 
 output:
   pdf_document: default
   html_document: default
@@ -28,7 +25,7 @@ minit <- read_json("minit_exco_3_22.json")
 **MINIT MESYUARAT JAWATANKUASA SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000**  
 **DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR**
 
-### HADIR: 
+### HADIR 
 
 ```{r hadir}
 # lst <- paste(minit$Hadir$nama,minit$Hadir$Singkatan,minit$Hadir$Jawatan,sep = " - ")
@@ -176,7 +173,7 @@ minit$Penutup %>%
 \  
   
 ```{r Disediakan, echo=FALSE}
-paste("Disediakan oleh",minit$`Disediakan Oleh`) %>% 
+paste("Disediakan Oleh",minit$Disediakan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 ```
