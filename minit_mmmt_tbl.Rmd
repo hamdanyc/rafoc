@@ -1,0 +1,110 @@
+---
+title: |
+  ![](logo_srt_rasmi.png){width=6.5in}
+output:
+  pdf_document: default
+  html_document: default
+always_allow_html: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, comment=NA)
+
+library(jsonlite)
+library(kableExtra)
+library(dplyr)
+
+minit <- read_json("minit_mmm_3_22.json")
+```
+
+**MINIT MESYUARAT JAWATANKUASA SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000**  
+**DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR**
+
+### HADIR 
+
+```{r hadir}
+# lst <- paste(minit$Hadir$nama,minit$Hadir$Singkatan,minit$Hadir$Jawatan,sep = " - ")
+lst <- tibble("Nama"=unlist(minit$Hadir$nama),"Singkatan"=unlist(minit$Hadir$Singkatan),"Jawatan"=unlist(minit$Hadir$Jawatan))
+lst %>% 
+  kbl(booktabs = T) %>% 
+  kable_styling(latex_options = "hold_position",position = "left")
+```
+
+### TIDAK HADIR (DENGAN MAAF)
+
+```{r tidak hadir}
+nst <- tibble("Nama"=unlist(minit$Tidak_hadir$Nama),"Singkatan"=unlist(minit$Tidak_hadir$Singkatan),"Jawatan"=unlist(minit$Tidak_hadir$Jawatan))
+nst %>% 
+  kbl(booktabs = T) %>% 
+  kable_styling(latex_options = "hold_position",position = "left")
+```
+
+### AGENDA 1: `r minit$Agenda_1$Perkara`
+
+```{r agenda 1, echo=FALSE}
+tibble::tibble("Siri"="1.","Tajuk"="Pendahuluan","Keterangan"=minit$Agenda_1$Keterangan,"Keputusan"=minit$Agenda_1$Keputusan)  %>% 
+  kbl(longtable = TRUE) %>% 
+  kable_styling(position = "left",full_width = FALSE) %>% 
+  column_spec(1,width = "0.5cm") %>% 
+  column_spec(2,width = "4cm") %>% 
+  column_spec(3,width = "9cm") %>% 
+  column_spec(4,width = "2cm")
+
+```
+### AGENDA 2: `r minit$Agenda_2$Perkara`
+
+```{r agenda 2, echo=FALSE}
+# agenda 2
+tibble::tibble("Siri"="2.","Tajuk"="","Keterangan"=minit$Agenda_2$Keterangan,"Keputusan"=minit$Agenda_2$Keputusan)  %>% 
+  kbl(longtable = TRUE) %>% 
+  kable_styling(position = "left",full_width = FALSE) %>% 
+  column_spec(1,width = "0.5cm") %>% 
+  column_spec(2,width = "4cm") %>% 
+  column_spec(3,width = "9cm") %>% 
+  column_spec(4,width = "2cm")
+
+```
+
+### AGENDA 3: `r minit$Agenda_3$Perkara`
+
+```{r agenda 3, echo=FALSE}
+
+tibble::tibble("Tajuk"= minit$Agenda_3$Tajuk,"Keterangan"=minit$Agenda_3$Keterangan,"Keputusan"=minit$Agenda_3$Keputusan) %>%
+  dplyr::mutate("Siri"=paste0(row_number()+2,".")) %>%
+  select(Siri,Tajuk,Keterangan,Keputusan) %>% 
+  kbl(longtable = TRUE) %>% 
+  kable_styling(position = "left",full_width = FALSE) %>%
+  column_spec(1,width = "0.5cm") %>% 
+  column_spec(2,width = "4cm") %>% 
+  column_spec(3,width = "9cm") %>% 
+  column_spec(4,width = "2cm")
+```
+
+### AGENDA 4: `r minit$Agenda_4$Perkara` 
+
+```{r agenda 4, echo=FALSE}
+tibble::tibble("Siri"="2.","Tajuk"=minit$Agenda_4$Tajuk,"Keterangan"=minit$Agenda_4$Keterangan,"Keputusan"=minit$Agenda_4$Keputusan) %>%
+  dplyr::mutate("Siri"=paste0(row_number()+length(minit$Agenda_3$Tajuk)+2,".")) %>%
+  kbl(longtable = TRUE) %>% 
+  kable_styling(position = "left",full_width = FALSE) %>% 
+  column_spec(1,width = "0.5cm") %>% 
+  column_spec(2,width = "4cm") %>% 
+  column_spec(3,width = "9cm") %>% 
+  column_spec(4,width = "2cm")
+
+```
+
+### PENUTUP 
+
+```{r penutup, echo=FALSE}
+minit$Penutup  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```
+
+\  
+\  
+
+
+
