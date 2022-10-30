@@ -17,7 +17,7 @@ library(dplyr)
 minit <- read_json("minit_mmm_3_22.json")
 ```
 
-**MINIT MESYUARAT JAWATANKUASA SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000**  
+**NOTA MESYUARAT MMMT '22 SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000**  
 **DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR**
 
 ### HADIR 
@@ -26,15 +26,6 @@ minit <- read_json("minit_mmm_3_22.json")
 # lst <- paste(minit$Hadir$nama,minit$Hadir$Singkatan,minit$Hadir$Jawatan,sep = " - ")
 lst <- tibble("Nama"=unlist(minit$Hadir$nama),"Singkatan"=unlist(minit$Hadir$Singkatan),"Jawatan"=unlist(minit$Hadir$Jawatan))
 lst %>% 
-  kbl(booktabs = T) %>% 
-  kable_styling(latex_options = "hold_position",position = "left")
-```
-
-### TIDAK HADIR (DENGAN MAAF)
-
-```{r tidak hadir}
-nst <- tibble("Nama"=unlist(minit$Tidak_hadir$Nama),"Singkatan"=unlist(minit$Tidak_hadir$Singkatan),"Jawatan"=unlist(minit$Tidak_hadir$Jawatan))
-nst %>% 
   kbl(booktabs = T) %>% 
   kable_styling(latex_options = "hold_position",position = "left")
 ```
@@ -55,7 +46,7 @@ tibble::tibble("Siri"="1.","Tajuk"="Pendahuluan","Keterangan"=minit$Agenda_1$Ket
 
 ```{r agenda 2, echo=FALSE}
 # agenda 2
-tibble::tibble("Siri"="2.","Tajuk"="","Keterangan"=minit$Agenda_2$Keterangan,"Keputusan"=minit$Agenda_2$Keputusan)  %>% 
+tibble::tibble("Siri"="2.","Tajuk"="Mesyuarat MMMT Siri 2/22","Keterangan"=minit$Agenda_2$Keterangan,"Keputusan"=minit$Agenda_2$Keputusan)  %>% 
   kbl(longtable = TRUE) %>% 
   kable_styling(position = "left",full_width = FALSE) %>% 
   column_spec(1,width = "0.5cm") %>% 
@@ -101,6 +92,9 @@ minit$Penutup  %>%
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
+paste("Di Sediakan Oleh:",minit$Disediakan)  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
 ```
 
 \  
