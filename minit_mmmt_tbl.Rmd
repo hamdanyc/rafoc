@@ -15,10 +15,12 @@ library(kableExtra)
 library(dplyr)
 
 minit <- read_json("minit_mmm_3_22.json")
+acara <- readr::read_csv("acara.csv",na = c(" "," ")) 
 ```
 
-**NOTA MESYUARAT MMMT '22 SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000**  
-**DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR**
+\textbf{\underline{NOTA MESYUARAT MMMT '22 SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000}}
+\newline  
+\textbf{\underline{DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR}}
 
 ### HADIR 
 
@@ -55,7 +57,7 @@ tibble::tibble("Siri"="2.","Tajuk"="Mesyuarat MMMT Siri 2/22","Keterangan"=minit
   column_spec(4,width = "2cm")
 
 ```
-
+\newpage
 ### AGENDA 3: `r minit$Agenda_3$Perkara`
 
 ```{r agenda 3, echo=FALSE}
@@ -88,7 +90,7 @@ tibble::tibble("Siri"="2.","Tajuk"=minit$Agenda_4$Tajuk,"Keterangan"=minit$Agend
 ### PENUTUP 
 
 ```{r penutup, echo=FALSE}
-minit$Penutup  %>% 
+paste(length(minit$Agenda_3$Tajuk)+length(minit$Agenda_4$Tajuk)+3,minit$Penutup,sep=". ")  %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
@@ -96,9 +98,21 @@ paste("Di Sediakan Oleh:",minit$Disediakan)  %>%
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 ```
+\newpage
+### Kembaran-kembaran:
 
-\  
-\  
+A. Aturcara MMTH `22
 
+```{r kembara A, echo=FALSE}
+acara %>%
+  kbl(booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left") %>% 
+  column_spec(1,width = "7cm") %>% 
+  column_spec(2,width = "2cm") %>% 
+  column_spec(3,width = "6cm") 
+```
+B. Laporan Laporan Status Tajaan dan Kehadiran - disediakan berasingan
+
+C. Laporan Status Penyediaan Multimedia - disediakan berasingan
 
 
