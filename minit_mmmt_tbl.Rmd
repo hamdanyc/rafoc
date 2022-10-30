@@ -35,7 +35,7 @@ lst %>%
 ### AGENDA 1: `r minit$Agenda_1$Perkara`
 
 ```{r agenda 1, echo=FALSE}
-tibble::tibble("Siri"="1.","Tajuk"="Pendahuluan","Keterangan"=minit$Agenda_1$Keterangan,"Keputusan"=minit$Agenda_1$Keputusan)  %>% 
+tibble::tibble("Siri"="1.","Perkara"="Pendahuluan","Perbincangan dan Keputusan"=minit$Agenda_1$Keterangan,"Tindakan"=minit$Agenda_1$Keputusan)  %>% 
   kbl(longtable = TRUE) %>% 
   kable_styling(position = "left",full_width = FALSE) %>% 
   column_spec(1,width = "0.5cm") %>% 
@@ -48,7 +48,7 @@ tibble::tibble("Siri"="1.","Tajuk"="Pendahuluan","Keterangan"=minit$Agenda_1$Ket
 
 ```{r agenda 2, echo=FALSE}
 # agenda 2
-tibble::tibble("Siri"="2.","Tajuk"="Mesyuarat MMMT Siri 2/22","Keterangan"=minit$Agenda_2$Keterangan,"Keputusan"=minit$Agenda_2$Keputusan)  %>% 
+tibble::tibble("Siri"="2.","Perkara"="Mesyuarat MMMT Siri 2/22","Perbincangan dan Keputusan"=minit$Agenda_2$Keterangan,"Tindakan"=minit$Agenda_2$Keputusan)  %>% 
   kbl(longtable = TRUE) %>% 
   kable_styling(position = "left",full_width = FALSE) %>% 
   column_spec(1,width = "0.5cm") %>% 
@@ -62,9 +62,9 @@ tibble::tibble("Siri"="2.","Tajuk"="Mesyuarat MMMT Siri 2/22","Keterangan"=minit
 
 ```{r agenda 3, echo=FALSE}
 
-tibble::tibble("Tajuk"= minit$Agenda_3$Tajuk,"Keterangan"=minit$Agenda_3$Keterangan,"Keputusan"=minit$Agenda_3$Keputusan) %>%
+tibble::tibble("Perkara"= minit$Agenda_3$Tajuk,"Perbincangan dan Keputusan"=minit$Agenda_3$Keterangan,"Tindakan"=minit$Agenda_3$Keputusan) %>%
   dplyr::mutate("Siri"=paste0(row_number()+2,".")) %>%
-  select(Siri,Tajuk,Keterangan,Keputusan) %>% 
+  select(Siri,Perkara,`Perbincangan dan Keputusan`,Tindakan) %>% 
   kbl(longtable = TRUE) %>% 
   kable_styling(position = "left",full_width = FALSE) %>%
   column_spec(1,width = "0.5cm") %>% 
@@ -76,7 +76,7 @@ tibble::tibble("Tajuk"= minit$Agenda_3$Tajuk,"Keterangan"=minit$Agenda_3$Keteran
 ### AGENDA 4: `r minit$Agenda_4$Perkara` 
 
 ```{r agenda 4, echo=FALSE}
-tibble::tibble("Siri"="2.","Tajuk"=minit$Agenda_4$Tajuk,"Keterangan"=minit$Agenda_4$Keterangan,"Keputusan"=minit$Agenda_4$Keputusan) %>%
+tibble::tibble("Siri"="2.","Perkara"=minit$Agenda_4$Tajuk,"Perbincangan dan Keputusan"=minit$Agenda_4$Keterangan,"Tindakan"=minit$Agenda_4$Keputusan) %>%
   dplyr::mutate("Siri"=paste0(row_number()+length(minit$Agenda_3$Tajuk)+2,".")) %>%
   kbl(longtable = TRUE) %>% 
   kable_styling(position = "left",full_width = FALSE) %>% 
@@ -101,7 +101,7 @@ paste("Di Sediakan Oleh:",minit$Disediakan)  %>%
 \newpage
 ### Kembaran-kembaran:
 
-A. Aturcara MMTH `22
+### A. Aturcara MMTH `22
 
 ```{r kembara A, echo=FALSE}
 acara %>%
@@ -111,8 +111,6 @@ acara %>%
   column_spec(2,width = "2cm") %>% 
   column_spec(3,width = "6cm") 
 ```
-B. Laporan Laporan Status Tajaan dan Kehadiran - disediakan berasingan
+### B. Laporan Laporan Status Tajaan dan Kehadiran - disediakan berasingan
 
-C. Laporan Status Penyediaan Multimedia - disediakan berasingan
-
-
+### C. Laporan Status Penyediaan Multimedia - disediakan berasingan
