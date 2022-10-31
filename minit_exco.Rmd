@@ -14,11 +14,12 @@ library(jsonlite)
 library(kableExtra)
 library(dplyr)
 
-minit <- read_json("minit_exco_3a_22.json")
+minit <- read_json("minit_exco_2_22.json")
 ```
 
-**MINIT MESYUARAT JAWATANKUASA SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000**  
-**DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR**
+\textbf{\underline{MINIT MESYUARAT JAWATANKUASA SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000}}
+\newline
+\textbf{\underline{DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR}}
 
 ### HADIR 
 
@@ -45,7 +46,7 @@ nst %>%
 paste("@.  ",minit$Agenda_1$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  **Keputusan**.",minit$Agenda_1$Keputusan) %>% 
+paste("@.  Keputusan.",minit$Agenda_1$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
@@ -57,7 +58,7 @@ paste("@.  **Keputusan**.",minit$Agenda_1$Keputusan) %>%
 paste("@.  ",minit$Agenda_2$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  **Keputusan**.",minit$Agenda_2$Keputusan) %>% 
+paste("@.  Keputusan.",minit$Agenda_2$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 ```
@@ -65,10 +66,10 @@ paste("@.  **Keputusan**.",minit$Agenda_2$Keputusan) %>%
 ### AGENDA 3: `r minit$Agenda_3$Perkara` 
 
 ```{r agenda 3, echo=FALSE}
-minit$Agenda_3$Keterangan %>% 
+paste("@.  ",minit$Agenda_3$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  **Keputusan**.",minit$Agenda_3$Keputusan) %>% 
+paste("@.  Keputusan.",minit$Agenda_3$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
@@ -80,7 +81,7 @@ paste("@.  **Keputusan**.",minit$Agenda_3$Keputusan) %>%
 paste("@.  ",minit$Agenda_4$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  **Keputusan**.",minit$Agenda_4$Keputusan) %>% 
+paste("@.  Keputusan.",minit$Agenda_4$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
@@ -92,7 +93,7 @@ paste("@.  **Keputusan**.",minit$Agenda_4$Keputusan) %>%
 paste("@.  ",minit$Agenda_5$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  **Keputusan**.",minit$Agenda_5$Keputusan) %>% 
+paste("@.  Keputusan.",minit$Agenda_5$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
@@ -101,7 +102,7 @@ paste("@.  **Keputusan**.",minit$Agenda_5$Keputusan) %>%
 ### AGENDA 6: PERKARA-PERKARA BAHARU DARIPADA AJK
 
 ```{r agenda 6, echo=FALSE}
-minit$Agenda_6$Keterangan %>% 
+paste("@.  ",minit$Agenda_6$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
