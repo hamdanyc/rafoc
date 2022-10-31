@@ -24,8 +24,9 @@ minit <- db$find('{"Siri": "3/22", "Jenis": "exco"}')
 
 ```
 
-**MINIT MESYUARAT JAWATANKUASA SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000**  
-**DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR**
+\textbf{\underline{MINIT MESYUARAT JAWATANKUASA SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000}}
+\newline
+\textbf{\underline{DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR}}
 
 ### HADIR
 
@@ -71,7 +72,7 @@ paste("@.  Keputusan.",minit$Agenda_2$Keputusan) %>%
 ### AGENDA 3: `r minit$Agenda_3$Perkara` 
 
 ```{r agenda 3, echo=FALSE}
-minit$Agenda_3$Keterangan %>% 
+paste("@.  ",minit$Agenda_3$Keterangan)  %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 paste("@.  Keputusan.",minit$Agenda_3$Keputusan) %>% 
@@ -107,7 +108,7 @@ paste("@.  Keputusan.",minit$Agenda_5$Keputusan) %>%
 ### AGENDA 6: PERKARA-PERKARA BAHARU DARIPADA AJK
 
 ```{r agenda 6, echo=FALSE}
-minit$Agenda_6$Keterangan %>% 
+paste("@.  ",minit$Agenda_6$Keterangan)  %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
