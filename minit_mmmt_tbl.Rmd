@@ -14,7 +14,13 @@ library(jsonlite)
 library(kableExtra)
 library(dplyr)
 
-minit <- read_json("minit_mmm_3_22.json")
+# Connect to the database
+# mongodb://[username:password@]host1[:port1]/?authSource=user-data
+connection_string = 'mongodb://abi:80907299@139.162.17.142:27017/?authSource=user-data'
+db <- mongolite::mongo(collection="minit", db="oa", url=connection_string)
+minit <- db$find('{"Siri": "3/22", "Jenis": "mmmt"}')
+# minit <- read_json("minit_mmm_3_22.json")
+
 acara <- readr::read_csv("acara.csv",na = c(" "," ")) 
 ```
 
@@ -31,7 +37,7 @@ lst %>%
   kbl(booktabs = T) %>% 
   kable_styling(latex_options = "hold_position",position = "left")
 ```
-
+\newpage
 ### AGENDA 1: `r minit$Agenda_1$Perkara`
 
 ```{r agenda 1, echo=FALSE}
@@ -62,7 +68,8 @@ tibble::tibble("Siri"="2.","Perkara"="Mesyuarat MMMT Siri 2/22","Perbincangan da
 
 ```{r agenda 3, echo=FALSE}
 
-tibble::tibble("Perkara"= minit$Agenda_3$Tajuk,"Perbincangan dan Keputusan"=minit$Agenda_3$Keterangan,"Tindakan"=minit$Agenda_3$Keputusan) %>%
+tibble::tibble("Perkara"= unlist(minit$Agenda_3$Tajuk),"Perbincangan dan Keputusan"=unlist(minit$Agenda_3$Keterangan),
+               "Tindakan"=unlist(minit$Agenda_3$Keputusan)) %>%
   dplyr::mutate("Siri"=paste0(row_number()+2,".")) %>%
   select(Siri,Perkara,`Perbincangan dan Keputusan`,Tindakan) %>% 
   kbl(longtable = TRUE) %>% 
@@ -76,8 +83,9 @@ tibble::tibble("Perkara"= minit$Agenda_3$Tajuk,"Perbincangan dan Keputusan"=mini
 ### AGENDA 4: `r minit$Agenda_4$Perkara` 
 
 ```{r agenda 4, echo=FALSE}
-tibble::tibble("Siri"="2.","Perkara"=minit$Agenda_4$Tajuk,"Perbincangan dan Keputusan"=minit$Agenda_4$Keterangan,"Tindakan"=minit$Agenda_4$Keputusan) %>%
-  dplyr::mutate("Siri"=paste0(row_number()+length(minit$Agenda_3$Tajuk)+2,".")) %>%
+tibble::tibble("Siri"="2.","Perkara"=unlist(minit$Agenda_4$Tajuk),
+               "Perbincangan dan Keputusan"=unlist(minit$Agenda_4$Keterangan),"Tindakan"=unlist(minit$Agenda_4$Keputusan)) %>%
+  dplyr::mutate("Siri"=paste0(row_number()+length(unlist(minit$Agenda_3$Tajuk))+2,".")) %>%
   kbl(longtable = TRUE) %>% 
   kable_styling(position = "left",full_width = FALSE) %>% 
   column_spec(1,width = "0.5cm") %>% 
