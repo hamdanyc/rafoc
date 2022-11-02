@@ -15,9 +15,8 @@ library(kableExtra)
 library(dplyr)
 
 # Connect to the database
-# mongodb://[username:password@]host1[:port1]/?authSource=user-data
-connection_string = 'mongodb://abi:80907299@139.162.17.142:27017/?authSource=user-data'
-db <- mongolite::mongo(collection="minit", db="oa", url=connection_string)
+con <- readLines(con=".url.txt")
+db <- mongolite::mongo(collection="minit", db="oa", url=con)
 minit <- db$find('{"Siri": "3/22", "Jenis": "mmmt"}')
 # minit <- read_json("minit_mmm_3_22.json")
 
