@@ -20,7 +20,7 @@ library(dplyr)
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
 
 con <- readLines(con=".url.txt")
-db <- mongolite::mongo(collection="minit", db="oa", url=con)
+db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
 minit <- db$find('{"Siri": "3/22", "Jenis": "exco"}')
 
 ```
