@@ -6,8 +6,8 @@ library(mongolite)
 
 # Connect to the database
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
-connection_string = 'mongodb://abi:80907299@139.162.17.142:27017/?authSource=user-data'
-db <- mongolite::mongo(collection="mm", db="oa", url=connection_string)
+con <- readLines(con=".url.txt")
+db <- mongolite::mongo(collection="mmmt", db="rafoc", url=con)
 
 # mm <- read.csv("mmmt_22_Kehadiran.csv")
 mm <- db$find()
