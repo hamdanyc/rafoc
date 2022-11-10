@@ -19,7 +19,7 @@ ui <- fluidPage(
   # Sidebar 
   sidebarLayout(
     sidebarPanel(
-      textInput("noten","Masukkan id"),
+      textInput("noid","Masukkan id"),
       radioButtons("src", "Pilih:",
                    c("No Tentera" = "no_ten",
                      "No Kp" = "no_kp")),
@@ -47,8 +47,8 @@ server <- function(input, output) {
   df <- reactive({
     # output from query
     qry <- switch(input$src,
-                   no_ten = paste0('{"no_tentera":','"',input$noten,'"}'),
-                   no_kp = paste0('{"no_kp":','"',input$noten,'"}'))
+                   no_ten = paste0('{"no_tentera":','"',input$noid,'"}'),
+                   no_kp = paste0('{"no_kp":','"',input$noid,'"}'))
     # qry <- paste0('{"no_tentera":','"',input$noten,'"}')
     
     # Query data ----
