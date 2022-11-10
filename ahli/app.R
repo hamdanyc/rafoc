@@ -19,13 +19,13 @@ ui <- fluidPage(
   # Sidebar 
   sidebarLayout(
     sidebarPanel(
-      textInput("noid","Masukkan id"),
+      textInput("id","Masukkan id"),
       radioButtons("src", "Pilih:",
                    c("No Tentera" = "no_ten",
                      "No Kp" = "no_kp")),
       textOutput("nama"),
       textOutput("kp"),
-      textOutput("not_en"),
+      textOutput("nten"),
       br(),
       textOutput("almt1"),
       textOutput("almt2"),
@@ -45,9 +45,8 @@ server <- function(input, output) {
   df <- reactive({
     # output from query
     qry <- switch(input$src,
-                   no_ten = paste0('{"no_tentera":','"',input$noid,'"}'),
-                   no_kp = paste0('{"no_kp":','"',input$noid,'"}'))
-    # qry <- paste0('{"no_tentera":','"',input$noten,'"}')
+                   no_ten = paste0('{"no_tentera":','"',input$id,'"}'),
+                   no_kp = paste0('{"no_kp":','"',input$id,'"}'))
     
     # Query data ----
     tb <- db$find(qry)
@@ -58,7 +57,7 @@ server <- function(input, output) {
   
   output$kp <- renderText({paste0("No Kp: ",df()$no_kp)})
   
-  output$not_en <- renderText({paste0("No Ten: ",df()$no_tentera)})
+  output$nten <- renderText({paste0("No Ten: ",df()$no_tentera)})
   
   output$almt1 <- renderText({paste0("Alamat: ",df()$alamat_tetap1)})
 
