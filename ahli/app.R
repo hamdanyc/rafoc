@@ -12,28 +12,33 @@ db <- mongolite::mongo(collection="ahli", db="rafoc", url=con)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-
-    # Application title
-    titlePanel("RAFOC - Maklumat Ahli"),
-
-    # Sidebar with a slider input for number of bins 
-    sidebarLayout(
-        sidebarPanel(
-            textInput("noten","Masukkan No Tentera"),
-            textOutput("nama"),
-            br(),
-            textOutput("almt1"),
-            textOutput("almt2"),
-            br(),
-            textOutput("pkt"),
-            textOutput("ttp")
-        ),
-
-        # Show result
-        mainPanel(
-          tableOutput("info")
-        )
+  
+  # Application title
+  titlePanel("RAFOC - Maklumat Ahli"),
+  
+  # Sidebar 
+  sidebarLayout(
+    sidebarPanel(
+      textInput("noten","Masukkan id"),
+      radioButtons("src", "Pilih:",
+                   c("No Tentera" = "no_ten",
+                     "No Kp" = "no_kp")),
+      textOutput("nama"),
+      textOutput("kp"),
+      textOutput("not_en"),
+      br(),
+      textOutput("almt1"),
+      textOutput("almt2"),
+      br(),
+      textOutput("pkt"),
+      textOutput("ttp")
+    ),
+    
+    # Show result
+    mainPanel(
+      tableOutput("info")
     )
+  )
 )
 
 # Define server logic required to draw a histogram
@@ -41,7 +46,10 @@ server <- function(input, output) {
   
   df <- reactive({
     # output from query
-    qry <- paste0('{"no_tentera":','"',input$noten,'"}')
+    qry <- switch(input$src,
+                   no_ten = paste0('{"no_tentera":','"',input$noten,'"}'),
+                   no_kp = paste0('{"no_kp":','"',input$noten,'"}'))
+    # qry <- paste0('{"no_tentera":','"',input$noten,'"}')
     
     # Query data ----
     tb <- db$find(qry)
@@ -49,6 +57,10 @@ server <- function(input, output) {
   
 
   output$nama <- renderText({paste0("Nama: ",df()$nama)})
+  
+  output$kp <- renderText({paste0("No Kp: ",df()$no_kp)})
+  
+  output$not_en <- renderText({paste0("No Ten: ",df()$no_tentera)})
   
   output$almt1 <- renderText({paste0("Alamat: ",df()$alamat_tetap1)})
 
