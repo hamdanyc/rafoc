@@ -35,9 +35,7 @@ ui <- fluidPage(
     ),
     
     # Show result
-    mainPanel(
-      tableOutput("info")
-    )
+    mainPanel()
   )
 )
 
