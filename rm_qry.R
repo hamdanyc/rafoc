@@ -11,9 +11,13 @@ con <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="ahli", db="rafoc", url=con)
 
 # var ----
-val <- 3001751
-qry <- paste0('{"no_tentera":','"',val,'"}')
+key <- 3001757
+qry <- paste0('{"no_tentera":','"',key,'"}')
 
 # Query data ----
 pers <- db$find(qry)
 print(pers)
+
+# Find & update ----
+# subjects$update('{}', '{"$set":{"has_age": false}}', multiple = TRUE)
+db$update(qry, '{"$set": {"alamat_tetap1": "45, JALAN 1/27D, SEKSYEN 6, WANGSA MAJU"}}')
