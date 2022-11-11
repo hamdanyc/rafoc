@@ -31,16 +31,24 @@ ui <- fluidPage(
       textOutput("almt2"),
       br(),
       textOutput("pkt"),
-      textOutput("ttp")
+      textOutput("ttp"),
+      
+      # Edit button
+      tags$hr(),
+      br(),
+      textInput("addr1","Alamat Tetap 1:"),
+      textInput("addr2", "Alamat Tetap 2:"),
+      actionButton("butEdt", label = "Pinda Alamat")
     ),
     
-    # Show result
-    mainPanel()
+    # Main ----
+    mainPanel(textOutput("a1"),
+              textOutput("a2"))
   )
 )
 
 # Define server logic required to draw a histogram
-server <- function(input, output) {
+server <- function(input, output, clientData, session) {
   
   df <- reactive({
     # output from query
@@ -52,7 +60,6 @@ server <- function(input, output) {
     tb <- db$find(qry)
   })
   
-
   output$nama <- renderText({paste0("Nama: ",df()$nama)})
   
   output$kp <- renderText({paste0("No Kp: ",df()$no_kp)})
@@ -66,6 +73,34 @@ server <- function(input, output) {
   output$pkt <- renderText({paste0("Pangkat: ",df()$pkt)})
   
   output$ttp <- renderText({paste0("TTP: ",df()$ttp)})
+
+  # Update address ----
+  observe({
+    a1 <- df()$alamat_tetap1
+    a2 <- df()$alamat_tetap2
+
+    # update ui ----
+    updateTextInput(session, "addr1", value = a1)
+    updateTextInput(session, "addr2", value = a2)
+  })
+  
+  # Update address ----
+  observeEvent(input$butEdt,{
+    
+    # query
+    qry <- switch(input$src,
+                  no_ten = paste0('{"no_tentera":','"',input$id,'"}'),
+                  no_kp = paste0('{"no_kp":','"',input$id,'"}'))
+    
+    # Find & update ----
+    # subjects$update('{}', '{"$set":{"has_age": false}}', multiple = TRUE)
+    db$update(qry, paste0('{"$set": {"alamat_tetap1":', '"',input$addr1,'",
+                          "alamat_tetap2":', '"',input$addr2,'"}}'))
+    
+    output$a1 <- renderText({input$addr1})
+    output$a2 <- renderText({input$addr2})
+  })
+
 }
 
 # Run the application 
