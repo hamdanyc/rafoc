@@ -10,7 +10,7 @@ library(dplyr)
 con <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="ahli", db="rafoc", url=con)
 
-# Define UI for application that draws a histogram
+# UI ----
 ui <- fluidPage(
   
   # Application title
@@ -47,7 +47,7 @@ ui <- fluidPage(
   )
 )
 
-# Define server logic required to draw a histogram
+# Server logic ----
 server <- function(input, output, clientData, session) {
   
   df <- reactive({
