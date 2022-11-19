@@ -14,7 +14,7 @@ db <- mongolite::mongo(collection="ahli", db="rafoc", url=con)
 ui <- fluidPage(
   
   # Application title
-  titlePanel("RAFOC - Maklumat Ahli"),
+  titlePanel(title = span(img(src = "logo_rafoc.png", height = 75),"RAFOC - Maklumat Ahli")),
   
   # Sidebar 
   sidebarLayout(
@@ -74,12 +74,12 @@ server <- function(input, output, clientData, session) {
   
   output$ttp <- renderText({paste0("TTP: ",df()$ttp)})
 
-  # Update address ----
+  # get current address ----
   observe({
     a1 <- df()$alamat_tetap1
     a2 <- df()$alamat_tetap2
 
-    # update ui ----
+    # update ui 
     updateTextInput(session, "addr1", value = a1)
     updateTextInput(session, "addr2", value = a2)
   })
