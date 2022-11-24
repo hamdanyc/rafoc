@@ -1,7 +1,6 @@
 ---
 title: |
   ![](logo_srt_rasmi.png){width=6.5in}
-
 output:
   pdf_document: default
   html_document: default
@@ -11,7 +10,6 @@ always_allow_html: true
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, comment=NA)
 
-library(jsonlite)
 library(kableExtra)
 library(mongolite)
 library(dplyr)

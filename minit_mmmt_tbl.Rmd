@@ -16,7 +16,7 @@ library(dplyr)
 
 # Connect to the database
 con <- readLines(con=".url.txt")
-db <- mongolite::mongo(collection="minit", db="oa", url=con)
+db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
 minit <- db$find('{"Siri": "3/22", "Jenis": "mmmt"}')
 # minit <- read_json("minit_mmm_3_22.json")
 
@@ -108,7 +108,7 @@ paste("Di Sediakan Oleh:",minit$Disediakan)  %>%
 \newpage
 ### Kembaran-kembaran:
 
-### A. Aturcara MMTH `22
+### A. Aturcara MMMT `22
 
 ```{r kembara A, echo=FALSE}
 acara %>%
