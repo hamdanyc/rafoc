@@ -1,0 +1,13 @@
+name: dashbd
+title: dashbd
+username:
+account: hamdan-yaccob
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7731094
+bundleId: 6554155
+url: https://hamdan-yaccob.shinyapps.io/dashbd/
+when: 1669385541.89841
+lastSyncTime: 1669385541.89843
+asMultiple: FALSE
+asStatic: FALSE
