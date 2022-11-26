@@ -32,7 +32,7 @@ ui <- dashboardPage(
   body <- dashboardBody(
     tabItems(
       tabItem(tabName = "dashboard",
-              h2("Indeks Prestasi Utama (%IPU)"),
+              h2("Indeks Prestasi Utama (%)"),
               box("Tajaan",gaugeOutput("tajaan")),
               box("Kehadiran",gaugeOutput("hadir")),
               box("Keseluruhan",gaugeOutput("all"))),
@@ -86,7 +86,11 @@ server <- function(input, output, clientData, session) {
   "$project": {
     "id_": 0
    }
-  }, {
+  },{
+    "$match": {
+        "Tindakan": "Bayaran diterima"
+    }
+  },{
    "$group": {
     "_id": "$Menu",
     "jlh": {
