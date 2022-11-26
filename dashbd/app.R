@@ -25,21 +25,22 @@ ui <- dashboardPage(
   sidebar <- dashboardSidebar(
     sidebarMenu(
       menuItem("Indeks Prestasi Utama", tabName = "dashboard", icon = icon("signal", lib = "glyphicon")),
-      menuItem("Carta", tabName = "carta", icon = icon("signal", lib = "glyphicon"))
+      menuItem("Carta Utama", tabName = "carta", icon = icon("signal", lib = "glyphicon"))
     )
   ),
   
   body <- dashboardBody(
     tabItems(
       tabItem(tabName = "dashboard",
-              h2("Indeks Prestasi Utama (IPU)"),
+              h2("Indeks Prestasi Utama (%IPU)"),
               box("Tajaan",gaugeOutput("tajaan")),
               box("Kehadiran",gaugeOutput("hadir")),
               box("Keseluruhan",gaugeOutput("all"))),
       tabItem(tabName = "carta",        
               h2("Carta Utama"),
               box("Tajaan", plotOutput("tj")),
-              box("Kehadiran", plotOutput("hd"))
+              box("Kehadiran", plotOutput("hd")),
+              box("Menu", plotOutput("mn"))
       )
     )
   )
@@ -64,7 +65,7 @@ server <- function(input, output, clientData, session) {
       }
     }
   }
-]')
+  ]')
   
   hadir <- db2$aggregate('[
   {
@@ -78,10 +79,50 @@ server <- function(input, output, clientData, session) {
       }
     }
   }
-]')
+  ]')
   
-  ipu <- db$find('{}')
+  # jlh & menu
+  menu <- db2$aggregate('[{
+  "$project": {
+    "id_": 0
+   }
+  }, {
+   "$group": {
+    "_id": "$Menu",
+    "jlh": {
+     "$sum": 1
+    }
+   }
+  }]')
   
+  # calc kpi ----
+  kpi <- db$find('{}')
+  
+  jlh_taja <- db1$aggregate('[{
+    "$match": {
+      "Tindakan": "Bayaran diterima"
+    }
+  }, {
+    "$group": {
+      "_id": "",
+      "jlh": {
+        "$sum": "$Jumlah"
+      }
+    }
+  }]')
+  
+  jlh_hadir <- db2$aggregate('[{
+   "$match": {
+    "Tindakan": "Bayaran diterima"
+   }
+  }, {
+   "$count": "Nama"
+  }]')
+  
+  ipu <- kpi %>% mutate("Tajaan" = (jlh_taja$jlh - taja_min)/(taja_sasar - taja_min)*100,
+                        "Kehadiran" = (jlh_hadir$Nama - hadir_min)/(hadir_sasar - hadir_min)*100,
+                        "Keseluruhan" = 0.5*Tajaan + 0.5*Kehadiran)
+ 
   # dashboard ----
   output$tajaan = renderGauge({
     gauge(round(ipu$Tajaan,1), 
@@ -126,16 +167,13 @@ server <- function(input, output, clientData, session) {
       coord_flip()
   })
   
-  # output$all = renderGauge({
-  #   df <- score()
-  #   rs <- 0.1*df$`KPI(%)`[1] + 0.3*df$`KPI(%)`[2] + 0.3*df$`KPI(%)`[3] + 0.3*df$`KPI(%)`[4]
-  #   gauge(round(rs,1), 
-  #         min = 0, 
-  #         max = 100, 
-  #         sectors = gaugeSectors(success = c(70, 100), 
-  #                                warning = c(30, 69),
-  #                                danger = c(0, 29)))
-  # })
+  output$mn <- renderPlot({
+    names(menu) <- c("Menu", "jlh")
+    ggplot(aes(Menu, y=jlh, fill=Menu), data=menu) + geom_bar(stat="identity") +
+      geom_text(aes(label = jlh), position = position_stack(vjust = 0.5), colour = "blue") +
+      scale_fill_manual(values = c("green", "red", "cyan", "gold"))
+  })
+  
 }
 
 # Create Shiny app ----
