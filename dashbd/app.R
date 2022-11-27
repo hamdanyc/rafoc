@@ -24,7 +24,7 @@ ui <- dashboardPage(
   dashboardHeader(title = "Dashboard MMMT `22", titleWidth = 300),
   sidebar <- dashboardSidebar(
     sidebarMenu(
-      menuItem("Indeks Prestasi Utama", tabName = "dashboard", icon = icon("signal", lib = "glyphicon")),
+      menuItem("Indeks Prestasi Utama", tabName = "dashboard", icon = icon("dashboard", lib = "glyphicon")),
       menuItem("Carta Utama", tabName = "carta", icon = icon("signal", lib = "glyphicon"))
     )
   ),
@@ -33,6 +33,10 @@ ui <- dashboardPage(
     tabItems(
       tabItem(tabName = "dashboard",
               h2("Indeks Prestasi Utama (%)"),
+              infoBoxOutput("tbox"),
+              infoBoxOutput("otbox"),
+              infoBoxOutput("hbox"),
+              infoBoxOutput("ohbox"),
               box("Tajaan",gaugeOutput("tajaan")),
               box("Kehadiran",gaugeOutput("hadir")),
               box("Keseluruhan",gaugeOutput("all"))),
@@ -126,7 +130,45 @@ server <- function(input, output, clientData, session) {
   ipu <- kpi %>% mutate("Tajaan" = (jlh_taja$jlh - taja_min)/(taja_sasar - taja_min)*100,
                         "Kehadiran" = (jlh_hadir$Nama - hadir_min)/(hadir_sasar - hadir_min)*100,
                         "Keseluruhan" = 0.5*Tajaan + 0.5*Kehadiran)
- 
+  # info box
+  output$tbox <- renderInfoBox({
+    infoBox(
+      title="Tajaan",
+      subtitle = "Sasaran",
+      ipu$taja_sasar,
+      icon = icon("usd", lib = "glyphicon")
+    )
+  })
+  
+  output$hbox <- renderInfoBox({
+    infoBox(
+      title="Kehadiran",
+      subtitle = "Sasaran",
+      ipu$hadir_sasar,
+      color="green",
+      icon = icon("user", lib = "glyphicon")
+    )
+  })
+  
+  output$otbox <- renderInfoBox({
+    infoBox(
+      title="Tajaan",
+      subtitle = "Terima",
+      jlh_taja$jlh,
+      icon = icon("usd", lib = "glyphicon")
+    )
+  })
+  
+  output$ohbox <- renderInfoBox({
+    infoBox(
+      title="Kehadiran",
+      subtitle = "Hadir",
+      color="green",
+      jlh_hadir$Nama,
+      icon = icon("user", lib = "glyphicon")
+    )
+  })
+  
   # dashboard ----
   output$tajaan = renderGauge({
     gauge(round(ipu$Tajaan,1), 
