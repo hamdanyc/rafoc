@@ -17,8 +17,8 @@ library(dplyr)
 # Connect to the database
 con <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
-minit <- db$find('{"Siri": "3/22", "Jenis": "mmmt"}')
-# minit <- read_json("minit_mmm_3_22.json")
+minit <- db$find('{"Siri": "4/22", "Jenis": "mmmt"}')
+# minit <- read_json("minit_mmm_4_22.json")
 
 acara <- readr::read_csv("acara.csv",na = c(" "," ")) 
 ```
@@ -97,7 +97,7 @@ tibble::tibble("Siri"="2.","Perkara"=unlist(minit$Agenda_4$Tajuk),
 ### PENUTUP 
 
 ```{r penutup, echo=FALSE}
-paste(length(minit$Agenda_3$Tajuk)+length(minit$Agenda_4$Tajuk)+3,minit$Penutup,sep=". ")  %>% 
+paste(length(minit$Agenda_3$Tajuk[[1]])+length(minit$Agenda_4$Tajuk[[1]])+3,minit$Penutup,sep=". ")  %>%
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
