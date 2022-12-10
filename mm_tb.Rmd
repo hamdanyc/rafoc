@@ -1,0 +1,74 @@
+---
+title: |
+  ![](logo_srt_rasmi.png){width=6.5in}
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r init, include=FALSE}
+# init ----
+library(kableExtra)
+library(mongolite)
+library(dplyr)
+
+# conn db ----
+# mongodb://[username:password@]host1[:port1]/?authSource=user-data
+
+con <- readLines(con=".url.txt")
+db <- mongolite::mongo(collection="mmmt", db="rafoc", url=con)
+tbl <- db$find('{}')
+```
+\begin{center}
+Senarai Tetamu Mengikut Meja
+\end{center}
+
+```{r tbl list, echo=FALSE}
+tbl %>% 
+  filter(Tindakan == "Bayaran diterima") %>% 
+  mutate(meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+  group_by(meja) %>%
+  arrange(meja) %>%
+  # group_by(No_Meja) %>%
+  # arrange(No_Meja,.by_group = TRUE) %>%
+  mutate(Siri = row_number()) %>%
+  select(Siri, meja, Nama, Status, Menu) %>% 
+  kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
+  kable_styling(full_width = T, position = "left", repeat_header_text = "\\textit{... sambungan}",
+                latex_options = c("hold_position", "repeat_header")) %>% 
+  column_spec(1,width = "1.0cm") %>%
+  column_spec(2,width = "2.0cm") %>% 
+  column_spec(3,width = "5cm") %>% 
+  pack_rows(index = c("Meja Diraja"=6, "MR1"=10, "MR2"=10, "MR3"=10, "MR4"=10, "MR5"=10,
+                      "MR7"=10, "MR8"=10))
+
+```
+
+## Ringkasan Menu Pilihan dan Meja
+
+```{r meja, echo=FALSE}
+tbl %>% 
+  filter(Tindakan == "Bayaran diterima") %>% 
+  group_by(No_Meja, Menu) %>% 
+  summarise(n=n()) %>% 
+  kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
+  kable_styling(full_width = T, position = "left", repeat_header_text = "\\textit{... sambungan}",
+                latex_options = c("hold_position", "repeat_header")) %>%
+  column_spec(1,width = "2.0cm") %>%
+  column_spec(2,width = "3.0cm") %>% 
+  column_spec(3,width = "1.0cm") %>% 
+  pack_rows(index = c("Meja Diraja"=3, "MR1"=3, "MR10"=3, "MR11"=3, "MR12"=3, "MR13"=3,
+                      "MR13"=3, "MR15"=3))
+
+```
+
+## Ringkasan Menu
+
+```{r menu, echo=FALSE}
+tbl %>% 
+  filter(Tindakan == "Bayaran diterima") %>% 
+  group_by(Menu) %>% 
+  summarise(n=n()) %>% 
+  kbl(booktabs = T)
+```
+
