@@ -25,50 +25,62 @@ Senarai Tetamu Mengikut Meja
 
 ```{r tbl list, echo=FALSE}
 tbl %>% 
-  filter(Tindakan == "Bayaran diterima") %>% 
+  # filter(Tindakan != "Tidak hadir") %>% 
   mutate(meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
   group_by(meja) %>%
   arrange(meja) %>%
-  # group_by(No_Meja) %>%
-  # arrange(No_Meja,.by_group = TRUE) %>%
   mutate(Siri = row_number()) %>%
-  select(Siri, meja, Nama, Status, Menu) %>% 
+  select(Siri, meja, Nama, "Kategori"=Status, Menu, "Status"=Tindakan) %>% 
   kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
   kable_styling(full_width = T, position = "left", repeat_header_text = "\\textit{... sambungan}",
                 latex_options = c("hold_position", "repeat_header")) %>% 
   column_spec(1,width = "1.0cm") %>%
   column_spec(2,width = "2.0cm") %>% 
-  column_spec(3,width = "5cm") %>% 
-  pack_rows(index = c("Meja Diraja"=6, "MR1"=10, "MR2"=10, "MR3"=10, "MR4"=10, "MR5"=10,
-                      "MR7"=10, "MR8"=10))
+  column_spec(3,width = "5.0cm") %>% 
+  column_spec(4,width = "2.0cm") %>%
+  column_spec(5,width = "2.0cm") %>%
+  column_spec(6,width = "2.0cm") %>%
+  pack_rows(index = c("Meja Diraja"=9, "Meja Diraja (Pasangan)"=7, "Khas"=5, "MR1"=10, "MR2"=10, "MR3"=10, "MR4"=10, "MR5"=10,
+                      "MR6"=10, "MR7"=10, "MR8"=10, "MR9"=10, "MR10"=10, "MR11"=10, "MR12"=10,
+                      "MR13"=10, "MR14"=10, "MR15"=10, "MR16"=10, "MR17"=10, "MR18"=10, "MR19"=10,
+                      "MR20"=10, "VVIP"=6, "VVIP (Pasangan)"=6))
 
 ```
 
-## Ringkasan Menu Pilihan dan Meja
-
-```{r meja, echo=FALSE}
+```{r meja, eval=FALSE, include=FALSE}
 tbl %>% 
-  filter(Tindakan == "Bayaran diterima") %>% 
-  group_by(No_Meja, Menu) %>% 
+  # filter(Tindakan == "Bayaran diterima") %>%
+  mutate(meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+  group_by(meja, Menu) %>% 
+  arrange(meja) %>%
   summarise(n=n()) %>% 
   kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
   kable_styling(full_width = T, position = "left", repeat_header_text = "\\textit{... sambungan}",
                 latex_options = c("hold_position", "repeat_header")) %>%
   column_spec(1,width = "2.0cm") %>%
   column_spec(2,width = "3.0cm") %>% 
-  column_spec(3,width = "1.0cm") %>% 
-  pack_rows(index = c("Meja Diraja"=3, "MR1"=3, "MR10"=3, "MR11"=3, "MR12"=3, "MR13"=3,
-                      "MR13"=3, "MR15"=3))
+  column_spec(3,width = "1.0cm") 
+  # pack_rows(index = c("Meja Diraja"=4, "Khas"=1, MR1"=4, "MR2"=4, "MR3"=4, "MR4"=4, "MR5"=4,
+  # "MR6"=4, "MR7"=4, "MR8"=4, "MR9"=4, "MR4"=4, "MR11"=4, "MR12"=4,
+  # "MR13"=4, "MR14"=4, "MR15"=4, "MR16"=4, "MR17"=4, "MR18"=4, "MR19"=4,
+  # "MR20"=4, "VVIP"=2))
 
 ```
-
+\newpage
 ## Ringkasan Menu
 
 ```{r menu, echo=FALSE}
-tbl %>% 
-  filter(Tindakan == "Bayaran diterima") %>% 
-  group_by(Menu) %>% 
+tbl_sum <- tbl %>% 
+  filter(Tindakan != "Tidak hadir") %>% 
   summarise(n=n()) %>% 
-  kbl(booktabs = T)
+  mutate("Menu" = "Jumlah")
+
+tbl_menu <- tbl %>% 
+  filter(Tindakan != "Tidak hadir") %>% 
+  group_by(Menu) %>% 
+  summarise(n=n())
+
+bind_rows(tbl_menu,tbl_sum) %>% 
+  kbl(booktabs = T, longtable = TRUE, centering = FALSE)
 ```
 
