@@ -92,7 +92,7 @@ server <- function(input, output, clientData, session) {
    }
   },{
     "$match": {
-        "Tindakan": "Bayaran diterima"
+        "Tindakan": "Hadir"
     }
   },{
    "$group": {
@@ -121,16 +121,16 @@ server <- function(input, output, clientData, session) {
   
   jlh_hadir <- db2$aggregate('[{
    "$match": {
-    "Tindakan": "Bayaran diterima"
+    "Tindakan": "Hadir"
    }
   }, {
    "$count": "Nama"
   }]')
   
-  ipu <- kpi %>% mutate("Tajaan" = (jlh_taja$jlh - taja_min)/(taja_sasar - taja_min)*100,
-                        "Kehadiran" = (jlh_hadir$Nama - hadir_min)/(hadir_sasar - hadir_min)*100,
+  ipu <- kpi %>% mutate("Tajaan" = (jlh_taja$jlh - taja_min)/(taja_sasar - jlh_taja$jlh)*100,
+                        "Kehadiran" = (jlh_hadir$Nama - hadir_min)/(hadir_sasar - jlh_hadir$Nama)*100,
                         "Keseluruhan" = 0.5*Tajaan + 0.5*Kehadiran)
-  # info box
+  # info box ----
   output$tbox <- renderInfoBox({
     infoBox(
       title="Tajaan",
@@ -217,7 +217,7 @@ server <- function(input, output, clientData, session) {
     names(menu) <- c("Menu", "jlh")
     ggplot(aes(Menu, y=jlh, fill=Menu), data=menu) + geom_bar(stat="identity") +
       geom_text(aes(label = jlh), position = position_stack(vjust = 0.5), colour = "blue") +
-      scale_fill_manual(values = c("green", "red", "cyan", "gold"))
+      scale_fill_manual(values = c("green", "red", "cyan", "gold", "purple"))
   })
   
 }
