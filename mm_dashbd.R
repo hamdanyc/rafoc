@@ -62,13 +62,12 @@ menu <- db2$aggregate('[{
   }]')
 
 
-# ipu <- db$find('{}')
 # calc kpi ----
 kpi <- db$find('{}')
 
 jlh_taja <- db1$aggregate('[{
     "$match": {
-      "Tindakan": "Bayaran diterima"
+      "Tindakan": "Hadir"
     }
   }, {
     "$group": {
@@ -81,7 +80,7 @@ jlh_taja <- db1$aggregate('[{
 
 jlh_hadir <- db2$aggregate('[{
    "$match": {
-    "Tindakan": "Bayaran diterima"
+    "Tindakan": "Hadir"
    }
   }, {
    "$count": "Nama"

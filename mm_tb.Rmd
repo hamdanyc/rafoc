@@ -1,9 +1,10 @@
 ---
-title: |
-  ![](logo_srt_rasmi.png){width=6.5in}
+title: "![](logo_srt_rasmi.png){width=6.5in}"
 output:
   pdf_document: default
   html_notebook: default
+  html_document:
+    df_print: paged
 ---
 
 ```{r init, include=FALSE}
@@ -20,30 +21,34 @@ db <- mongolite::mongo(collection="mmmt", db="rafoc", url=con)
 tbl <- db$find('{}')
 ```
 \begin{center}
-Senarai Tetamu Mengikut Meja
+\textbf{Senarai Tetamu Mengikut Meja (dikemaskini pada `r format(Sys.Date(), "%d %b %Y")`)}
 \end{center}
 
 ```{r tbl list, echo=FALSE}
 tbl %>% 
   # filter(Tindakan != "Tidak hadir") %>% 
-  mutate(meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
-  group_by(meja) %>%
-  arrange(meja) %>%
+  mutate(Meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+  group_by(Meja) %>%
+  arrange(Meja) %>%
   mutate(Siri = row_number()) %>%
-  select(Siri, meja, Nama, "Kategori"=Status, Menu, "Status"=Tindakan) %>% 
+  select(Siri, Meja, Nama, "Kategori"=Status, Menu, "Status"=Tindakan) %>% 
   kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
   kable_styling(full_width = T, position = "left", repeat_header_text = "\\textit{... sambungan}",
                 latex_options = c("hold_position", "repeat_header")) %>% 
   column_spec(1,width = "1.0cm") %>%
-  column_spec(2,width = "2.0cm") %>% 
+  column_spec(2,width = "1.5cm") %>% 
   column_spec(3,width = "5.0cm") %>% 
   column_spec(4,width = "2.0cm") %>%
   column_spec(5,width = "2.0cm") %>%
   column_spec(6,width = "2.0cm") %>%
-  pack_rows(index = c("Meja Diraja"=9, "Meja Diraja (Pasangan)"=7, "Khas"=5, "MR1"=10, "MR2"=10, "MR3"=10, "MR4"=10, "MR5"=10,
-                      "MR6"=10, "MR7"=10, "MR8"=10, "MR9"=10, "MR10"=10, "MR11"=10, "MR12"=10,
-                      "MR13"=10, "MR14"=10, "MR15"=10, "MR16"=10, "MR17"=10, "MR18"=10, "MR19"=10,
-                      "MR20"=10, "VVIP"=6, "VVIP (Pasangan)"=6))
+  pack_rows(index = c("Meja Diraja"=9, "Meja Diraja (Pasangan)"=7, "Khas(1)"=10, "Khas(2)"=5, "MR1:Black Beret(1)"=10, 
+                      "MR2:EXCO(1)"=10, "MR3:Black Beret(2)"=10, "MR4:Black Beret(3)"=10, "MR5:EXCO(2)"=10,
+                      "MR6:TJP 18/19/20/21"=10, "MR7:TJP 31(1)"=10, "MR8:RMA Sandhurst"=10, "MR9:RMNOA"=10, "MR10:Black Beret(4)"=10, 
+                      "MR11:AFATS"=10, "MR12:Brig Jen Dato’ Hamid"=10, "MR13:Black Beret(5)"=10,
+                      "MR14:Black Beret(6)"=10, "MR15:Kump Arti"=10, "MR16:Mej Dato’ Murty(1)"=10, 
+                      "MR17:TJP 25"=10, "MR18:Mej Dato’ Murty(2)"=10, 
+                      "MR19:Mej Dato’ Murty(3)"=10, "MR20:TJP 31(2)"=10, "MR21:CIMB/Black Beret"=10, "MR22:Black Beret(7)"=10,
+                      "MR23:KKD"=7, "MR24:TUDM"=4, "MR25:Black Beret(8)"=10, "MR26:AJK"=8, "VVIP"=6, "VVIP (Pasangan)"=6))
 
 ```
 
@@ -60,27 +65,27 @@ tbl %>%
   column_spec(1,width = "2.0cm") %>%
   column_spec(2,width = "3.0cm") %>% 
   column_spec(3,width = "1.0cm") 
-  # pack_rows(index = c("Meja Diraja"=4, "Khas"=1, MR1"=4, "MR2"=4, "MR3"=4, "MR4"=4, "MR5"=4,
-  # "MR6"=4, "MR7"=4, "MR8"=4, "MR9"=4, "MR4"=4, "MR11"=4, "MR12"=4,
-  # "MR13"=4, "MR14"=4, "MR15"=4, "MR16"=4, "MR17"=4, "MR18"=4, "MR19"=4,
-  # "MR20"=4, "VVIP"=2))
 
 ```
-\newpage
-## Ringkasan Menu
+## Ringkasan:
 
 ```{r menu, echo=FALSE}
 tbl_sum <- tbl %>% 
-  filter(Tindakan != "Tidak hadir") %>% 
+  filter(Tindakan == "Hadir") %>% 
   summarise(n=n()) %>% 
   mutate("Menu" = "Jumlah")
 
 tbl_menu <- tbl %>% 
-  filter(Tindakan != "Tidak hadir") %>% 
+  filter(Tindakan == "Hadir") %>% 
   group_by(Menu) %>% 
-  summarise(n=n())
+  summarise(n=n()) 
 
 bind_rows(tbl_menu,tbl_sum) %>% 
-  kbl(booktabs = T, longtable = TRUE, centering = FALSE)
+  kbl(booktabs = T, centering = FALSE, position = "left")
 ```
+Nota:  
+. Menu (TBN)   - Untuk pengesahan    
+
+\newpage
+![Kedudukan Meja](mmmt_floor.png){width=6.5in}
 
