@@ -43,12 +43,12 @@ tbl %>%
   column_spec(6,width = "2.0cm") %>%
   pack_rows(index = c("Meja Diraja"=9, "Meja Diraja (Pasangan)"=7, "Khas(1)"=10, "Khas(2)"=5, "MR1:Black Beret(1)"=10, 
                       "MR2:EXCO(1)"=10, "MR3:Black Beret(2)"=10, "MR4:Black Beret(3)"=10, "MR5:EXCO(2)"=10,
-                      "MR6:TJP 18/19/20/21"=10, "MR7:TJP 31(1)"=10, "MR8:RMA Sandhurst"=10, "MR9:RMNOA"=10, "MR10:Black Beret(4)"=10, 
-                      "MR11:AFATS"=10, "MR12:Brig Jen Dato’ Hamid"=10, "MR13:Black Beret(5)"=10,
-                      "MR14:Black Beret(6)"=10, "MR15:Kump Arti"=10, "MR16:Mej Dato’ Murty(1)"=10, 
-                      "MR17:TJP 25"=10, "MR18:Mej Dato’ Murty(2)"=10, 
-                      "MR19:Mej Dato’ Murty(3)"=10, "MR20:TJP 31(2)"=10, "MR21:CIMB/Black Beret"=10, "MR22:Black Beret(7)"=10,
-                      "MR23:KKD"=7, "MR24:TUDM"=4, "MR25:Black Beret(8)"=10, "MR26:AJK"=8, "VVIP"=6, "VVIP (Pasangan)"=6))
+                      "MR6:TJP 18/19/20/21"=9, "MR7:TJP 31(1)"=10, "MR8:RMA Sandhurst"=10, "MR9:RMNOA"=10, "MR10:Black Beret(4)/CIMB"=10, 
+                      "MR11:AFATS"=10, "MR12:Brig Jen Dato’ Hamid"=10, "MR13:Black Beret(5)/CIMB"=10,
+                      "MR14:Black Beret(6)/CIMB"=10, "MR15:Kump Arti"=10, "MR16:Mej Datuk Murthi(1)"=10, 
+                      "MR17:TJP 25"=10, "MR18:Mej Datuk Murthi(2)"=10, 
+                      "MR19:Mej Datuk Murthi(3)"=10, "MR20:TJP 31(2)"=10, "MR21:CIMB"=10, "MR22:Black Beret(7)"=10,
+                      "MR23:KKD"=7, "MR24:TUDM"=6, "MR25:Black Beret(8)/CIMB"=10, "MR26:KPRAMD"=10, "MR27:PERNAMA"=10, "MR28:AJK"=8, "VVIP"=6, "VVIP (Pasangan)"=6))
 
 ```
 
