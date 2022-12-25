@@ -25,9 +25,9 @@ res %>%
 \\[0.7in]
 Ini Kepada:
 \\[0.7in]
-\textbf{\textit{`r toupper(paste(res$no_ten[i], res$pkt[i], res$nama[i], "(Bersara)"))`}}
+\textbf{\textit{`r toupper(paste0(res$pkt[i]," ",res$nama[i], " (", res$no_ten[i],") ", "(Bersara)"))`}}
 
-`r ifelse(res$tjp[i] != "RMA Sandhurst",paste0("Pegawai Kadet Tauliah Jangka Pendek Ke - ",res$tjp[i]), "Pegawai Kadet Tauliah Tetap")` 
+`r ifelse(res$tjp[i] != "RMA Sandhurst", paste0("Pegawai Kadet Tauliah Jangka Pendek Ke - ",res$intake[i]),paste0("Pegawai Kadet Tauliah Tetap ke - ", " ", res$intake[i]))` 
 
 `r ifelse (res$tjp[i] != "RMA Sandhurst","Maktab Tentera Diraja","Royal Military Academy Sandhurst")`
 
