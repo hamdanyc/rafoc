@@ -1,0 +1,47 @@
+---
+title: ''
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(dplyr)
+res <- readr::read_csv("respon.csv")
+res %>% 
+  na_if("")
+```
+\thispagestyle{empty} 
+\begin{center}
+\includegraphics[width=2.5cm, height=2cm]{logo_rafoc.png}
+\\
+\textbf{PERSATUAN PEGAWAI-PEGAWAI BERSARA ANGKATAN TENTERA}
+\\
+\textbf{\textit{(Retired Armed Forces Officers Association) - RAFOC}}
+\\[1in]
+\textit{Dengan Ini Menyampaikan}
+\\[1in]
+{\LARGE\textbf{SIJIL PENGHARGAAN}}
+\\[0.7in]
+Ini Kepada:
+\\[0.7in]
+\textbf{\textit{`r toupper(paste(res$no_ten[i], res$pkt[i], res$nama[i], "(Bersara)"))`}}
+
+`r ifelse(res$tjp[i] != "RMA Sandhurst",paste0("Pegawai Kadet Tauliah Jangka Pendek Ke - ",res$tjp[i]), "Pegawai Kadet Tauliah Tetap")` 
+
+`r ifelse (res$tjp[i] != "RMA Sandhurst","Maktab Tentera Diraja","Royal Military Academy Sandhurst")`
+
+`r ifelse (res$tjp[i] != "RMA Sandhurst","Kem Sungai Besi, KUALA LUMPUR","United Kingdom")`
+\\[0.7in] 
+\textbf{Setinggi-Tinggi Penghargaan
+\\
+Sempena 50 Tahun Ditauliahkan Sebagai
+\\
+Pegawai Tentera Bertauliah Angkatan Tentera Malaysia (ATM)}  
+\\[1in]
+\end{center}
+........................................................................    
+\newline
+\textbf{LT JEN DATO' SRI ABD AZIZ BIN IBRAHIM, (BERSARA)}    
+Presiden
+
