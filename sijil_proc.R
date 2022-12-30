@@ -12,3 +12,4 @@ for (i in 1:nrow(res)){
                     output_file = paste("sijil_", i, ".pdf", sep=''),
                     output_dir = "sijil/")
 }
+

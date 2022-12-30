@@ -1,0 +1,34 @@
+---
+title: "Majlis Makan Malam Tahunan RAFOC"
+author: "7 Jan 2023"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+library(kableExtra)
+library(dplyr)
+knitr::opts_chunk$set(echo = FALSE, comment=NA)
+acara <- readr::read_csv("acara.csv",na = c(" "," "))
+acara_sd <- readr::read_csv("acara_sd.csv",na = c(" "," "))
+```
+
+### Aturcara
+
+```{r aturcara, echo=FALSE}
+acara %>%
+  kbl(booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left") %>% 
+  column_spec(1,width = "7cm") %>% 
+  column_spec(2,width = "2cm") %>% 
+  column_spec(3,width = "6cm") 
+```
+
+### Aturcara 
+```{r aturcara alt, echo=FALSE}
+acara_sd %>%
+  kbl(booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left") %>% 
+  column_spec(1,width = "2.5cm") %>% 
+  column_spec(2,width = "7cm") %>% 
+  column_spec(3,width = "6cm") 
+```

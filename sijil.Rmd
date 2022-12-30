@@ -20,7 +20,7 @@ res %>%
 \textbf{\textit{(Retired Armed Forces Officers Association) - RAFOC}}
 \\[1in]
 \textit{Dengan Ini Menyampaikan}
-\\[1in]
+\\[0.7in]
 {\LARGE\textbf{SIJIL PENGHARGAAN}}
 \\[0.7in]
 Ini Kepada:
@@ -42,6 +42,9 @@ Pegawai Tentera Bertauliah Angkatan Tentera Malaysia (ATM)}
 \end{center}
 ........................................................................    
 \newline
-\textbf{LT JEN DATO' SRI ABD AZIZ BIN IBRAHIM, (BERSARA)}    
+\textbf{LT JEN DATO' SRI ABDUL AZIZ BIN IBRAHIM (BERSARA)}    
 Presiden
 
+\begin{center}
+\textbf{Sentiasa Setiakawan}
+\end{center}
