@@ -42,16 +42,16 @@ tbl %>%
   column_spec(5,width = "2.0cm") %>%
   column_spec(6,width = "2.0cm") %>%
   column_spec(7,width = "1.8cm") %>%
-  pack_rows(index = c("Meja Diraja"=9, "Meja Diraja (Pasangan)"=9, "Tetamu Presiden (1)"=8, "Tetamu Presiden (2)"=9,
+  pack_rows(index = c("Meja Diraja"=9, "Meja Diraja (Pasangan)"=9, "Tetamu Presiden (1)"=8, "Tetamu Presiden (2)"=10,
                       "Rombongan Diraja/ADC"=9,"Khas:CIMB"=10,
-                      "MR1:Black Beret (1))/Dato' Barry Tan"=11, "MR2:WestStar/EXCO(1)"=10, "MR3:Sofian Arshad (TJP 31)"=10, "MR4:EXCO(2)"=10,
+                      "MR1:Black Beret (1))/Dato' Barry Tan"=10, "MR2:WestStar/EXCO(1)"=10, "MR3:Sofian Arshad (TJP 31)"=10, "MR4:EXCO(2)"=10,
                       "MR5:NADI"=10, "MR6:TJP 18/19/20/21"=10, "MR7:Black Beret (2)/Teras Sepadu"=10, "MR8:RMA Sandhurst"=10, 
-                      "MR9:RMNOA"=10, "MR10:Black Beret(3)/CIMB"=10,"MR11:AFATS"=10, "MR12:Brig Jen Dato’ Hamid"=10, 
+                      "MR9:RMNOA"=10, "MR10:Black Beret(3)/CIMB"=10,"MR11:AFATS"=10, "MR12:Brig Jen Dato’ Hamid (B)"=10, 
                       "MR13:Black Beret(4)/CIMB"=10,"MR14:Black Beret(5)/CIMB"=10, "MR15:Black beret (6)/CIMB"=10, 
                       "MR16:Black Beret (7)/Teras Sepadu"=10, "MR17:Black beret (8)/Michael Choo"=10, "MR18:Mej Datuk Murthi(1)"=10, 
                       "MR19:Mej Datuk Murthi(2)"=10, "MR20:Mej Datuk Murthi(3)"=10, "MR21:TJP 31(2)"=10, "MR22:TJP 25"=10,
                       "MR23:Kump Ord"=10, "MR24:TUDM"=8, "MR25:Saling Erti"=10, "MR26:KPRAMD"=10, "MR27:KKD"=9, 
-                      "MR28:PERNAMA"=10, "MR29:AJK"=10, "MR30:PVATM"=10, "MR31:TJP 6"=10, "VVIP"=5, "VVIP (Pasangan)"=5))
+                      "MR28:PERNAMA"=10, "MR29:AJK"=10, "MR30:PVATM"=10, "MR31:TJT 6"=10, "VVIP"=6, "VVIP (Pasangan)"=6))
 
 ```
 
@@ -74,7 +74,7 @@ tbl %>%
 
 ```{r menu, echo=FALSE}
 tbl_sum <- tbl %>% 
-  filter(Tindakan != "Tidak hadir") %>% 
+  filter(Tindakan == "Hadir") %>% 
   summarise(n=n()) %>% 
   mutate("Menu" = "Jumlah")
 
