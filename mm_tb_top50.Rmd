@@ -1,0 +1,63 @@
+---
+title: "![](logo_srt_rasmi.png){width=6.5in}"
+output:
+  pdf_document: default
+  html_notebook: default
+  html_document:
+    df_print: paged
+---
+
+```{r init, include=FALSE}
+# init ----
+library(kableExtra)
+library(mongolite)
+library(dplyr)
+
+# conn db ----
+# mongodb://[username:password@]host1[:port1]/?authSource=user-data
+
+con <- readLines(con=".url.txt")
+db <- mongolite::mongo(collection="mmmt-top50", db="rafoc", url=con)
+tbl <- db$find('{}')
+```
+\begin{center}
+\textbf{Senarai Tetamu Mengikut Meja (dikemaskini pada `r format(Sys.Date(), "%d %b %Y")`)}
+\end{center}
+
+```{r tbl list, echo=FALSE}
+tbl %>% 
+  mutate(Meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+  group_by(Meja) %>%
+  arrange(Meja) %>%
+  mutate(Siri = row_number(),Flag = if_else(stringr::str_detect(Catatan,":Khas"),"P.Sijil","")) %>%
+  select(Siri, Meja, Nama, "Kategori"=Status, Menu, "Status"=Tindakan, Flag) %>% 
+  kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
+  kable_styling(full_width = T, position = "left", repeat_header_text = "\\textit{... sambungan}",
+                latex_options = c("hold_position", "repeat_header")) %>% 
+  column_spec(1,width = "1.0cm") %>%
+  column_spec(2,width = "1.5cm") %>% 
+  column_spec(3,width = "5.0cm") %>% 
+  column_spec(4,width = "2.0cm") %>%
+  column_spec(5,width = "2.0cm") %>%
+  column_spec(6,width = "2.0cm") %>%
+  column_spec(7,width = "1.8cm") %>%
+  pack_rows(index = c("Meja Diraja"=9, "Meja Diraja (Pasangan)"=9, "Tetamu Presiden"=10, "Rombongan Diraja/ADC"=9,
+                      "VVIP (1)"=8, "VVIP (2)"=10))
+
+```
+
+```{r meja, eval=FALSE, include=FALSE}
+tbl %>% 
+  # filter(Tindakan == "Bayaran diterima") %>%
+  mutate(meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+  group_by(meja, Menu) %>% 
+  arrange(meja) %>%
+  summarise(n=n()) %>% 
+  kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
+  kable_styling(full_width = T, position = "left", repeat_header_text = "\\textit{... sambungan}",
+                latex_options = c("hold_position", "repeat_header")) %>%
+  column_spec(1,width = "2.0cm") %>%
+  column_spec(2,width = "3.0cm") %>% 
+  column_spec(3,width = "1.0cm") 
+
+```
