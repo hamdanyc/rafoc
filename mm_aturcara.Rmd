@@ -23,8 +23,7 @@ acara %>%
   column_spec(3,width = "6cm") 
 ```
 
-### Aturcara 
-```{r aturcara alt, echo=FALSE}
+```{r aturcara alt, eval=FALSE, include=FALSE}
 acara_sd %>%
   kbl(booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left") %>% 
