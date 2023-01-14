@@ -1,0 +1,64 @@
+---
+title: |
+  ![](logo_srt_rasmi.png){width=6.5in}
+output:
+  pdf_document: default
+  html_document: default
+always_allow_html: true
+header-includes:
+  - \usepackage{pdfpages}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, comment=NA)
+
+library(jsonlite)
+library(kableExtra)
+library(dplyr)
+
+# Connect to the database
+con <- readLines(con=".url.txt")
+db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
+minit <- db$find('{"Siri": "1/23", "Jenis": "mmmt"}')
+# minit <- read_json("minit_mmm_4_22.json")
+
+acara <- readr::read_csv("acara.csv",na = c(" "," ")) 
+```
+
+\textbf{\underline{MAKLUM BALAS POST-MORTEM MMMT PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1030}}
+\newline  
+\textbf{\underline{DI BILIK MESYUARAT WISMA PERWIRA ATM, KUALA LUMPUR}}
+
+### AGENDA 3: `r minit$Agenda_3$Perkara`
+
+```{r agenda 3, echo=FALSE}
+
+tibble::tibble("Perkara"= unlist(minit$Agenda_3$Tajuk),"Maklum balas"=unlist(minit$Agenda_3$Keterangan),
+               "Tindakan"=unlist(minit$Agenda_3$Keputusan)) %>%
+  dplyr::mutate("Siri"=paste0(row_number(),".")) %>%
+  select(Siri,Perkara,`Maklum balas`,Tindakan) %>% 
+  kbl(longtable = TRUE) %>% 
+  kable_styling(position = "left",full_width = FALSE) %>%
+  column_spec(1,width = "0.5cm") %>% 
+  column_spec(2,width = "4cm") %>% 
+  column_spec(3,width = "9cm") %>% 
+  column_spec(4,width = "2cm")
+```
+\newpage
+### Kembaran-kembaran:
+
+### A. Aturcara MMMT `22
+
+```{r kembara A, echo=FALSE}
+acara %>%
+  kbl(booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left") %>% 
+  column_spec(1,width = "7cm") %>% 
+  column_spec(2,width = "2cm") %>% 
+  column_spec(3,width = "6cm") 
+```
+
+### B. Laporan Laporan Status Tajaan dan Kehadiran
+
+\includepdf[pages={-}]{Dashboard}
+

@@ -19,7 +19,7 @@ library(dplyr)
 
 con <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
-minit <- db$find('{"Siri": "3/22", "Jenis": "exco"}')
+minit <- db$find('{"Siri": "4/22", "Jenis": "exco"}')
 
 ```
 
@@ -44,7 +44,7 @@ nst %>%
   kbl(booktabs = T) %>% 
   kable_styling(latex_options = "hold_position",position = "left")
 ```
-
+\newpage
 ### AGENDA 1: `r minit$Agenda_1$Perkara` 
 
 ```{r agenda 1, echo=FALSE}
@@ -120,11 +120,19 @@ minit$Penutup %>%
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 ```
-\  
-\  
+\ 
+
+Disediakan Oleh: ![](Kol_Hamdan.png){width=25%}  
+Kol Hamdan Bin Yaccob (B)
+
+Diluluskan Oleh: ![](dsaa_tt.png){width=39%}  
+Lt Jen Dato' Sri Abdul Aziz Bin Ibrahim (B)
   
-```{r Disediakan, echo=FALSE}
-paste("Disediakan Oleh",minit$Disediakan) %>% 
+```{r Disediakan, eval=FALSE, include=FALSE}
+paste("Disediakan Oleh:",minit$Disediakan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+paste("Diluluskan Oleh:",minit$Diluluskan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 ```
