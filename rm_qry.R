@@ -1,7 +1,6 @@
 # rm_qry.R
 
 # Init ----
-library(jsonlite)
 library(mongolite)
 library(dplyr)
 

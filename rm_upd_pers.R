@@ -6,15 +6,15 @@ load("rafoc.RData")
 
 # Update ----
 rf_df <- peg_vet %>% 
-  left_join(atm_vet,by =c("kp_noten")) %>%
-  select('NAMA AHLI(IdentityName)'= Nama.x,
-         'NO.MYKAD(IdentityID)' = kp_icbaru.x,
-         'Alamat Tetap (StayingAddress1)' = kp_alamat,
+  left_join(rafoc_alamat,by =c("kp_noten" = "NOTEN")) %>%
+  select('NAMA AHLI(IdentityName)'= Nama,
+         'NO.MYKAD(IdentityID)' = kp_icbaru,
+         'Alamat Tetap (StayingAddress1)' = m01_alamat_tetap1,
+         'Alamat Tetap (StayingAddress2)' = m01_alamat_tetap2,
          'No. Tentera (MilitaryNo)' = kp_noten,
-         'TARIKH PENYERTAAN(MemberjoinDate)' = kp_ttp.x) %>% 
+         'TARIKH PENYERTAAN(MemberjoinDate)' = kp_ttp) %>% 
   mutate('KATEGORI AHLI(MemberTypeCode)' = "AHLI SEUMUR HIDUP",
          'EMEL(EmailAddress)' = "",
-         'Alamat Tetap (StayingAddress2)' = "",
          'StayingAddressPostCode' = "",
          'StayingAddressTown'= "",
          'StayingAddressState' = "",
@@ -46,5 +46,5 @@ rf_df <- peg_vet %>%
          'No. Tentera (MilitaryNo)')
 
 # save file ----
-write_csv(rf_df,"ahli_rafoc.csv")
+readr::write_csv(rf_df,"ahli_rafoc.csv")
          

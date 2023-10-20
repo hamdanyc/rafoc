@@ -17,3 +17,5 @@ rf_df <- peg_vet %>%
 # save file ----
 readr::write_csv(rf_df,"ahli_rafoc.csv")
          
+rf_df %>% 
+  filter(is.na(alamat_tetap1)) %>% count()
