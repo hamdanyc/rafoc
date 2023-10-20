@@ -1,0 +1,21 @@
+---
+title: "Senarai Penerima Sijil"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(dplyr)
+library(kableExtra)
+res <- readr::read_csv("respon.csv")
+```
+
+```{r list, echo=FALSE}
+res %>% 
+  group_by(tjp,intake) %>%
+  arrange(tjp,intake) %>% 
+  select(pkt,nama,tjp,intake) %>% 
+  kbl()
+```
+

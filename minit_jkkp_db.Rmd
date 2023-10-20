@@ -19,11 +19,12 @@ library(dplyr)
 
 con <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
-minit <- db$find('{"Siri": "3/23", "Jenis": "exco"}')
+minit <- db$find('{"Siri": "2/23", "Jenis": "jkkp"}')
 
 ```
 
-\textbf{\underline{MINIT MESYUARAT JAWATANKUASA SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000}} \newline \textbf{\underline{DI SERAMBI WISMA PERWIRA ATM, KUALA LUMPUR}}
+\textbf{\underline{MINIT MESYUARAT JAWATANKUASA KERJA PENSTRUKTURAN PERSATUAN VETERAN}} \newline \textbf{\underline{SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000 DI BILIK MESYUARAT UTAMA,}}
+\newline \textbf{\underline{PVATM, KUALA LUMPUR}}
 
 ### HADIR
 
@@ -31,15 +32,6 @@ minit <- db$find('{"Siri": "3/23", "Jenis": "exco"}')
 lst <- tibble("Nama"=unlist(minit$Hadir$nama),"Singkatan"=unlist(minit$Hadir$Singkatan),"Jawatan"=unlist(minit$Hadir$Jawatan)) 
 lst %>% 
   kbl(booktabs = T,longtable = TRUE) %>% 
-  kable_styling(latex_options = "hold_position",position = "left")
-```
-
-### TIDAK HADIR (DENGAN MAAF)
-
-```{r tidak hadir}
-nst <- tibble("Nama"=unlist(minit$Tidak_hadir$Nama),"Singkatan"=unlist(minit$Tidak_hadir$Singkatan),"Jawatan"=unlist(minit$Tidak_hadir$Jawatan))
-nst %>% 
-  kbl(booktabs = T) %>% 
   kable_styling(latex_options = "hold_position",position = "left")
 ```
 
@@ -92,27 +84,6 @@ paste("@.  Keputusan.",minit$Agenda_4$Keputusan) %>%
 
 ```
 
-### AGENDA 5: `r minit$Agenda_5$Perkara`
-
-```{r agenda 5, echo=FALSE}
-paste("@.  ",minit$Agenda_5$Keterangan) %>% 
-  kbl(col.names = "","html", booktabs = T) %>% 
-  kable_styling(full_width = TRUE,position = "left")
-paste("@.  Keputusan.",minit$Agenda_5$Keputusan) %>% 
-  kbl(col.names = "","html", booktabs = T) %>% 
-  kable_styling(full_width = TRUE,position = "left")
-
-```
-
-### AGENDA 6: PERKARA-PERKARA BAHARU DARIPADA AJK
-
-```{r agenda 6, echo=FALSE}
-paste("@.  ",minit$Agenda_6$Keterangan)  %>% 
-  kbl(col.names = "","html", booktabs = T) %>% 
-  kable_styling(full_width = TRUE,position = "left")
-
-```
-
 ### PENUTUP
 
 ```{r Penutup, echo=FALSE}
@@ -121,12 +92,14 @@ paste("@.  ",minit$Penutup) %>%
   kable_styling(full_width = TRUE,position = "left")
 ```
 
- \hspace{2.5cm}![](Kol_Hamdan.png){width="25%"}    
+ \hspace{2.5cm}![](Kol_Hamdan.png){width="25%"}
+  
 Disediakan Oleh:.................................   
 
  \hspace{3cm}Kol Hamdan Bin Yaccob (B)
 
  \hspace{2.5cm}![](dsaa_sign.png){width="35%"}  
+  
 Diluluskan Oleh:.................................  
 
  \hspace{2.5cm}Lt Jen Dato' Sri Abdul Aziz Bin Ibrahim (B)

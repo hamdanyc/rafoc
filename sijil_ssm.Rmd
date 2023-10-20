@@ -1,0 +1,42 @@
+---
+title: ''
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+\thispagestyle{empty} 
+\begin{center}
+\includegraphics[width=2.5cm, height=2cm]{logo_rafoc.png}
+\\
+\textbf{PERSATUAN PEGAWAI-PEGAWAI BERSARA ANGKATAN TENTERA}
+\\
+\textbf{\textit{(Retired Armed Forces Officers Association) - RAFOC}}
+\\[1in]
+\textit{Dengan Ini Menyampaikan}
+\\[1in]
+{\LARGE\textbf{SIJIL PENGHARGAAN}}
+\\[0.7in]
+Ini Kepada:
+\\[0.7in]
+\textbf{\textit{JENERAL TUN DATO' SERI DR MOHAMED HASHIM BIN MOHD ALI (BERSARA)}}
+\\[0.7in] 
+\textbf{Setinggi-Tinggi Penghargaan
+\\
+Sempena Penganugerahan Seri Setia Mahkota (SSM)
+\\
+Oleh KDYMM Seri Paduka Baginda Yang di-Pertuan Agong Al-Sultan Abdullah Ri’ayatuddin Al-Mustafa Billah Shah Ibni Almarhum Sultan Haji Ahmad Shah
+\\
+Al-Musta’in Billah}  
+\\[1in]
+\end{center}
+........................................................................    
+\newline
+\textbf{LT JEN DATO' SRI ABDUL AZIZ BIN IBRAHIM (BERSARA)}    
+Presiden
+\begin{center}
+\textbf{Sentiasa Setiakawan}
+\end{center}
+

@@ -1,0 +1,20 @@
+---
+title: ''
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r mail_merge, echo=FALSE}
+## Data
+res <- readr::read_csv("respon.csv")
+## Loop
+for (i in 1:nrow(res)){
+ rmarkdown::render(input = "sijil.Rmd",
+ output_format = "pdf_document",
+ output_file = paste("sijil_", i, ".pdf", sep=''),
+ output_dir = "sijil/")
+}
+```
