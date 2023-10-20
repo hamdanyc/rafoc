@@ -19,4 +19,6 @@ print(pers)
 
 # Find & update ----
 # subjects$update('{}', '{"$set":{"has_age": false}}', multiple = TRUE)
-db$update(qry, '{"$set": {"alamat_tetap1": "45, JALAN 1/27D, SEKSYEN 6, WANGSA MAJU"}}')
+db$update(qry, '{"$set": {"alamat_tetap1": "45, JALAN 1/27D, SEKSYEN 6, WANGSA MAJU",
+          "email": "hamdan.hy@gmail.com"}}')
+
