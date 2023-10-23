@@ -85,3 +85,40 @@ paste("@.  ",minit$Agenda_6$Keterangan)  %>%
   kable_styling(full_width = TRUE,position = "left")
 
 ```
+\newpage
+
+### Contoh Surat (Rujuk agenda 4, perenggan 9)
+
+![](logo_srt_rasmi.png){width=6.5in}
+
+**Hamdan bin Yaccob, Kolonel (B)**
+
+No 45, Jalan 1/27D, Seksyen 6,
+Wangsa Maju, 53300 Kuala Lumpur.
+  
+
+Yang Dihormati, **Hamdan bin Yaccob, Kolonel (B)**,    
+
+## Pelawaan Menjadi Ahli Persatuan Kor Pegawai-pegawai Bersara (RAFOC)    
+
+Salam sejahtera dan salam hormat kami kepada Yang Dihormati Dato'/Datin/Tuan/Puan. Sekretariat RAFOC masa ini giat untuk mendaftar pegawai-pegawai AT yang telah bersara sebagai ahli persatuan. Sehubungan itu, RAFOC mempelawa Yang Dihormati Dato'/Datin/Tuan/Puan untuk mendaftar sebagai ahli. RAFOC mengalu-alukan penyertaan Yang Dihormati Dato'/Datin/Tuan/Puan dalam persatuan ini.
+
+**Hamdan bin Yaccob, Kolonel (B)** boleh mendaftar secara online di laman web            
+**https://forms.gle/btVm8GLMPpQqJG6T9** atau dengan mengimbas Kod QR di bawah.
+
+Maklumat lanjut boleh didapati di laman FB https://www.facebook.com/RAFOC2022.
+
+
+Sekian, terima kasih.
+
+yang benar,
+
+**Lt Jen Dato' Sri Abdul Aziz bin Ibrahim (Bersara)**    
+Presiden RAFOC
+\newline
+\newline
+
+\centering
+![](qr-code.png){width=1.5in}    
+
+**"Sentiasa Setiakawan"**
