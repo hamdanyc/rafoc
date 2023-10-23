@@ -9,7 +9,15 @@ library(janitor)
 url <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="ahli", db="rafoc", url=url)
 
-# Create a data frame from db ----
+# function to query database ----
+function(field, pattern) {
+  pattern <- toupper(pattern)
+  qry <- paste0('{"', field, '": {"$regex": "', pattern, '"}}')
+  db$find(qry, fields='{"_id": 0, "no_tentera": 1, "nama": 1, "no_kp": 1, 
+          "alamat_tetap1": 1, "alamat_tetap2": 1, "pkt": 1}')
+}
+
+# Load data frame from db ----
 df <- db$find()
 rs <- read.csv("ahli_gform_res.csv") %>% 
   clean_names() %>%
@@ -41,7 +49,6 @@ for (i in 1:nrow(df_rs)) {
     multiple = TRUE
   )
 }
-
 
 # Get non-matching records (new) ----
 df_new <- rs %>% 
@@ -85,11 +92,9 @@ df_rs %>% db$update(
   multiple = TRUE
 )
 
-# query database from df_rs ----
-df_rs %>% db$find(
-  '{"no_kp": no_kp}',
-  '{"alamat_tetap1": 1, "_id": 0}}'
-)
+# db$find() rec use df_rs$no_kp as value key ----
+# display all records with no_kp = df_rs$no_kp[i]
+db$find(paste0('{"no_kp": "', df_rs$no_kp[11], '"}'))
 
 # query database filter e_mail not empty ----
 rs_bak <- df %>% 
