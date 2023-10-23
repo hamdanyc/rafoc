@@ -31,13 +31,17 @@ df_rs <- df %>%
   select(no_kp, nama, no_tentera, no_tel, email, alamat_tetap1, pkt, ttp) %>% 
   filter(!is.na(nama)) 
 
-# update alamat from data frame df_rs ----
+# db$update from data frame df_rs ----
 for (i in 1:nrow(df_rs)) {
-  query <- paste0('{"no_kp": "', df_rs$no_kp[i], '"}')
-  update <- paste0('{"$set": {"alamat_tetap1": "', df_rs$alamat_tetap[i], 
-                   '", "alamat_tetap2": ""}}')
-  db$update(query, update)
+  db$update(
+    paste0('{"no_kp": "', df_rs$no_kp[i], '"}'),
+    paste0('{"$set": {"alamat_tetap1": "', df_rs$alamat_tetap1[i],
+           '", "email": "', df_rs$email[i],
+           '", "no_tel": "', df_rs$no_tel[i], '"}}'),
+    multiple = TRUE
+  )
 }
+
 
 # Get non-matching records (new) ----
 df_new <- rs %>% 
