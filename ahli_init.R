@@ -1,7 +1,5 @@
 # ahli_init.R
 
-# ahli_semak.R
-
 # Init ----
 library(mongolite)
 library(dplyr)
@@ -12,7 +10,7 @@ url <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="ahli", db="rafoc", url=url)
 
 # function to query database ----
-function(field, pattern) {
+fp <- function(field, pattern) {
   pattern <- toupper(pattern)
   qry <- paste0('{"', field, '": {"$regex": "', pattern, '"}}')
   db$find(qry, fields='{"_id": 0, "no_tentera": 1, "nama": 1, "no_kp": 1, 
@@ -25,6 +23,8 @@ rs <- read.csv("ahli_gform_res.csv") %>%
   clean_names() %>%
   rename(no_kp = no_kad_pengenalan_mykad, pkt = pangkat_ketika_bersara) %>%
   mutate(no_kp = as.character(no_kp),
+         no_kp = stringr::str_replace_all(no_kp," ",""),
+         no_kp = stringr::str_replace_all(no_kp,"-",""),
          alamat = stringr::str_replace_all(alamat,"\n"," "))
 
 # Get matching records, set distinct ----
@@ -78,4 +78,6 @@ df_rs_new <- df_rs %>%
   arrange(no_kp)
 
 # save data frame to csv ----
+save.image("ahli.RData")
+write.csv(rs, "ahli_mohon.csv", row.names = FALSE)
 write.csv(df_rs_new, "ahli_2023.csv", row.names = FALSE)
