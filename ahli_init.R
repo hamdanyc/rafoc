@@ -4,6 +4,7 @@
 library(mongolite)
 library(dplyr)
 library(janitor)
+library(googlesheets4)
 
 # Connect to MongoDB ----
 url <- readLines(con=".url.txt")
@@ -19,7 +20,10 @@ fp <- function(field, pattern) {
 
 # Load data frame from db ----
 df <- db$find()
-rs <- read.csv("ahli_gform_res.csv") %>% 
+
+# read google spreadsheet file from google drive ----
+ss <- gs4_get("https://docs.google.com/spreadsheets/d/1R_aJ9YPp4IiQZfu1RTw4KLWq5155uCvnu0OuVG_H2q8/edit#gid=1295676957")
+rs <- read_sheet(ss, sheet = 1) %>% 
   clean_names() %>%
   rename(no_kp = no_kad_pengenalan_mykad, pkt = pangkat_ketika_bersara) %>%
   mutate(no_kp = as.character(no_kp),
@@ -48,6 +52,7 @@ for (i in 1:nrow(df_rs)) {
   db$update(
     paste0('{"no_kp": "', df_rs$no_kp[i], '"}'),
     paste0('{"$set": {"alamat_tetap1": "', df_rs$alamat_tetap1[i],
+           '", "alamat_tetap2": "',"",
            '", "email": "', df_rs$email[i],
            '", "no_tel": "', df_rs$no_tel[i], '"}}'),
     multiple = TRUE
