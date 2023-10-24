@@ -11,15 +11,17 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(dplyr)
 library(janitor)
 library(knitr)
+library(googlesheets4)
 
-rs <- read.csv("ahli_gform_res.csv") %>% 
+# read google spreadsheet file from google drive ----
+ss <- gs4_get("https://docs.google.com/spreadsheets/d/1R_aJ9YPp4IiQZfu1RTw4KLWq5155uCvnu0OuVG_H2q8/edit#gid=1295676957")
+rs <- read_sheet(ss, sheet = 1) %>% 
   clean_names() %>%
   rename(no_kp = no_kad_pengenalan_mykad, pkt = pangkat_ketika_bersara) %>%
   mutate(no_kp = as.character(no_kp),
          no_kp = stringr::str_replace_all(no_kp," ",""),
          no_kp = stringr::str_replace_all(no_kp,"-",""),
          no_tentera = stringr::str_replace_all(no_tentera,"N|T|/",""),
-         tkh = paste0(substr(timestamp,1,10)),
          alamat = stringr::str_replace_all(alamat,"\n"," ")) %>% 
   filter(no_kp != "") %>% 
   filter(nama != "")
@@ -31,10 +33,9 @@ Senarai ahli baharu yang telah berjaya mendaftar sebagai ahli RAFOC pada tahun 2
 
 ```{r ahli}
 # get date value from timestamp
-
+n = 0
 rs %>% 
   filter(yr == 2023) %>%
-  mutate(nama = stringr::str_to_title(nama),
-         tkh = date(as.Date(timestamp))) %>% 
-  select(no_kp, nama, pkt, tkh) %>%
-  knitr::kable(caption = "Senarai Ahli Baharu")
+  mutate(nama = stringr::str_to_title(nama)) %>% 
+  select(no_kp, nama, pkt) %>%
+  knitr::kable(caption = "Senarai Ahli Baharu", row.names = TRUE)
