@@ -1,11 +1,9 @@
-# ahli baharu 2023
-rs %>% 
-  #filter(stringr::str_detect(pkt,"Jen")) %>%
-  filter(yr == 2023) %>%
-  mutate(nama = stringr::str_to_title(nama)) %>% 
-  select(no_kp, nama, pkt)
-  
 # ahli_semak.R
+
+# init ----
+library(dplyr)
+load("ahli.RData")
+
 # update single record ----
 db$update(
   '{"no_kp": "571212025699"}',
@@ -46,15 +44,29 @@ tbypkt <- df %>%
 # aggregate total group by negeri, main total at bottom ----
 # negeri <- regex from alamat_tetap1
 # list of negeri
-negeri <- c("JOHOR", "KEDAH", "KELANTAN", "MELAKA", "NEGERI SEMBILAN", 
-            "PAHANG", "PERAK", "PERLIS", "PULAU PINANG", "SABAH", 
-            "SARAWAK", "SELANGOR", "TERENGGANU", "WILAYAH PERSEKUTUAN")
+negeri <- c("JOHOR", "KEDAH", "KELANTAN", "MELAKA", "NEGERI SEMBILAN",
+            "PAHANG", "PERAK", "PERLIS", "PULAU PINANG", "SABAH", "KELANTAN",
+            "SARAWAK","SABAH",  "SELANGOR", "TERENGGANU", "KUALA LUMPUR")
 # filter negeri from alamat_tetap1
-df_negeri <- df %>% 
+df_n <- df %>% 
   filter(stringr::str_detect(alamat_tetap1, paste(negeri, collapse = "|"))) %>% 
   mutate(negeri = stringr::str_extract(alamat_tetap1, paste(negeri, collapse = "|"))) %>% 
   group_by(negeri) %>% 
   summarise(total = n()) %>% 
+  arrange(desc(total)) 
+
+df_m <- df %>% 
+  filter(stringr::str_detect(alamat_tetap2, paste(negeri, collapse = "|"))) %>% 
+  mutate(negeri = stringr::str_extract(alamat_tetap2, paste(negeri, collapse = "|"))) %>% 
+  group_by(negeri) %>% 
+  summarise(total = n()) %>% 
+  arrange(desc(total)) 
+
+# merge df_n and df_m, calculate total ----
+df_n %>% 
+  left_join(df_m, by = "negeri") %>% 
+  mutate(total = total.x + total.y) %>% 
+  select(negeri, total) %>% 
   arrange(desc(total)) %>% 
   add_row(negeri = "JUMLAH", total = sum(.$total))
 
