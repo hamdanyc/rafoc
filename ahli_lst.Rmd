@@ -35,7 +35,6 @@ Senarai ahli baharu yang telah berjaya mendaftar sebagai ahli RAFOC pada tahun 2
 # get date value from timestamp
 n = 0
 rs %>% 
-  filter(yr == 2023) %>%
   mutate(nama = stringr::str_to_title(nama)) %>% 
   select(no_kp, nama, pkt) %>%
   knitr::kable(caption = "Senarai Ahli Baharu", row.names = TRUE)
