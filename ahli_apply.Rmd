@@ -1,0 +1,28 @@
+---
+title: "Kemaskini Daftar Ahli"
+author: "Sekretariat RAFOC"
+date: "2023-10-21"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+`pers$nama`    
+`pers$alamat_tetap1`
+`pers$alamat_tetap2`
+
+Yang Berhormat Dato'/Datin/Prof./Dr./Tuan/Puan, `paste(pers$nama, pers$pkt)`,
+### Mengemaskini Daftar Ahli Persatuan Kor Pegawai-pegawai Bersara (RAFOC)    
+
+Salam sejahtera dan salam hormat kami sampaikan kepada Yang Berhormat Dato'/Datin/Prof./Dr./Tuan/Puan. Sekretariat RAFOC masa ini 
+untuk mendaftar pegawai-pegawai AT yang telah bersara sebagai ahli persatuan. Sehubungan itu, kami mempelawa Yang Berhormat Dato'/Datin/Prof./Dr./Tuan/Puan untuk mendaftar sebagai ahli RAFOC.
+
+Dato'/Datin/Prof./Dr./Tuan/Puan boleh mendaftar secara online di laman web [Borang Pendaftaran](https://rafoc.netlify.com).    
+Maklumat lanjut boleh didapati di laman FB [RAFOC](https://rafoc.netlify.com).
+
+Sekian, terima kasih.
+
+
+

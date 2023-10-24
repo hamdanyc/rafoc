@@ -25,7 +25,10 @@ rs <- read.csv("ahli_gform_res.csv") %>%
   mutate(no_kp = as.character(no_kp),
          no_kp = stringr::str_replace_all(no_kp," ",""),
          no_kp = stringr::str_replace_all(no_kp,"-",""),
-         alamat = stringr::str_replace_all(alamat,"\n"," "))
+         no_tentera = stringr::str_replace_all(no_tentera,"N|T|/",""),
+         alamat = stringr::str_replace_all(alamat,"\n"," ")) %>% 
+  filter(no_kp != "") %>% 
+  filter(nama != "")
 
 # Get matching records, set distinct ----
 df_rs <- df %>% 
@@ -38,8 +41,7 @@ df_rs <- df %>%
          no_tel = no_tel.y, 
          no_tentera = no_tentera.x,
          pkt = stringr::str_to_upper(pkt.x)) %>% 
-  select(no_kp, nama, no_tentera, no_tel, email, alamat_tetap1, pkt, ttp) %>% 
-  filter(!is.na(nama)) 
+  select(no_kp, nama, no_tentera, no_tel, email, alamat_tetap1, pkt, ttp)
 
 # db$update from data frame df_rs ----
 for (i in 1:nrow(df_rs)) {

@@ -1,3 +1,10 @@
+# ahli baharu 2023
+rs %>% 
+  #filter(stringr::str_detect(pkt,"Jen")) %>%
+  filter(yr == 2023) %>%
+  mutate(nama = stringr::str_to_title(nama)) %>% 
+  select(no_kp, nama, pkt)
+  
 # ahli_semak.R
 # update single record ----
 db$update(
