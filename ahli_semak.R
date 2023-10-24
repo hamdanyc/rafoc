@@ -58,4 +58,8 @@ df_negeri <- df %>%
   arrange(desc(total)) %>% 
   add_row(negeri = "JUMLAH", total = sum(.$total))
 
-
+# convert timestamp to date format dd/mm/yy ----
+rs %>% 
+  mutate(tkh = as.Date(timestamp)) %>% 
+  select(no_kp, nama, pkt, tkh) %>%
+  knitr::kable(caption = "Senarai Ahli Baharu")
