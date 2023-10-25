@@ -29,13 +29,18 @@ rs <- read_sheet(ss, sheet = 1) %>%
 ```
 
 ## Selamat Datang Ahli Baharu
-Senarai ahli baharu yang telah berjaya mendaftar sebagai ahli RAFOC pada tahun 2023.
+Senarai ahli baharu yang telah mendaftar sebagai ahli RAFOC pada tahun 2023.
 
 
 ```{r ahli}
-# get date value from timestamp
+# print list of new members ----
 rs %>% 
   mutate(nama = stringr::str_to_title(nama)) %>% 
   select(no_tentera, nama, pkt) %>%
   knitr::kable(caption = "Senarai Ahli Baharu", row.names = TRUE,
                col.names = c("Siri", "No. Tentera", "Nama", "Pangkat"))
+```
+
+Jumlah pada 1 Feb 22: 748 orang    
+Jumlah pada `r format(Sys.Date(),"%d %b %Y")`: `r nrow(rs) + 748` orang
+
