@@ -63,7 +63,7 @@ df_m <- df %>%
   arrange(desc(total)) 
 
 # merge df_n and df_m, calculate total ----
-df_n %>% 
+tbyneg <- df_n %>% 
   left_join(df_m, by = "negeri") %>% 
   mutate(total = total.x + total.y) %>% 
   select(negeri, total) %>% 
@@ -75,3 +75,6 @@ rs %>%
   mutate(tkh = as.Date(timestamp)) %>% 
   select(no_kp, nama, pkt, tkh) %>%
   knitr::kable(caption = "Senarai Ahli Baharu")
+
+# save data frame to csv ----
+save.image("ahli.RData")
