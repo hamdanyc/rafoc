@@ -77,14 +77,6 @@ db$insert(df_new)
 # close connection ----
 db$disconnect()
 
-# merge df_rs and df_new ----
-df_rs_new <- df_rs %>% 
-  select(no_kp, nama, no_tentera, no_tel, email, alamat_tetap1, pkt, ttp) %>%
-  filter(no_kp != "") %>%
-  filter(nama != "") %>%
-  rbind(df_new) %>%
-  arrange(no_kp)
-
 # save data frame to csv ----
 save.image("ahli.RData")
 readr::write_csv(rs, "ahli_mohon.csv")
