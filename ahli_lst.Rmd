@@ -1,7 +1,7 @@
 ---
 title: "Senarai Ahli Baharu"
 author: "Sekretariat"
-date: "2023-10-24"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: pdf_document
 ---
 
