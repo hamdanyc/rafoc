@@ -39,12 +39,12 @@ df_rs <- df %>%
   right_join(rs, by=c("no_kp"="no_kp")) %>%
   filter(no_kp %in% rs$no_kp) %>% 
   distinct(no_kp, .keep_all = TRUE) %>%
-  mutate(nama = stringr::str_to_upper(nama.x),
+  mutate(nama = stringr::str_to_upper(nama.y),
          alamat_tetap1 = stringr::str_to_upper(alamat),
          email = e_mail,
          no_tel = no_tel.y, 
-         no_tentera = no_tentera.x,
-         pkt = stringr::str_to_upper(pkt.x)) %>% 
+         no_tentera = no_tentera.y,
+         pkt = stringr::str_to_upper(pkt.y)) %>% 
   select(no_kp, nama, no_tentera, no_tel, email, alamat_tetap1, pkt, ttp)
 
 # db$update from data frame df_rs ----
