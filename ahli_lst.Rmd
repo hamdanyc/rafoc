@@ -37,4 +37,5 @@ Senarai ahli baharu yang telah berjaya mendaftar sebagai ahli RAFOC pada tahun 2
 rs %>% 
   mutate(nama = stringr::str_to_title(nama)) %>% 
   select(no_tentera, nama, pkt) %>%
-  knitr::kable(caption = "Senarai Ahli Baharu", row.names = TRUE)
+  knitr::kable(caption = "Senarai Ahli Baharu", row.names = TRUE,
+               col.names = c("Siri", "No. Tentera", "Nama", "Pangkat"))
