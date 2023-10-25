@@ -32,7 +32,8 @@ rs <- read_sheet(ss, sheet = 1) %>%
          no_tentera = stringr::str_replace_all(no_tentera,"N|T|/",""),
          alamat = stringr::str_replace_all(alamat,"\n"," ")) %>% 
   filter(no_kp != "") %>% 
-  filter(nama != "")
+  filter(nama != "") %>% 
+  distinct(no_kp, .keep_all = TRUE) %>%
 
 # Get matching records, set distinct ----
 df_rs <- df %>% 
@@ -86,5 +87,5 @@ df_rs_new <- df_rs %>%
 
 # save data frame to csv ----
 save.image("ahli.RData")
-write.csv(rs, "ahli_mohon.csv", row.names = FALSE)
-write.csv(df_rs_new, "ahli_2023.csv", row.names = FALSE)
+readr::write_csv(rs, "ahli_mohon.csv")
+
