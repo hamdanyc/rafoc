@@ -127,8 +127,8 @@ server <- function(input, output, clientData, session) {
    "$count": "Nama"
   }]')
   
-  ipu <- kpi %>% mutate("Tajaan" = (jlh_taja$jlh - taja_min)/(taja_sasar - jlh_taja$jlh)*100,
-                        "Kehadiran" = (jlh_hadir$Nama - hadir_min)/(hadir_sasar - jlh_hadir$Nama)*100,
+  ipu <- kpi %>% mutate("Tajaan" = (jlh_taja$jlh - taja_min)/(taja_sasar - taja_min)*100,
+                        "Kehadiran" = (jlh_hadir$Nama - hadir_min)/(hadir_sasar - hadir_min)*100,
                         "Keseluruhan" = 0.5*Tajaan + 0.5*Kehadiran)
   # info box ----
   output$tbox <- renderInfoBox({

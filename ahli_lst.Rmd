@@ -41,6 +41,7 @@ rs %>%
                col.names = c("Siri", "No. Tentera", "Nama", "Pangkat"))
 ```
 
-Jumlah pada 1 Feb 22: 748 orang    
-Jumlah pada `r format(Sys.Date(),"%d %b %Y")`: `r nrow(rs) + 748` orang
+Jumlah pada 31 Dis 22: 748 orang    
+Daftar sehingga `r format(Sys.Date(),"%d %b %Y")`: `r nrow(rs)` orang    
+Jumlah Keseluruhan : `r nrow(rs) + 748` orang
 

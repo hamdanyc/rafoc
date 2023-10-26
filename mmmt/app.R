@@ -34,9 +34,9 @@ ui <- fluidPage(
 
 # Define server logic ----
 server <- function(input, output) {
-  output$table <- DT::datatable(mm) %>% 
+  output$table <- DT::datatable(mm, options = list(searchHighlight = TRUE)) %>% 
     formatStyle(columns = "Menu", 
-                background = styleEqual(c("Ayam", "Daging", "Ikan"), c("green", "red", "yellow"))) %>% 
+                background = styleEqual(c("Ayam", "Daging", "Ikan", "Vegetarian"), c("green", "red", "yellow", "purple"))) %>% 
     DT::renderDataTable()
 }
 

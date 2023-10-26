@@ -5,9 +5,10 @@ account: hamdan-yaccob
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7335963
-bundleId: 6418756
+bundleId: 6631675
 url: https://hamdan-yaccob.shinyapps.io/mmmt/
-when: 1666180885.19684
-lastSyncTime: 1666180885.19686
+when: 1670938325.42998
+lastSyncTime: 1670938325.43
 asMultiple: FALSE
 asStatic: FALSE
+ignoredFiles: mmmt_22_Kehadiran.csv

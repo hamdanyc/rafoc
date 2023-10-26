@@ -5,9 +5,10 @@ account: hamdan-yaccob
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7731094
-bundleId: 6554155
+bundleId: 6644150
 url: https://hamdan-yaccob.shinyapps.io/dashbd/
-when: 1669385541.89841
-lastSyncTime: 1669385541.89843
+when: 1671190957.04902
+lastSyncTime: 1671190957.04904
 asMultiple: FALSE
 asStatic: FALSE
+ignoredFiles: mm_tb.Rmd
