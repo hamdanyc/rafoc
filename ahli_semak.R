@@ -4,6 +4,11 @@
 library(dplyr)
 load("ahli.RData")
 
+# new bre_2 batch, no_kp not in rs ----
+bre_2 <- rs %>% 
+  anti_join(bre_1, by = "no_kp") %>% 
+  select(no_kp, nama, e_mail, pkt, no_tel)
+
 # update single record ----
 db$update(
   '{"no_kp": "571212025699"}',

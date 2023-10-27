@@ -13,6 +13,7 @@ library(janitor)
 library(knitr)
 library(googlesheets4)
 
+load("bre.RData")
 # read google spreadsheet file from google drive ----
 ss <- gs4_get("https://docs.google.com/spreadsheets/d/1R_aJ9YPp4IiQZfu1RTw4KLWq5155uCvnu0OuVG_H2q8/edit#gid=1295676957")
 rs <- read_sheet(ss, sheet = 1) %>% 
@@ -26,11 +27,18 @@ rs <- read_sheet(ss, sheet = 1) %>%
   filter(no_kp != "") %>% 
   filter(nama != "") %>% 
   distinct(no_kp, .keep_all = TRUE)
+
+# new bre_2 batch, no_kp not in rs ----
+bre_2 <- rs %>% 
+  anti_join(bre_1, by = "no_kp") %>% 
+  select(no_kp, nama, e_mail, pkt, no_tel)
+
+# save bre_1, bre_2 ----
+save(bre_1,bre_2, file = "bre.RData")
 ```
 
 ## Selamat Datang Ahli Baharu
 Senarai ahli baharu yang telah mendaftar sebagai ahli RAFOC pada tahun 2023.
-
 
 ```{r ahli}
 # print list of new members ----
