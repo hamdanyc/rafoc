@@ -19,7 +19,7 @@ library(dplyr)
 
 con <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
-minit <- db$find('{"Siri": "3/23", "Jenis": "exco"}')
+minit <- db$find('{"Siri": "4/23", "Jenis": "exco"}')
 
 ```
 
@@ -29,9 +29,14 @@ minit <- db$find('{"Siri": "3/23", "Jenis": "exco"}')
 
 ```{r hadir}
 lst <- tibble("Nama"=unlist(minit$Hadir$nama),"Singkatan"=unlist(minit$Hadir$Singkatan),"Jawatan"=unlist(minit$Hadir$Jawatan)) 
-lst %>% 
+
+# print Nama, Singkatan, Jawatan with fixed column width 
+lst %>%  
   kbl(booktabs = T,longtable = TRUE) %>% 
-  kable_styling(latex_options = "hold_position",position = "left")
+  kable_styling(latex_options = "hold_position",position = "left") %>% 
+  column_spec(1, width = "9.5cm") %>%
+  column_spec(2, width = "2cm") %>%
+  column_spec(3, width = "5cm")
 ```
 
 ### TIDAK HADIR (DENGAN MAAF)
@@ -40,7 +45,10 @@ lst %>%
 nst <- tibble("Nama"=unlist(minit$Tidak_hadir$Nama),"Singkatan"=unlist(minit$Tidak_hadir$Singkatan),"Jawatan"=unlist(minit$Tidak_hadir$Jawatan))
 nst %>% 
   kbl(booktabs = T) %>% 
-  kable_styling(latex_options = "hold_position",position = "left")
+  kable_styling(latex_options = "hold_position",position = "left") %>% 
+  column_spec(1, width = "9.5cm") %>%
+  column_spec(2, width = "2cm") %>%
+  column_spec(3, width = "5cm")
 ```
 
 \newpage
@@ -120,16 +128,15 @@ paste("@.  ",minit$Penutup) %>%
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 ```
+\newpage
 
- \hspace{2.5cm}![](Kol_Hamdan.png){width="25%"}    
+\hspace {2.5cm}![](Kol_Hamdan.png){width="27%"}    
 Disediakan Oleh:.................................   
+\hspace {2.5cm}Kol Hamdan Bin Yaccob (B)
 
- \hspace{3cm}Kol Hamdan Bin Yaccob (B)
-
- \hspace{2.5cm}![](dsaa_sign.png){width="35%"}  
+\hspace {5.5cm}![](dsaa_sign.png){width="35%"}  
 Diluluskan Oleh:.................................  
-
- \hspace{2.5cm}Lt Jen Dato' Sri Abdul Aziz Bin Ibrahim (B)
+\hspace {2.5cm}Lt Jen Dato' Sri Abdul Aziz Bin Ibrahim (B)
 
 ```{r Disediakan, eval=FALSE, include=FALSE}
 paste("Disediakan Oleh:",minit$Disediakan) %>% 

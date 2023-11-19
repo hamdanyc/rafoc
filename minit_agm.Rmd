@@ -1,10 +1,10 @@
 ---
-title: |
-  ![](logo_srt_rasmi.png){width=6.5in}
+title: "![](logo_srt_rasmi.png){width=6.5in}"
 output:
   pdf_document: default
   html_document: default
-always_allow_html: true
+  word_document: default
+always_allow_html: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -131,4 +131,15 @@ paste("Disediakan Oleh:",minit$Disediakan) %>%
 paste("Diluluskan Oleh:",minit$Diluluskan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
+```
+\newpage
+
+### Kembaran A
+
+```{r Kembaran A, echo=FALSE}
+
+paste(minit$Kembaran) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
 ```

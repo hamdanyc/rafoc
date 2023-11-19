@@ -33,7 +33,7 @@ rs <- read_sheet(ss, sheet = 1) %>%
          alamat = stringr::str_replace_all(alamat,"\n"," ")) %>% 
   filter(no_kp != "") %>% 
   filter(nama != "") %>% 
-  distinct(no_kp, .keep_all = TRUE) %>%
+  distinct(no_kp, .keep_all = TRUE) 
 
 # Get matching records, set distinct ----
 df_rs <- df %>% 
@@ -52,8 +52,9 @@ df_rs <- df %>%
 for (i in 1:nrow(df_rs)) {
   db$update(
     paste0('{"no_kp": "', df_rs$no_kp[i], '"}'),
-    paste0('{"$set": {"alamat_tetap1": "', df_rs$alamat_tetap1[i],
+    paste0('{"$set": {"alamat_tetap1": "', stringr::str_to_upper(df_rs$alamat_tetap1[i]),
            '", "alamat_tetap2": "',"",
+           '", "nama": "', stringr::str_to_upper(df_rs$nama[i]),
            '", "email": "', df_rs$email[i],
            '", "no_tel": "', df_rs$no_tel[i], '"}}'),
     multiple = TRUE

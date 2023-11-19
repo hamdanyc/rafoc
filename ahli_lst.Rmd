@@ -34,7 +34,7 @@ bre_2 <- rs %>%
   select(no_kp, nama, e_mail, pkt, no_tel)
 
 # save bre_1, bre_2 ----
-save(bre_1,bre_2, file = "bre.RData")
+save(bre_1,bre_2, rs, file = "bre.RData")
 ```
 
 ## Selamat Datang Ahli Baharu
@@ -49,7 +49,15 @@ rs %>%
                col.names = c("Siri", "No. Tentera", "Nama", "Pangkat"))
 ```
 
-Jumlah pada 31 Dis 22: 748 orang    
-Daftar sehingga `r format(Sys.Date(),"%d %b %Y")`: `r nrow(rs)` orang    
+Jumlah pada 31 Dis 2022: 748 orang    
+Daftar 1 Jan 2023 -  `r format(Sys.Date(),"%d %b %Y")`: `r nrow(rs)` orang    
 Jumlah Keseluruhan : `r nrow(rs) + 748` orang
 
+```{r by_pkt}
+# group by pkt ----
+rs %>% 
+  group_by(pkt) %>%
+  summarise(n = n()) %>%
+  knitr::kable(caption = "Jumlah Ahli Baharu Mengikut Pangkat", row.names = TRUE,
+               col.names = c("Pangkat", "Jumlah"))
+```
