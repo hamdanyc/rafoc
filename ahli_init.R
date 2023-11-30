@@ -26,9 +26,11 @@ ss <- gs4_get("https://docs.google.com/spreadsheets/d/1R_aJ9YPp4IiQZfu1RTw4KLWq5
 rs <- read_sheet(ss, sheet = 1) %>% 
   clean_names() %>%
   rename(no_kp = no_kad_pengenalan_mykad, pkt = pangkat_ketika_bersara) %>%
-  mutate(no_kp = as.character(no_kp),
+  mutate(no_kp = as.character(no_kp), no_tel = as.character(no_tel),
          no_kp = stringr::str_replace_all(no_kp," ",""),
          no_kp = stringr::str_replace_all(no_kp,"-",""),
+         no_tel = stringr::str_replace_all(no_tel,"-",""),
+         no_tel = stringr::str_replace_all(no_tel," ",""),
          no_tentera = stringr::str_replace_all(no_tentera,"N|T|/",""),
          alamat = stringr::str_replace_all(alamat,"\n"," ")) %>% 
   filter(no_kp != "") %>% 
@@ -79,6 +81,47 @@ db$insert(df_new)
 db$disconnect()
 
 # save data frame to csv ----
-save.image("ahli.RData")
+column_names <- c("Name","Given Name","Additional Name","Family Name",
+                  "Yomi Name","Given Name Yomi","Additional Name Yomi",
+                  "Family Name Yomi","Name Prefix","Name Suffix",
+                  "Initials","Nickname","Short Name","Maiden Name",
+                  "Birthday","Gender","Location","Billing Information",
+                  "Directory Server","Mileage","Occupation","Hobby",
+                  "Sensitivity","Priority","Subject","Notes","Language","Photo","Group Membership",
+                  "E-mail 1 - Type","E-mail 1 - Value","E-mail 2 - Type","E-mail 2 - Value",
+                  "Phone 1 - Type","Phone 1 - Value","Phone 2 - Type","Phone 2 - Value",
+                  "Organization 1 - Type","Organization 1 - Name",
+                  "Organization 1 - Yomi Name","Organization 1 - Title",
+                  "Organization 1 - Department","Organization 1 - Symbol",
+                  "Organization 1 - Location","Organization 1 - Job Description")
+names(contact) <- column_names
+contact <- rs %>% 
+    mutate(Name = nama, "Given Name" ="","Additional Name" = "","Family Name" = "","Yomi Name" = "",
+           "Given Name Yomi" = "","Additional Name Yomi" = "","Family Name Yomi" = "",
+           "Name Prefix" = "","Name Suffix" = "","Initials" = "","Nickname" = "","Short Name" = "","Maiden Name" = "",
+           "Birthday" = "","Gender" = "","Location" = "","Billing Information" = "",
+           "Directory Server" = "","Mileage" = "","Occupation" = "","Hobby" = "","Sensitivity" = "",
+           "Priority" = "","Subject" = "","Notes" = "","Language" = "","Photo" = "","Group Membership" = "rafoc ::: * myContacts",
+           "E-mail 1 - Type" = "","E-mail 1 - Value" = e_mail,"E-mail 2 - Type" = "","E-mail 2 - Value" = "",
+           "Phone 1 - Type" = "Mobile","Phone 1 - Value" = no_tel,"Phone 2 - Type" = "","Phone 2 - Value" = "",
+           "Organization 1 - Type" = "","Organization 1 - Name" = "RAFOC","Organization 1 - Yomi Name" = "",
+           "Organization 1 - Title" = "","Organization 1 - Department" = "",
+           "Organization 1 - Symbol" = "","Organization 1 - Location" = "","Organization 1 - Job Description" = "") %>% 
+    select(Name,"Given Name","Additional Name","Family Name",
+           "Yomi Name","Given Name Yomi","Additional Name Yomi",
+           "Family Name Yomi","Name Prefix","Name Suffix",
+           "Initials","Nickname","Short Name","Maiden Name",
+           "Birthday","Gender","Location","Billing Information",
+           "Directory Server","Mileage","Occupation","Hobby",
+           "Sensitivity","Priority","Subject","Notes","Language","Photo","Group Membership",
+           "E-mail 1 - Type","E-mail 1 - Value","E-mail 2 - Type","E-mail 2 - Value",
+           "Phone 1 - Type","Phone 1 - Value","Phone 2 - Type","Phone 2 - Value",
+           "Organization 1 - Type","Organization 1 - Name",
+           "Organization 1 - Yomi Name","Organization 1 - Title",
+           "Organization 1 - Department","Organization 1 - Symbol",
+           "Organization 1 - Location","Organization 1 - Job Description")
+           
 readr::write_csv(rs, "ahli_mohon.csv")
+readr::write_csv(contact, "ahli_contact.csv")
+
 
