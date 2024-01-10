@@ -30,7 +30,7 @@ df <- db$find()
 ss <- gs4_get("https://docs.google.com/spreadsheets/d/1AFRvt7wmRFepVThPW3ikItWRWxdSeZz91K9utUqbTS0/edit?resourcekey#gid=621805772")
 rs <- read_sheet(ss, sheet = 1) %>% 
   clean_names() %>%
-  rename(no_kp = no_kad_pengenalan_mykad, pkt = pangkat_ketika_bersara, ttp = tarikh_bersara) %>%
+  rename(no_kp = no_kad_pengenalan_mykad, pkt = pangkat_ketika_bersara) %>%
   mutate(no_kp = as.character(no_kp), no_tel = as.character(no_tel),
          no_kp = stringr::str_replace_all(no_kp," ",""),
          no_kp = stringr::str_replace_all(no_kp,"-",""),
@@ -52,6 +52,7 @@ df_rs <- df %>%
          email = e_mail,
          no_tel = no_tel.y, 
          no_tentera = no_tentera.y,
+         ttp = tarikh_bersara,
          pkt = stringr::str_to_upper(pkt.y)) %>% 
   select(no_kp, nama, no_tentera, no_tel, email, alamat_tetap1, pkt, ttp)
 
@@ -73,8 +74,9 @@ df_new <- rs %>%
   filter(!no_kp %in% df$no_kp) %>% 
   mutate(nama = stringr::str_to_upper(nama),
          email = e_mail,
+         ttp = tarikh_bersara,
          alamat_tetap1 = stringr::str_to_upper(alamat),
-         pkt = stringr::str_to_upper(pkt), ttp = "") %>%
+         pkt = stringr::str_to_upper(pkt)) %>%
   select(no_kp, nama, no_tentera, no_tel, email, alamat_tetap1, pkt, ttp) %>%
   filter(no_kp != "") %>%
   filter(nama != "")
