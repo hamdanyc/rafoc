@@ -38,7 +38,7 @@ save(bre_1,bre_2, rs, file = "bre.RData")
 ```
 
 ## Selamat Datang Ahli Baharu
-Senarai ahli baharu yang telah mendaftar sebagai ahli RAFOC pada tahun 2023.
+Senarai ahli baharu yang telah mendaftar sebagai ahli RAFOC pada tahun 2024.
 
 ```{r ahli}
 # print list of new members ----
@@ -49,9 +49,9 @@ rs %>%
                col.names = c("Siri", "No. Tentera", "Nama", "Pangkat"))
 ```
 
-Jumlah pada 31 Dis 2022: 748 orang    
-Daftar 1 Jan 2023 -  `r format(Sys.Date(),"%d %b %Y")`: `r nrow(rs)` orang    
-Jumlah Keseluruhan : `r nrow(rs) + 748` orang
+Jumlah pada 31 Dis 2023: 962 orang    
+Daftar 1 Jan 2024 -  `r format(Sys.Date(),"%d %b %Y")`: `r nrow(rs)` orang    
+Jumlah Keseluruhan : `r nrow(rs) + 962` orang
 
 ```{r by_pkt}
 # group by pkt ----

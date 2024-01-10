@@ -7,9 +7,14 @@ library(janitor)
 library(googlesheets4)
 
 # Connect to MongoDB ----
-url <- readLines(con=".url.txt")
-db <- mongolite::mongo(collection="ahli", db="rafoc", url=url)
+# url <- readLines(con=".url.txt")
+# db <- mongolite::mongo(collection="ahli", db="rafoc", url=url)
+# Get password from environment variable
 
+USER_ID <- Sys.getenv("USER_ID2")
+PASSWORD <- Sys.getenv("PASSWORD")
+DB_SVR <- Sys.getenv("DB_SVR")
+db <- mongo(collection = "ahli", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))
 # function to query database ----
 fp <- function(field, pattern) {
   pattern <- toupper(pattern)
@@ -22,10 +27,10 @@ fp <- function(field, pattern) {
 df <- db$find()
 
 # read google spreadsheet file from google drive ----
-ss <- gs4_get("https://docs.google.com/spreadsheets/d/1R_aJ9YPp4IiQZfu1RTw4KLWq5155uCvnu0OuVG_H2q8/edit#gid=1295676957")
+ss <- gs4_get("https://docs.google.com/spreadsheets/d/1AFRvt7wmRFepVThPW3ikItWRWxdSeZz91K9utUqbTS0/edit?resourcekey#gid=621805772")
 rs <- read_sheet(ss, sheet = 1) %>% 
   clean_names() %>%
-  rename(no_kp = no_kad_pengenalan_mykad, pkt = pangkat_ketika_bersara) %>%
+  rename(no_kp = no_kad_pengenalan_mykad, pkt = pangkat_ketika_bersara, ttp = tarikh_bersara) %>%
   mutate(no_kp = as.character(no_kp), no_tel = as.character(no_tel),
          no_kp = stringr::str_replace_all(no_kp," ",""),
          no_kp = stringr::str_replace_all(no_kp,"-",""),
