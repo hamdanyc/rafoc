@@ -20,7 +20,7 @@ load("bre.RData")
 
 con <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
-minit <- db$find('{"Siri": "4m/23", "Jenis": "exco"}')
+minit <- db$find
 
 ```
 
