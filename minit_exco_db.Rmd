@@ -59,7 +59,7 @@ nst %>%
 paste("@.  ",minit$Agenda_1$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  Keputusan.",minit$Agenda_1$Keputusan) %>% 
+paste("@.  **Keputusan**.",minit$Agenda_1$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
@@ -71,7 +71,7 @@ paste("@.  Keputusan.",minit$Agenda_1$Keputusan) %>%
 paste("@.  ",minit$Agenda_2$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  Keputusan.",minit$Agenda_2$Keputusan) %>% 
+paste("@.  **Keputusan**.",minit$Agenda_2$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 ```
@@ -82,7 +82,7 @@ paste("@.  Keputusan.",minit$Agenda_2$Keputusan) %>%
 paste("@.  ",minit$Agenda_3$Keterangan)  %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  Keputusan.",minit$Agenda_3$Keputusan) %>% 
+paste("@.  **Keputusan**.",minit$Agenda_3$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
@@ -94,7 +94,7 @@ paste("@.  Keputusan.",minit$Agenda_3$Keputusan) %>%
 paste("@.  ",minit$Agenda_4$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  Keputusan.",minit$Agenda_4$Keputusan) %>% 
+paste("@.  **Keputusan**.",minit$Agenda_4$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
@@ -106,7 +106,7 @@ paste("@.  Keputusan.",minit$Agenda_4$Keputusan) %>%
 paste("@.  ",minit$Agenda_5$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  Keputusan.",minit$Agenda_5$Keputusan) %>% 
+paste("@.  **Keputusan**.",minit$Agenda_5$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 

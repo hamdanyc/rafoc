@@ -44,7 +44,7 @@ rs <- read_sheet(ss, sheet = 1) %>%
 
 # Get matching records, set distinct ----
 df_rs <- df %>% 
-  right_join(rs, by=c("no_kp"="no_kp")) %>%
+  inner_join(rs, by=c("no_kp"="no_kp")) %>%
   filter(no_kp %in% rs$no_kp) %>% 
   distinct(no_kp, .keep_all = TRUE) %>%
   mutate(nama = stringr::str_to_upper(nama.y),

@@ -13,25 +13,22 @@ knitr::opts_chunk$set(echo = FALSE, comment=NA)
 library(kableExtra)
 library(mongolite)
 library(dplyr)
-```
 
-```{r, echo=FALSE}
 load("bre.RData")
 # Connect to the database
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
 
 con <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
-minit <- db$find('{"Siri": "3m/23", "Jenis": "exco"}')
+minit <- db$find('{"Siri": "4m/23", "Jenis": "exco"}')
 
 ```
 
-\textbf{\underline{MAKLUM BALAS MINIT MESYUARAT JAWATANKUASA SIRI 3/23}} 
+\textbf{\underline{MAKLUM BALAS MINIT MESYUARAT JAWATANKUASA SIRI 4/23}} 
 \newline
 \textbf{\underline{DI SERAMBI WISMA PERWIRA ATM, KUALA LUMPUR}}
 \newline
 \textbf{\underline{PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000}}
-
 
 ### AGENDA 2: `r minit$Agenda_2$Perkara`
 
@@ -39,7 +36,7 @@ minit <- db$find('{"Siri": "3m/23", "Jenis": "exco"}')
 paste("@.  ",minit$Agenda_2$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  Keputusan.",minit$Agenda_2$Keputusan) %>% 
+paste("@.  **Keputusan**.",minit$Agenda_2$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 ```
@@ -50,7 +47,7 @@ paste("@.  Keputusan.",minit$Agenda_2$Keputusan) %>%
 paste("@.  ",minit$Agenda_3$Keterangan)  %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  Keputusan.",minit$Agenda_3$Keputusan) %>% 
+paste("@.  **Keputusan**.",minit$Agenda_3$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
@@ -58,13 +55,13 @@ paste("@.  Keputusan.",minit$Agenda_3$Keputusan) %>%
 
 ### AGENDA 4: `r minit$Agenda_4$Perkara`
 
-@.   Jumlah ahli pada 31 Dis 2022 adalah 748. Jumlah ahli berakhir `r format(Sys.Date(),"%d %b %Y")` adalah `r nrow(rs) + 748`, tambahan `r nrow(rs)` ahli. Pengesahan pendaftaran telah disampaikan secara emel.    
+@.   **Pendaftaran ahli**. Jumlah ahli pada 31 Dis 2023 adalah 962. Jumlah ahli berakhir `r format(Sys.Date(),"%d %b %Y")` adalah `r nrow(rs) + 962`, tambahan `r nrow(rs)` ahli. Pengesahan pendaftaran telah disampaikan secara emel.    
 
 ```{r agenda 4, echo=FALSE}
 paste("@.  ",minit$Agenda_4$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  Keputusan.",minit$Agenda_4$Keputusan) %>% 
+paste("@.  **Keputusan**.",minit$Agenda_4$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
@@ -76,7 +73,7 @@ paste("@.  Keputusan.",minit$Agenda_4$Keputusan) %>%
 paste("@.  ",minit$Agenda_5$Keterangan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-paste("@.  Keputusan.",minit$Agenda_5$Keputusan) %>% 
+paste("@.  **Keputusan**.",minit$Agenda_5$Keputusan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
@@ -92,60 +89,11 @@ paste("@.  ",minit$Agenda_6$Keterangan)  %>%
 ```
 \newpage
 
-### Contoh Surat (Rujuk agenda 4, perenggan 9)
+### KEMBARAN-KEMBARAN: 
 
-![](logo_srt_rasmi.png){width=6.5in}
+```{r agenda 7, echo=FALSE}
+paste("",minit$Kembaran$Perkara)  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
 
-**Hamdan bin Yaccob, Kolonel (B)**
-
-No 45, Jalan 1/27D, Seksyen 6,
-Wangsa Maju, 53300 Kuala Lumpur.
-  
-
-Yang Dihormati, **Hamdan bin Yaccob, Kolonel (B)**,    
-
-## Pelawaan Menjadi Ahli Persatuan Kor Pegawai-pegawai Bersara (RAFOC)    
-
-Salam sejahtera dan salam hormat kami kepada Yang Dihormati Dato'/Datin/Tuan/Puan. Sekretariat RAFOC masa ini giat untuk mendaftar pegawai-pegawai AT yang telah bersara sebagai ahli persatuan. Sehubungan itu, RAFOC mempelawa Yang Dihormati Dato'/Datin/Tuan/Puan untuk mendaftar sebagai ahli. RAFOC mengalu-alukan penyertaan Yang Dihormati Dato'/Datin/Tuan/Puan dalam persatuan ini.
-
-**Hamdan bin Yaccob, Kolonel (B)** boleh mendaftar secara online di laman web            
-**https://forms.gle/btVm8GLMPpQqJG6T9** atau dengan mengimbas Kod QR di bawah.
-
-Maklumat lanjut boleh didapati di laman FB https://www.facebook.com/RAFOC2022.
-
-
-Sekian, terima kasih.
-
-yang benar,
-
-**Lt Jen Dato' Sri Abdul Aziz bin Ibrahim (Bersara)**    
-Presiden RAFOC
-\newline
-\newline
-
-\centering
-![](qr-code.png){width=1.5in}    
-
-**"Sentiasa Setiakawan"**
-
-\newpage
-\raggedright
-## Contoh Email
-
-From: Sekretariat RAFOC <
-
-To: Juhari bin Deraman, Mej (B) <
-
-**PENGESAHAN PENDAFTARAN SEBAGAI AHLI PERSATUAN**
-\newline
-**KOR PEGAWAI-PEGAWAI BERSARA (RAFOC)**
-
-As-salam dan salam sejahtera Tan Sri/Dato' Seri/Dato/Tuan/Puan yang dihormati.
-
-Saya mewakili Lt Jen Dato' Sri Abdul Aziz Ibrahim (B), Presiden RAFOC mengucapkan terima kasih atas kesudian Juhari bin Deraman, Mej (B) menjadi sebahagian daripada ahli keluarga Persatuan Kor Pegawai-pegawai Bersara AT (RAFOC). Presiden dan AJK RAFOC mengalu-alukan kehadiran Tan Sri/Dato' Seri/Dato/Tuan/Puan dan amat berbesar hati dengan penyertaan Tan Sri/Dato' Seri/Dato/Tuan/Puan bersama kami.
-
-Sila layari laman FB, RAFOC di https://www.facebook.com/RAFOC2022 untuk mengikuti perkembangan dari semasa ke semasa RAFOC.
-
-Sekian, terima kasih.
-
-Hamdan bin Yaccob, Kolonel (B)
+```
