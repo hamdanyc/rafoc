@@ -25,6 +25,7 @@ minit <- db$find('{"Siri": "4/23", "Jenis": "exco"}')
 # read google spreadsheet file from google drive ----
 ss <- gs4_get("https://docs.google.com/spreadsheets/d/1WUpXso8buhZAgC1Ya4uFGTFw3fiTE4ligyAFfPJ_nt4/edit#gid=0")
 ya_lst <- read_sheet(ss, sheet = 1) %>% 
+  select(Nama, Singkatan, Jawatan, Hadir) %>% 
   filter(Hadir == "Ya")
 td_lst <- read_sheet(ss, sheet = 1) %>% 
   filter(Hadir == "Tidak")
@@ -38,7 +39,10 @@ td_lst <- read_sheet(ss, sheet = 1) %>%
 # lst <- tibble("Nama"=unlist(minit$Hadir$nama),"Singkatan"=unlist(minit$Hadir$Singkatan),"Jawatan"=unlist(minit$Hadir$Jawatan)) 
 
 # print Nama, Singkatan, Jawatan with fixed column width 
-ya_lst %>% 
+su <- tibble(Nama="Kol Hamdan Bin Yaccob",Singkatan="KHY",Jawatan="Setiausaha", Hadir="Ya")
+ya_lst <- bind_rows(ya_lst, su)
+
+ya_lst %>%
   select(Nama, Singkatan, Jawatan) %>% 
   kbl(booktabs = T,longtable = TRUE) %>% 
   kable_styling(latex_options = "hold_position",position = "left") %>% 

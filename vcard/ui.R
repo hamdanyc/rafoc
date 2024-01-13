@@ -5,9 +5,10 @@ shinyUI(fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      textInput("id", "No Kp:"),
-      textInput("address1", "Alamat1:"),
-      textInput("address2", "Alamat2:"),
+      textInput("no_kp", "No Kp:"),
+      textOutput("nama"),
+      textOutput("alamat"),
+      textOutput("foto"),
       fileInput("photo", "Muat naik foto:")
     ),
     
