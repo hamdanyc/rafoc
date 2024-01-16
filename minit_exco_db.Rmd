@@ -159,3 +159,13 @@ paste("Diluluskan Oleh:",minit$Diluluskan) %>%
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 ```
+\newpage
+
+### KEMBARAN-KEMBARAN: 
+
+```{r kembaran, echo=FALSE}
+paste("",minit$Kembaran$Perkara)  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```

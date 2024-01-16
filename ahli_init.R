@@ -43,46 +43,34 @@ rs <- read_sheet(ss, sheet = 1) %>%
   distinct(no_kp, .keep_all = TRUE) 
 
 # Get matching records, set distinct ----
-df_rs <- df %>% 
-  inner_join(rs, by=c("no_kp"="no_kp")) %>%
-  filter(no_kp %in% rs$no_kp) %>% 
-  distinct(no_kp, .keep_all = TRUE) %>%
-  mutate(nama = stringr::str_to_upper(nama.y),
-         alamat_tetap1 = stringr::str_to_upper(alamat),
-         email = e_mail,
-         no_tel = no_tel.y, 
-         no_tentera = no_tentera.y,
-         ttp = tarikh_bersara,
-         pkt = stringr::str_to_upper(pkt.y)) %>% 
-  select(no_kp, nama, no_tentera, no_tel, email, alamat_tetap1, pkt, ttp)
+# df_rs <- df %>% 
+#   inner_join(rs, by=c("no_kp"="no_kp")) %>%
+#   filter(no_kp %in% rs$no_kp) %>% 
+#   distinct(no_kp, .keep_all = TRUE) %>%
+#   mutate(nama = stringr::str_to_upper(nama.y),
+#          alamat_tetap1 = stringr::str_to_upper(alamat),
+#          email = e_mail,
+#          no_tel = no_tel.y, 
+#          no_tentera = no_tentera.y,
+#          ttp = tarikh_bersara,
+#          pkt = stringr::str_to_upper(pkt.y)) %>% 
+#   select(no_kp, nama, no_tentera, no_tel, email, alamat_tetap1, pkt, ttp)
 
 # db$update from data frame df_rs ----
-for (i in 1:nrow(df_rs)) {
+for (i in 1:nrow(rs)) {
   db$update(
-    paste0('{"no_kp": "', df_rs$no_kp[i], '"}'),
-    paste0('{"$set": {"alamat_tetap1": "', stringr::str_to_upper(df_rs$alamat_tetap1[i]),
+    paste0('{"no_kp": "', rs$no_kp[i], '"}'),
+    paste0('{"$set": {"alamat_tetap1": "', stringr::str_to_upper(rs$alamat[i]),
            '", "alamat_tetap2": "',"",
-           '", "nama": "', stringr::str_to_upper(df_rs$nama[i]),
-           '", "email": "', df_rs$email[i],
-           '", "no_tel": "', df_rs$no_tel[i], '"}}'),
-    multiple = TRUE
+           '", "nama": "', stringr::str_to_upper(rs$nama[i]),
+           '", "no_tentera": "', rs$no_tentera[i],
+           '", "pkt": "', rs$pkt[i],
+           '", "email": "', rs$e_mail[i],
+           '", "ttp": "', rs$tarikh_bersara[i],
+           '", "no_tel": "', rs$no_tel[i], '"}}'),
+    upsert = TRUE
   )
 }
-
-# Get non-matching records (new) ----
-df_new <- rs %>% 
-  filter(!no_kp %in% df$no_kp) %>% 
-  mutate(nama = stringr::str_to_upper(nama),
-         email = e_mail,
-         ttp = tarikh_bersara,
-         alamat_tetap1 = stringr::str_to_upper(alamat),
-         pkt = stringr::str_to_upper(pkt)) %>%
-  select(no_kp, nama, no_tentera, no_tel, email, alamat_tetap1, pkt, ttp) %>%
-  filter(no_kp != "") %>%
-  filter(nama != "")
-
-# insert new records to database ----
-db$insert(df_new)
 
 # close connection ----
 db$disconnect()

@@ -91,7 +91,7 @@ paste("@.  ",minit$Agenda_6$Keterangan)  %>%
 
 ### KEMBARAN-KEMBARAN: 
 
-```{r agenda 7, echo=FALSE}
+```{r kembaran, echo=FALSE}
 paste("",minit$Kembaran$Perkara)  %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
