@@ -1,0 +1,39 @@
+---
+title: "Senarai Permohonan Kad Veteran"
+author: "Sekretariat"
+date: "`r format(Sys.time(), '%d %B, %Y jam %H:%M')`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+library(dplyr)
+library(janitor)
+library(knitr)
+library(googlesheets4)
+library(googledrive)
+library(mongolite)
+
+load("kv.RData")
+```
+
+## Senarai Permohonan Kad Veteran
+
+```{r mohon}
+# print list of new members ----
+rs %>% 
+  inner_join(df, by="no_kp") %>% 
+  full_join(fi, by="key") %>% 
+  mutate(nama=nama.x, pkt=stringr::str_to_upper(pkt),
+         status=if_else(!is.na(status),"ADA","TIADA")) %>% 
+  select(nama, pkt, status) %>%
+  knitr::kable(caption = "Senarai Pemohon", row.names = TRUE,
+               col.names = c("Siri", "Nama", "Pangkat", "Dokumen"))
+
+rs %>% 
+  full_join(fi, by="key") %>%
+  mutate(status=if_else(!is.na(status),"ADA","TIADA")) %>% 
+  select(status) %>% 
+  gtsummary::tbl_summary()
+```
