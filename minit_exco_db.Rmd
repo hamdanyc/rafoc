@@ -16,7 +16,7 @@ library(dplyr)
 
 # Connect to the database
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
-
+source("ahli_rs.R")
 con <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
 minit <- db$find('{"Siri": "1/24", "Jenis": "exco"}')
@@ -89,6 +89,8 @@ paste("@.  **Keputusan**.",minit$Agenda_3$Keputusan) %>%
 ```
 
 ### AGENDA 4: `r minit$Agenda_4$Perkara`
+
+@.   **Pendaftaran ahli**. Jumlah ahli pada 31 Dis 2023 adalah 962. Jumlah ahli berakhir `r format(Sys.Date(),"%d %b %Y")` adalah `r nrow(rs) + 962`, tambahan `r nrow(rs)` ahli. Pengesahan pendaftaran telah disampaikan secara emel.    
 
 ```{r agenda 4, echo=FALSE}
 paste("@.  ",minit$Agenda_4$Keterangan) %>% 
