@@ -23,9 +23,6 @@ fp <- function(field, pattern) {
           "alamat_tetap1": 1, "alamat_tetap2": 1, "pkt": 1}')
 }
 
-# Load data frame from db ----
-# df <- db$find()
-
 # read google spreadsheet file from google drive ----
 ss <- gs4_get("https://docs.google.com/spreadsheets/d/1AFRvt7wmRFepVThPW3ikItWRWxdSeZz91K9utUqbTS0/edit?resourcekey#gid=621805772")
 rs <- read_sheet(ss, sheet = 1) %>% 
@@ -42,21 +39,7 @@ rs <- read_sheet(ss, sheet = 1) %>%
   filter(nama != "") %>% 
   distinct(no_kp, .keep_all = TRUE) 
 
-# Get matching records, set distinct ----
-# df_rs <- df %>% 
-#   inner_join(rs, by=c("no_kp"="no_kp")) %>%
-#   filter(no_kp %in% rs$no_kp) %>% 
-#   distinct(no_kp, .keep_all = TRUE) %>%
-#   mutate(nama = stringr::str_to_upper(nama.y),
-#          alamat_tetap1 = stringr::str_to_upper(alamat),
-#          email = e_mail,
-#          no_tel = no_tel.y, 
-#          no_tentera = no_tentera.y,
-#          ttp = tarikh_bersara,
-#          pkt = stringr::str_to_upper(pkt.y)) %>% 
-#   select(no_kp, nama, no_tentera, no_tel, email, alamat_tetap1, pkt, ttp)
-
-# db$update from data frame df_rs ----
+# db$update from data frame rs ----
 for (i in 1:nrow(rs)) {
   db$update(
     paste0('{"no_kp": "', rs$no_kp[i], '"}'),
