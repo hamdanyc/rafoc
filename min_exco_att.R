@@ -23,7 +23,7 @@ dfy <- read_sheet(ss, sheet = 1) %>%
 dft <- read_sheet(ss, sheet = 1) %>% 
   filter(Hadir == "Tidak")
 
-# assign df
+# Hadir
 Nama <-  dfy$Nama
 Singkatan <- dfy$Singkatan
 Jawatan <- dfy$Jawatan
@@ -32,14 +32,28 @@ nama <- paste0('"',Nama,'"', collapse = ",")
 singkatan <- paste0('"',Singkatan,'"',collapse = ",")
 jawatan <- paste0('"',Jawatan,'"',collapse = ",")
 
+# Tidak hadir
+Nama.x <-  dft$Nama
+Singkatan.x <- dft$Singkatan
+Jawatan.x <- dft$Jawatan
+
+nama.x <- paste0('"',Nama.x,'"', collapse = ",")
+singkatan.x <- paste0('"',Singkatan.x,'"',collapse = ",")
+jawatan.x <- paste0('"',Jawatan.x,'"',collapse = ",")
+
 # update db ----
 db$update(
   paste0('{"Siri": "1/24", "Jenis": "exco"}'),
   paste0('{"$set": {"Hadir.Nama": [', nama,']',
          ',"Hadir.Singkatan": [', singkatan,']',
-         ',"Hadir.Jawatan": [', jawatan,']}}'
+         ',"Hadir.Jawatan": [', jawatan,']',
+         ',"Tidak_hadir.Nama": [', nama.x,']',
+         ',"Tidak_hadir.Singkatan": [', singkatan.x,']',
+         ',"Tidak_hadir.Jawatan": [', jawatan.x,
+         ']}}'
          ),
   upsert = TRUE
 )
 
-
+# export to json
+db$export(file("att.json"), query='{"Siri": "1/24", "Jenis": "exco"}')

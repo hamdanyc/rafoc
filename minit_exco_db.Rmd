@@ -19,7 +19,7 @@ library(dplyr)
 
 con <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
-minit <- db$find('{"Siri": "4/23", "Jenis": "exco"}')
+minit <- db$find('{"Siri": "1/24", "Jenis": "exco"}')
 
 ```
 
@@ -28,7 +28,7 @@ minit <- db$find('{"Siri": "4/23", "Jenis": "exco"}')
 ### HADIR
 
 ```{r hadir}
-lst <- tibble("Nama"=unlist(minit$Hadir$nama),"Singkatan"=unlist(minit$Hadir$Singkatan),"Jawatan"=unlist(minit$Hadir$Jawatan)) 
+lst <- tibble("Nama"=unlist(minit$Hadir$Nama),"Singkatan"=unlist(minit$Hadir$Singkatan),"Jawatan"=unlist(minit$Hadir$Jawatan)) 
 
 # print Nama, Singkatan, Jawatan with fixed column width 
 lst %>%  
@@ -145,4 +145,14 @@ paste("Disediakan Oleh:",minit$Disediakan) %>%
 paste("Diluluskan Oleh:",minit$Diluluskan) %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
+```
+\newpage
+
+### KEMBARAN-KEMBARAN: 
+
+```{r kembaran, echo=FALSE}
+paste("",minit$Kembaran$Perkara)  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
 ```
