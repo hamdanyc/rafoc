@@ -24,7 +24,7 @@ fp <- function(field, pattern) {
 }
 
 # Load data frame from db ----
-df <- db$find()
+# df <- db$find()
 
 # read google spreadsheet file from google drive ----
 ss <- gs4_get("https://docs.google.com/spreadsheets/d/1AFRvt7wmRFepVThPW3ikItWRWxdSeZz91K9utUqbTS0/edit?resourcekey#gid=621805772")
@@ -89,7 +89,7 @@ column_names <- c("Name","Given Name","Additional Name","Family Name",
                   "Organization 1 - Yomi Name","Organization 1 - Title",
                   "Organization 1 - Department","Organization 1 - Symbol",
                   "Organization 1 - Location","Organization 1 - Job Description")
-names(contact) <- column_names
+
 contact <- rs %>% 
     mutate(Name = nama, "Given Name" ="","Additional Name" = "","Family Name" = "","Yomi Name" = "",
            "Given Name Yomi" = "","Additional Name Yomi" = "","Family Name Yomi" = "",
@@ -115,6 +115,7 @@ contact <- rs %>%
            "Organization 1 - Yomi Name","Organization 1 - Title",
            "Organization 1 - Department","Organization 1 - Symbol",
            "Organization 1 - Location","Organization 1 - Job Description")
+names(contact) <- column_names
            
 readr::write_csv(rs, "ahli_mohon.csv")
 readr::write_csv(contact, "ahli_contact.csv")

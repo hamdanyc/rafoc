@@ -11,7 +11,6 @@ USER_ID <- Sys.getenv("USER_ID2")
 PASSWORD <- Sys.getenv("PASSWORD")
 DB_SVR <- Sys.getenv("DB_SVR")
 db <- mongo(collection = "ahli", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))
-df <- db$find()
 
 # find path
 fi <- drive_ls("~/rafoc/kad veteran") %>% 
@@ -51,5 +50,7 @@ for (i in 1:nrow(rs)) {
   )
 }
 
+# query new rec
+df <- db$find()
 db$disconnect()
 save.image("kv.RData")

@@ -25,7 +25,7 @@ load("kv.RData")
 rs %>% 
   inner_join(df, by="no_kp") %>% 
   full_join(fi, by="key") %>% 
-  mutate(nama=nama.x, pkt=stringr::str_to_upper(pkt),
+  mutate(nama=nama.x, pkt=stringr::str_to_upper(pkt), tel=no_tel.x,
          status=if_else(!is.na(status),"ADA","TIADA")) %>% 
   select(nama, pkt, status) %>%
   knitr::kable(caption = "Senarai Pemohon", row.names = TRUE,
