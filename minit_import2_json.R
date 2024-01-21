@@ -22,7 +22,7 @@ system("tr -d '\n' < minit_exco_1_24.json > minit.json && sed -i -e '$a\n' minit
 # Get doc from db ----
 # qry <- paste0('{"Siri": "', siri, "\",", "\"Jenis\": \"exco\"}")
 siri <- "1/24"
-rs <- db$find(paste0('{"Siri": "', siri, "\",", "\"Jenis\": \"exco\"}"))
+rs <- db$find(paste0('{"Siri": "', siri, '", "Jenis": "exco"}'))
 if (nrow(rs) != 0) db$remove(paste0('{"Siri": "', siri, "\",", "\"Jenis\": \"exco\"}"))
 db$import(file("minit.json"))
 
