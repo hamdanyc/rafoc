@@ -19,7 +19,8 @@ source("ahli_rs.R")
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
 
 con <- readLines(con=".url.txt")
-db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
+URI <- Sys.getenv("MG_URI")
+db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
 minit <- db$find('{"Siri": "4m/23", "Jenis": "exco"}')
 
 ```
