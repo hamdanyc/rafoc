@@ -14,7 +14,7 @@ library(kableExtra)
 library(mongolite)
 library(dplyr)
 
-# Connect to the database
+# Connect to the database. Run minit_import2_json.R to modify db.
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
 source("ahli_rs.R")
 con <- readLines(con=".url.txt")

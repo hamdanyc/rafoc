@@ -53,6 +53,10 @@ nama.x <- paste0('"',Nama.x,'"', collapse = ",")
 singkatan.x <- paste0('"',Singkatan.x,'"',collapse = ",")
 jawatan.x <- paste0('"',Jawatan.x,'"',collapse = ",")
 
+# embed
+# {"$set": {"Hadir": {"Nama": "nama", "Singkatan": "singkatan", "Jawatan": "jawatan"}},
+#         {"Tidak_hadir": {"Nama": "nama.x", "Singkatan": "singkatan.x", "Jawatan": "jawatan.x"}}}
+
 # Update fields Hadir, Tidak_hadir db ----
 db$update(
   paste0(paste0('{"Siri": "', siri, "\",", "\"Jenis\": \"exco\"}")),
