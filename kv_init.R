@@ -6,13 +6,13 @@ library(googlesheets4)
 library(googledrive)
 library(mongolite)
 
-# Load data frame from db
+# Load data frame from db ----
 USER_ID <- Sys.getenv("USER_ID2")
 PASSWORD <- Sys.getenv("PASSWORD")
 DB_SVR <- Sys.getenv("DB_SVR")
 db <- mongo(collection = "ahli", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))
 
-# read google spreadsheet file from google drive ----
+# read google google drive ----
 # find path
 fi <- drive_ls("~/rafoc/kad veteran") %>% 
   select(key = name) %>% 
