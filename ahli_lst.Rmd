@@ -13,7 +13,6 @@ library(janitor)
 library(knitr)
 library(googlesheets4)
 
-load("bre.RData")
 # read google spreadsheet file from google drive ----
 ss <- gs4_get("https://docs.google.com/spreadsheets/d/1AFRvt7wmRFepVThPW3ikItWRWxdSeZz91K9utUqbTS0/edit?resourcekey#gid=621805772")
 rs <- read_sheet(ss, sheet = 1) %>% 
@@ -28,13 +27,6 @@ rs <- read_sheet(ss, sheet = 1) %>%
   filter(nama != "") %>% 
   distinct(no_kp, .keep_all = TRUE)
 
-# new bre_2 batch, no_kp not in rs ----
-bre_2 <- rs %>% 
-  anti_join(bre_1, by = "no_kp") %>% 
-  select(no_kp, nama, e_mail, pkt, no_tel)
-
-# save bre_1, bre_2 ----
-save(bre_1,bre_2, rs, file = "bre.RData")
 ```
 
 ## Selamat Datang Ahli Baharu

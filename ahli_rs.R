@@ -1,3 +1,4 @@
+library(dplyr)
 ss <- googlesheets4::gs4_get("https://docs.google.com/spreadsheets/d/1AFRvt7wmRFepVThPW3ikItWRWxdSeZz91K9utUqbTS0/edit?resourcekey#gid=621805772")
 rs <- googlesheets4::read_sheet(ss, sheet = 1) %>% 
   janitor::clean_names() %>%
