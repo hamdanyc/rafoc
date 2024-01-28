@@ -17,8 +17,8 @@ library(dplyr)
 # Connect to the database. Run minit_import2_json.R to modify db.
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
 source("ahli_rs.R")
-con <- readLines(con=".url.txt")
-db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
+URI <- Sys.getenv("MG_URI")
+db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
 minit <- db$find('{"Siri": "1/24", "Jenis": "exco"}')
 
 ```
@@ -130,7 +130,6 @@ paste("@.  ",minit$Penutup) %>%
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 ```
-\newpage
 
 \hspace {2.5cm}![](Kol_Hamdan.png){width="27%"}    
 Disediakan Oleh:.................................   

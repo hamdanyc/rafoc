@@ -6,7 +6,7 @@ library(googlesheets4)
 library(googledrive)
 library(mongolite)
 
-# Load data frame from db
+# Load data frame from db ----
 USER_ID <- Sys.getenv("USER_ID2")
 PASSWORD <- Sys.getenv("PASSWORD")
 DB_SVR <- Sys.getenv("DB_SVR")
@@ -17,7 +17,6 @@ db <- mongo(collection = "ahli", db = "rafoc", url = paste0("mongodb://", USER_I
 fi <- drive_ls("~/rafoc/kad veteran") %>% 
   select(key = name) %>% 
   mutate(status = "ada")
-
 ss <- gs4_get("https://docs.google.com/spreadsheets/d/1LiI2BGxbUk64WljAf2sYLnalsSIJG-l-HOTLJrNZxWw/edit#gid=822808555")
 rs <- read_sheet(ss, sheet = 1) %>% 
   clean_names() %>%
