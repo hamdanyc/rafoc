@@ -5,6 +5,7 @@ library(mongolite)
 library(dplyr)
 library(janitor)
 library(googlesheets4)
+library(jsonlite)
 
 # Connect to MongoDB ----
 # url <- readLines(con=".url.txt")
@@ -41,19 +42,40 @@ rs <- read_sheet(ss, sheet = 1) %>%
 
 # db$update from data frame rs ----
 for (i in 1:nrow(rs)) {
+  data <- toJSON(list(
+    no_kp = rs$no_kp[i],
+    alamat_tetap1 = stringr::str_to_upper(rs$alamat[i]),
+    alamat_tetap2 = "",
+    nama = stringr::str_to_upper(rs$nama[i]),
+    no_tentera = rs$no_tentera[i],
+    pkt = rs$pkt[i],
+    email = rs$e_mail[i],
+    ttp = rs$tarikh_bersara[i],
+    no_tel = rs$no_tel[i]
+  ), auto_unbox = TRUE)
+  
   db$update(
     paste0('{"no_kp": "', rs$no_kp[i], '"}'),
-    paste0('{"$set": {"alamat_tetap1": "', stringr::str_to_upper(rs$alamat[i]),
-           '", "alamat_tetap2": "',"",
-           '", "nama": "', stringr::str_to_upper(rs$nama[i]),
-           '", "no_tentera": "', rs$no_tentera[i],
-           '", "pkt": "', rs$pkt[i],
-           '", "email": "', rs$e_mail[i],
-           '", "ttp": "', rs$tarikh_bersara[i],
-           '", "no_tel": "', rs$no_tel[i], '"}}'),
+    paste0('{"$set": ', data, '}'),
     upsert = TRUE
   )
 }
+
+# db$update from data frame rs ----
+# for (i in 1:nrow(rs)) {
+#   db$update(
+#     paste0('{"no_kp": "', rs$no_kp[i], '"}'),
+#     paste0('{"$set": {"alamat_tetap1": "', stringr::str_to_upper(rs$alamat[i]),
+#            '", "alamat_tetap2": "',"",
+#            '", "nama": "', stringr::str_to_upper(rs$nama[i]),
+#            '", "no_tentera": "', rs$no_tentera[i],
+#            '", "pkt": "', rs$pkt[i],
+#            '", "email": "', rs$e_mail[i],
+#            '", "ttp": "', rs$tarikh_bersara[i],
+#            '", "no_tel": "', rs$no_tel[i], '"}}'),
+#     upsert = TRUE
+#   )
+# }
 
 # close connection ----
 db$disconnect()
