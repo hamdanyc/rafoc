@@ -23,6 +23,7 @@ ss <- gs4_get("https://docs.google.com/spreadsheets/d/1rDW3zgMxTDc4O7CLb2B88eeZo
 rs <- read_sheet(ss, sheet = 1)
 
 # db$update from data frame rs ----
+rs <- mutate(rs, Catatan = if_else(is.na(Catatan)," ",Catatan))
 for (i in 1:nrow(rs)) {
   data <- toJSON(list(
     Nama = rs$Nama[i],
@@ -30,8 +31,8 @@ for (i in 1:nrow(rs)) {
     Menu = rs$Menu[i],
     No_Meja = rs$No_Meja[i],
     Status = rs$Status[i],
-    Tindakan = rs$Tindakan[i]
-  ), auto_unbox = TRUE)
+    Tindakan = rs$Tindakan[i],
+    Catatan = rs$Catatan[i]), auto_unbox = TRUE)
   
   db$update(
     paste0('{"Nama": "', rs$Nama[i], '"}'),
@@ -42,6 +43,5 @@ for (i in 1:nrow(rs)) {
 
 # close connection 
 db$disconnect()
-
 
 
