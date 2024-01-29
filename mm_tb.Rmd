@@ -16,8 +16,10 @@ library(dplyr)
 # conn db ----
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
 
-con <- readLines(con=".url.txt")
-db <- mongolite::mongo(collection="mmmt", db="rafoc", url=con)
+USER_ID <- Sys.getenv("USER_ID2")
+PASSWORD <- Sys.getenv("PASSWORD")
+DB_SVR <- Sys.getenv("DB_SVR")
+db <- mongo(collection = "mmmt", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))
 tbl <- db$find('{}')
 ```
 \begin{center}
