@@ -1,0 +1,103 @@
+---
+title: "![](logo_srt_rasmi.png){width=6.5in}"
+output:
+  pdf_document: default
+  html_notebook: default
+  html_document:
+    df_print: paged
+---
+
+```{r init, include=FALSE}
+# init ----
+library(kableExtra)
+library(mongolite)
+library(dplyr)
+
+# conn db ----
+# mongodb://[username:password@]host1[:port1]/?authSource=user-data
+
+USER_ID <- Sys.getenv("USER_ID2")
+PASSWORD <- Sys.getenv("PASSWORD")
+DB_SVR <- Sys.getenv("DB_SVR")
+db <- mongo(collection = "mmmt", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))
+tbl <- db$find('{}')
+
+tb_id <- c("Meja Diraja", "Meja Diraja (Pasangan)", "Tetamu Presiden", "Rombongan Diraja", "Khas:CIMB",
+           "MR1:Black Beret (1))/Dato' Barry Tan", "MR2:WestStar/EXCO(1)", "MR3:Sofian Arshad (TJP 31)", "MR4:EXCO(2)",
+           "MR5:NADI", "MR6:TJP 18/19/20/21", "MR7:Black Beret (2)/Teras Sepadu", "MR8:RMA Sandhurst", 
+           "MR9:RMNOA", "MR10:Black Beret(3)/CIMB","MR11:AFATS", "MR12:Brig Jen Dato’ Hamid (B)", 
+           "MR13:Black Beret(4)/CIMB","MR14:Black Beret(5)/CIMB", "MR15:Black beret (6)/CIMB", 
+           "MR16:Black Beret (7)/Teras Sepadu", "MR17:Black beret (8)/Michael Choo", "MR18:Mej Datuk Murthi(1)", 
+           "MR19:Mej Datuk Murthi(2)", "MR20:Mej Datuk Murthi(3)", "MR21:TJP 31(2)", "MR22:TJP 25",
+           "MR23:Kump Ord", "MR24:TUDM", "MR25:Saling Erti", "MR26:KPRAMD", "MR27:KKD", 
+           "MR28:PERNAMA", "MR29:AJK", "MR30:PVATM", "MR31:TJT 6", "MR32:ADC", "VVIP (1)", "VVIP (2)")
+
+tb_cnt <- tbl %>% 
+  # filter(Tindakan != "Tidak hadir") %>% 
+  mutate(Meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+  group_by(Meja) %>%
+  summarise(n=n())
+
+index <- setNames(tb_cnt$n,tb_id)
+```
+\begin{center}
+\textbf{Senarai Tetamu Mengikut Meja (dikemaskini pada `r format(Sys.Date(), "%d %b %Y")`)}
+\end{center}
+
+```{r tbl list, echo=FALSE}
+tbl %>% 
+  # filter(Tindakan != "Tidak hadir") %>% 
+  mutate(Meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+  group_by(Meja) %>%
+  arrange(Meja) %>%
+  mutate(Siri = row_number(),Flag = if_else(stringr::str_detect(Catatan,":Khas"),"P.Sijil","")) %>%
+  select(Siri, Meja, Nama, "Kategori"=Status, Menu, "Status"=Tindakan, Flag) %>% 
+  kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
+  kable_styling(full_width = T, position = "left", repeat_header_text = "\\textit{... sambungan}",
+                latex_options = c("hold_position", "repeat_header")) %>% 
+  column_spec(1,width = "1.0cm") %>%
+  column_spec(2,width = "1.5cm") %>% 
+  column_spec(3,width = "5.0cm") %>% 
+  column_spec(4,width = "2.0cm") %>%
+  column_spec(5,width = "2.0cm") %>%
+  column_spec(6,width = "2.0cm") %>%
+  column_spec(7,width = "1.8cm") %>%
+  pack_rows(index = index)
+
+```
+
+```{r meja, eval=FALSE, include=FALSE}
+tbl %>% 
+  # filter(Tindakan == "Bayaran diterima") %>%
+  mutate(meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+  group_by(meja, Menu) %>% 
+  arrange(meja) %>%
+  summarise(n=n()) %>% 
+  kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
+  kable_styling(full_width = T, position = "left", repeat_header_text = "\\textit{... sambungan}",
+                latex_options = c("hold_position", "repeat_header")) %>%
+  column_spec(1,width = "2.0cm") %>%
+  column_spec(2,width = "3.0cm") %>% 
+  column_spec(3,width = "1.0cm") 
+
+```
+## Ringkasan:
+
+```{r menu, echo=FALSE}
+tbl_sum <- tbl %>% 
+  filter(Tindakan == "Hadir") %>% 
+  summarise(n=n()) %>% 
+  mutate("Menu" = "Jumlah")
+
+tbl_menu <- tbl %>% 
+  filter(Tindakan != "Tidak hadir") %>% 
+  group_by(Menu) %>% 
+  summarise(n=n()) 
+
+bind_rows(tbl_menu,tbl_sum) %>% 
+  kbl(booktabs = T, centering = FALSE, position = "left")
+```
+Nota:  
+   Menu (TBN)   - Untuk pengesahan
+
+![Susunan Meja](mmmt_floor.png){width=100%}
