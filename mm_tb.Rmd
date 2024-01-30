@@ -87,5 +87,3 @@ bind_rows(tbl_menu,tbl_sum) %>%
 ```
 Nota:  
    Menu (TBN)   - Untuk pengesahan
-
-![Susunan Meja](mmmt_floor.png){width=100%}
