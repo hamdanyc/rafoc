@@ -131,6 +131,7 @@ paste("@.  ",minit$Penutup) %>%
   kable_styling(full_width = TRUE,position = "left")
 ```
 
+\newpage
 \hspace {2.5cm}![](Kol_Hamdan.png){width="27%"}    
 Disediakan Oleh:.................................   
 \hspace {2.5cm}Kol Hamdan Bin Yaccob (B)
@@ -147,7 +148,6 @@ paste("Diluluskan Oleh:",minit$Diluluskan) %>%
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 ```
-\newpage
 
 ### KEMBARAN-KEMBARAN: 
 

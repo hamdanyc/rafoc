@@ -1,7 +1,7 @@
 ---
 title: "Senarai Permohonan Kad Veteran"
 author: "Sekretariat"
-date: "`r format(Sys.time(), '%d %B, %Y jam %H:%M')`"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: pdf_document
 ---
 
@@ -15,6 +15,7 @@ library(googlesheets4)
 library(googledrive)
 library(mongolite)
 
+Sys.setenv(TZ='Asia/Kuala_Lumpur')
 load("kv.RData")
 ```
 

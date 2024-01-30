@@ -36,7 +36,7 @@ dfy <- read_sheet(ss, sheet = 1) %>%
 dft <- read_sheet(ss, sheet = 1) %>% 
   filter(Hadir == "Tidak")
 
-# Update document ----
+# Update document
 update_document <- list(
   "$set" = list(
     Hadir = list(

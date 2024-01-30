@@ -26,6 +26,4 @@ tb_cnt <- tbl %>%
   group_by(Meja) %>%
   summarise(n=n())
 
-x <- c(1, 2, 3, 4, 5)
-y <- c("a", "b", "c", "d", "e")
 z <- setNames(tb_cnt$n,tb_id)

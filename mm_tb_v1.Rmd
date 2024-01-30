@@ -81,21 +81,25 @@ tbl %>%
   column_spec(3,width = "1.0cm") 
 
 ```
+\newpage
 ## Ringkasan:
 
-```{r menu, echo=FALSE}
-tbl_sum <- tbl %>% 
-  filter(Tindakan == "Hadir") %>% 
+```{r menu, echo=FALSE, message=FALSE, warning=FALSE}
+tbl %>% 
+  filter(Tindakan != "Tidak hadir") %>%
+  group_by(No_Meja,Menu) %>% 
   summarise(n=n()) %>% 
-  mutate("Menu" = "Jumlah")
+  kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
+  collapse_rows()
 
-tbl_menu <- tbl %>% 
-  filter(Tindakan != "Tidak hadir") %>% 
-  group_by(Menu) %>% 
-  summarise(n=n()) 
-
-bind_rows(tbl_menu,tbl_sum) %>% 
-  kbl(booktabs = T, centering = FALSE, position = "left")
+tbl %>%
+  filter(Tindakan == "Hadir") %>%
+  group_by(Menu) %>%
+  summarise(n=n()) %>% 
+  kbl(booktabs = T, longtable = TRUE, centering = FALSE)
+# 
+# bind_rows(tbl_menu,tbl_sum) %>% 
+#   kbl(booktabs = T, centering = FALSE, position = "left")
 ```
 Nota:  
    Menu (TBN)   - Untuk pengesahan
