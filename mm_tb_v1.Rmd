@@ -65,29 +65,14 @@ tbl %>%
   pack_rows(index = index)
 
 ```
-
-```{r meja, eval=FALSE, include=FALSE}
-tbl %>% 
-  # filter(Tindakan == "Bayaran diterima") %>%
-  mutate(meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
-  group_by(meja, Menu) %>% 
-  arrange(meja) %>%
-  summarise(n=n()) %>% 
-  kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
-  kable_styling(full_width = T, position = "left", repeat_header_text = "\\textit{... sambungan}",
-                latex_options = c("hold_position", "repeat_header")) %>%
-  column_spec(1,width = "2.0cm") %>%
-  column_spec(2,width = "3.0cm") %>% 
-  column_spec(3,width = "1.0cm") 
-
-```
 \newpage
 ## Ringkasan:
 
 ```{r menu, echo=FALSE, message=FALSE, warning=FALSE}
 tbl %>% 
-  filter(Tindakan != "Tidak hadir") %>%
-  group_by(No_Meja,Menu) %>% 
+  mutate(Meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+  group_by(Meja,Menu) %>%
+  arrange(Meja) %>%
   summarise(n=n()) %>% 
   kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
   collapse_rows()
