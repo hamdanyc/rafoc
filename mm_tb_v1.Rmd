@@ -22,15 +22,11 @@ DB_SVR <- Sys.getenv("DB_SVR")
 db <- mongo(collection = "mmmt", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))
 tbl <- db$find('{}')
 
-tb_id <- c("Meja Diraja", "Meja Diraja (Pasangan)", "Tetamu Presiden", "Rombongan Diraja", "Khas:CIMB",
-           "MR1:Black Beret (1))/Dato' Barry Tan", "MR2:WestStar/EXCO(1)", "MR3:Sofian Arshad (TJP 31)", "MR4:EXCO(2)",
-           "MR5:NADI", "MR6:TJP 18/19/20/21", "MR7:Black Beret (2)/Teras Sepadu", "MR8:RMA Sandhurst", 
-           "MR9:RMNOA", "MR10:Black Beret(3)/CIMB","MR11:AFATS", "MR12:Brig Jen Dato’ Hamid (B)", 
-           "MR13:Black Beret(4)/CIMB","MR14:Black Beret(5)/CIMB", "MR15:Black beret (6)/CIMB", 
-           "MR16:Black Beret (7)/Teras Sepadu", "MR17:Black beret (8)/Michael Choo", "MR18:Mej Datuk Murthi(1)", 
-           "MR19:Mej Datuk Murthi(2)", "MR20:Mej Datuk Murthi(3)", "MR21:TJP 31(2)", "MR22:TJP 25",
-           "MR23:Kump Ord", "MR24:TUDM", "MR25:Saling Erti", "MR26:KPRAMD", "MR27:KKD", 
-           "MR28:PERNAMA", "MR29:AJK", "MR30:PVATM", "MR31:TJT 6", "MR32:ADC", "VVIP (1)", "VVIP (2)")
+# read google spreadsheet file from google drive ----
+# senarai tetamu MMM
+ss <- gs4_get("https://docs.google.com/spreadsheets/d/1rDW3zgMxTDc4O7CLb2B88eeZotk4z9o3kLhtz0q2A4E/edit#gid=1561291431")
+tb <- read_sheet(ss, sheet = 2)
+tb_id <- tb$Designasi
 
 tb_cnt <- tbl %>% 
   # filter(Tindakan != "Tidak hadir") %>% 
@@ -89,14 +85,14 @@ tbl %>%
   filter(Tindakan != "Tidak hadir") %>%
   group_by(No_Meja,Menu) %>% 
   summarise(n=n()) %>% 
-  kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
+  kbl(booktabs = T, longtable = TRUE) %>%
   collapse_rows()
 
 tbl %>%
   filter(Tindakan == "Hadir") %>%
   group_by(Menu) %>%
   summarise(n=n()) %>% 
-  kbl(booktabs = T, longtable = TRUE, centering = FALSE)
+  kbl(booktabs = T, centering = FALSE)
 # 
 # bind_rows(tbl_menu,tbl_sum) %>% 
 #   kbl(booktabs = T, centering = FALSE, position = "left")

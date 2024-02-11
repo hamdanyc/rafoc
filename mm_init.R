@@ -1,4 +1,5 @@
 # mm_init.R
+# insert MMM db then run mm_tb_v1.Rmad (Senarai tetamu/meja)
 
 # Init ----
 library(mongolite)
@@ -19,23 +20,24 @@ db <- mongo(collection = "mmmt", db = "rafoc", url = paste0("mongodb://", USER_I
 db$remove('{}')
 
 # read google spreadsheet file from google drive ----
+# senarai tetamu MMM
 ss <- gs4_get("https://docs.google.com/spreadsheets/d/1rDW3zgMxTDc4O7CLb2B88eeZotk4z9o3kLhtz0q2A4E/edit#gid=1561291431")
-rs <- read_sheet(ss, sheet = 1)
+guest <- read_sheet(ss, sheet = 1)
 
-# db$update from data frame rs ----
-rs <- mutate(rs, Catatan = if_else(is.na(Catatan)," ",Catatan))
-for (i in 1:nrow(rs)) {
+# db$update from data frame guest ----
+guest <- mutate(guest, Catatan = if_else(is.na(Catatan)," ",Catatan))
+for (i in 1:nrow(guest)) {
   data <- toJSON(list(
-    Nama = rs$Nama[i],
-    Kategori = rs$Kategori[i],
-    Menu = rs$Menu[i],
-    No_Meja = rs$No_Meja[i],
-    Status = rs$Status[i],
-    Tindakan = rs$Tindakan[i],
-    Catatan = rs$Catatan[i]), auto_unbox = TRUE)
+    Nama = guest$Nama[i],
+    Kategori = guest$Kategori[i],
+    Menu = guest$Menu[i],
+    No_Meja = guest$No_Meja[i],
+    Status = guest$Status[i],
+    Tindakan = guest$Tindakan[i],
+    Catatan = guest$Catatan[i]), auto_unbox = TRUE)
   
   db$update(
-    paste0('{"Nama": "', rs$Nama[i], '"}'),
+    paste0('{"Nama": "', guest$Nama[i], '"}'),
     paste0('{"$set": ', data, '}'),
     upsert = TRUE
   )
