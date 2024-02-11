@@ -12,6 +12,7 @@ output:
 library(kableExtra)
 library(mongolite)
 library(dplyr)
+library(googlesheets4)
 
 # conn db ----
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
