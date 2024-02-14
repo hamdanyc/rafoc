@@ -74,14 +74,16 @@ tbl %>%
   kbl(booktabs = T, longtable = TRUE) %>%
   collapse_rows()
 
+tbl_sum <- tbl %>%
+  summarise(Menu = "Jumlah",n=n())
+
 tbl %>%
   filter(Tindakan == "Hadir") %>%
   group_by(Menu) %>%
   summarise(n=n()) %>% 
+  bind_rows(tbl_sum) %>% 
   kbl(booktabs = T, centering = FALSE)
-# 
-# bind_rows(tbl_menu,tbl_sum) %>% 
-#   kbl(booktabs = T, centering = FALSE, position = "left")
+
 ```
 Nota:  
    Menu (TBN)   - Untuk pengesahan
