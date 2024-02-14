@@ -25,6 +25,8 @@ tbl <- db$find('{}')
 
 # read google spreadsheet file from google drive ----
 # senarai tetamu MMM
+# tb_id as in table id
+# index as title header for tb_id
 ss <- gs4_get("https://docs.google.com/spreadsheets/d/1rDW3zgMxTDc4O7CLb2B88eeZotk4z9o3kLhtz0q2A4E/edit#gid=1561291431")
 tb <- read_sheet(ss, sheet = 2)
 tb_id <- tb$Designasi
