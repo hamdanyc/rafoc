@@ -20,6 +20,7 @@ db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
 minit <- db$find('{"Siri": "1/24", "Jenis": "mmmt"}')
 
 ```
+<style>body {text-align: justify}</style>
 
 \textbf{\underline{NOTA MESYUARAT MMM '24 SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000}}
 \newline  
@@ -39,7 +40,7 @@ lst %>%
   column_spec(2, width = "2cm") %>%
   column_spec(3, width = "5cm")
 ```
-\newpage
+
 ### AGENDA 1: `r minit$Agenda_1$Perkara`
 
 ```{r agenda 1, echo=FALSE}
@@ -65,7 +66,7 @@ tibble::tibble("Siri"="2.","Perkara"="Mesyuarat MMM Siri 1/24","Perbincangan dan
   column_spec(4,width = "2cm")
 
 ```
-\newpage
+
 ### AGENDA 3: `r minit$Agenda_3$Perkara`
 
 ```{r agenda 3, echo=FALSE}
@@ -158,19 +159,20 @@ C. SUSUNAN ATURCARA
 | 4. Ketibaan Menteri Pertahanan | 2005 |  |
 | 5. Ketibaan YAB PM |  |  |
 | 6. Keberangkatan tiba DYMM Tuanku Raja Perlis dan DYMM Tuanku Raja Perempuan Perlis | 2020 | Penyerahan Jambangan Bunga kepada DYMM Raja Perempuan Perlis |
-| 7. Keberangkatan tiba DYMM Seri Paduka Baginda Yang diPertuan Agung dan DYMM Raja Permaisuri Agung | 2025 | Diiring ke ruang khas sesi bergambar |
+| 7. Keberangkatan tiba DYMM SPB YDPA dan DYMM Raja Permaisuri Agung | 2025 | Penyerahan Jambangan Bunga kepada DYMM Raja Permaisuri Agung |
+|  | - | Diiringi ke ruang khas sesi bergambar |
 |  | - | AJK bersedia di ruang khas untuk sesi bergambar |
-| 8. DYMM SPB YDPA dan DYMM Raja Permaisuri Agung, Tuanku Raja Perlis dan DYMM Tuanku Raja Perempuan Perlis, PM dan isteri serta VVIP ke bilik menunggu | 2030 | AJK diperkenalkan kepada DYMM SPB YDPA, DYMM Tuanku Raja Perlis |
+| 8. DYMM SPB YDPA dan DYMM Raja Permaisuri Agung, Tuanku Raja Perlis dan DYMM Tuanku Raja Perempuan Perlis, PM dan isteri serta VVIP ke bilik menunggu | 2030 | AJK diperkenalkan kepada DYMM SPB YDPA, DYMM Tuanku Raja Perlis dan PM|
 | 9. Semua tetamu dijemput masuk ke dewan santapan | 2045 |  |
 | 10. Keberangkatan DYMM YDPA dan DYMM Raja Permaisuri Agung, Tuanku Raja Perlis dan DYMM Tuanku Raja Perempuan Perlis, PM dan isteri serta VVIP ke dewan santapan | 2050 | Diringi bagpipe |
 |  | - | Juru acara umumkan tetamu dan pasangan berdiri |
 |  | - | Lagu Negaraku dimainkan disusuli lagu veteran |
 |  | - | Bacaan doa |
-| 11. Santapan dimulakan | 2105-2230 | Diiringi BKTD |
+| 11. Santapan dimulakan | 2105-2230 | Diiringi Kombo TUDM |
 |  | - | Montaj Aktiviti RAFOC |
 | 12. Ucapan Presiden RAFOC | 2235 |  |
 | 13. Penyampaian Sijil Kenangan 50 tahun sejak ditauliahkan sebagai Pegawai Bertauliah Angkatan Tentera Malaysia | 2245 | Presiden RAFOC mohon perkenan DYMM SPB YDPA untuk menyempurnakan acara |
 |  | - | Penyampaian Sijil Penghargaan |
-| 14. Persembahan hiburan | 2315-2345 | Diiringi Orkestra BKTD |
+| 14. Persembahan hiburan | 2315-2345 | Diiringi Kombo TUDM |
 | 15. Penyerahan gambar kenangan kepada DYMM YDPA, Tuanku Raja Perlis, PM dan VVIP di meja Diraja | 2350 | Presiden RAFOC mohon perkenan DYMM SPB YDPA untuk menyempurnakan acara |
 | 16. DYMM YDPA dan DYMM Raja Permaisuri Agung, Tuanku Raja Perlis dan DYMM Tuanku Raja Perempuan Perlis, PM dan isteri meninggalkan majlis | 2359 | Lagu Negaraku dimainkan |
