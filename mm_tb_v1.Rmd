@@ -34,6 +34,7 @@ tb_id <- tb$Designasi
 tb_cnt <- tbl %>% 
   # filter(Tindakan != "Tidak hadir") %>% 
   mutate(Meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+  filter(Meja != "NA") %>% 
   group_by(Meja) %>%
   summarise(n=n())
 
