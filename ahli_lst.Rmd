@@ -39,9 +39,13 @@ Jumlah Keseluruhan : `r nrow(rs) + 962` orang
 
 ```{r by_pkt}
 # group by pkt ----
+tot <- rs %>% 
+  summarise(pkt= "Keseluruhan", n = n())
+
 rs %>% 
   group_by(pkt) %>%
   summarise(n = n()) %>%
+  bind_rows(tot) %>% 
   knitr::kable(caption = "Jumlah Ahli Baharu Mengikut Pangkat", row.names = TRUE, booktab = TRUE, position = "h",
                col.names = c("Pangkat", "Jumlah"))
 ```
