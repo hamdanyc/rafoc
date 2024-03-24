@@ -11,7 +11,9 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(dplyr)
 library(janitor)
 library(knitr)
+library(kableExtra)
 library(googlesheets4)
+library(lubridate)
 
 # read google spreadsheet file from google drive ----
 ss <- gs4_get("https://docs.google.com/spreadsheets/d/1AFRvt7wmRFepVThPW3ikItWRWxdSeZz91K9utUqbTS0/edit?resourcekey#gid=621805772")
@@ -21,6 +23,7 @@ rs <- read_sheet(ss, sheet = 1) %>%
   mutate(no_kp = as.character(no_kp),
          no_kp = stringr::str_replace_all(no_kp," ",""),
          no_kp = stringr::str_replace_all(no_kp,"-",""),
+         mth = month(timestamp),
          no_tentera = stringr::str_replace_all(no_tentera,"N|T|/",""),
          alamat = stringr::str_replace_all(alamat,"\n"," ")) %>% 
   filter(no_kp != "") %>% 
@@ -28,18 +31,7 @@ rs <- read_sheet(ss, sheet = 1) %>%
   distinct(no_kp, .keep_all = TRUE)
 
 ```
-
-## Selamat Datang Ahli Baharu
 Senarai ahli baharu yang telah mendaftar sebagai ahli RAFOC pada tahun 2024.
-
-```{r ahli}
-# print list of new members ----
-rs %>% 
-  mutate(nama = stringr::str_to_title(nama)) %>% 
-  select(no_tentera, nama, pkt) %>%
-  knitr::kable(caption = "Senarai Ahli Baharu", row.names = TRUE,
-               col.names = c("Siri", "No. Tentera", "Nama", "Pangkat"))
-```
 
 Jumlah pada 31 Dis 2023: 962 orang    
 Daftar 1 Jan 2024 -  `r format(Sys.Date(),"%d %b %Y")`: `r nrow(rs)` orang    
@@ -50,6 +42,18 @@ Jumlah Keseluruhan : `r nrow(rs) + 962` orang
 rs %>% 
   group_by(pkt) %>%
   summarise(n = n()) %>%
-  knitr::kable(caption = "Jumlah Ahli Baharu Mengikut Pangkat", row.names = TRUE,
+  knitr::kable(caption = "Jumlah Ahli Baharu Mengikut Pangkat", row.names = TRUE, booktab = TRUE, position = "h",
                col.names = c("Pangkat", "Jumlah"))
 ```
+
+```{r ahli}
+# print list of new members ----
+rs %>% 
+  mutate(nama = stringr::str_to_title(nama)) %>% 
+  select(mth, no_tentera, nama, pkt) %>%
+  group_by(mth) %>% 
+  knitr::kable(caption = "Senarai Ahli Baharu", row.names = TRUE, 
+               col.names = c("Siri", "Bln", "No. Tentera", "Nama", "Pangkat")) %>% 
+  collapse_rows(columns = 2)
+```
+
