@@ -18,11 +18,11 @@ DB_SVR <- Sys.getenv("DB_SVR")
 db <- mongo(collection = "minit", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))
 
 # convert json to a single line
-system("tr -d '\n' < minit_mmm_1_24.json > minit.json && sed -i -e '$a\n' minit.json")
+system("tr -d '\n' < minit_mmm_2_24.json > minit.json && sed -i -e '$a\n' minit.json")
 
 # Get doc from db ----
 # qry <- paste0('{"Siri": "', siri, "\",", "\"Jenis\": \"exco\"}")
-siri <- "1/24"
+siri <- "2/24"
 rs <- db$find(paste0('{"Siri": "', siri, '", "Jenis": "mmmt"}'))
 if (nrow(rs) != 0) db$remove(paste0('{"Siri": "', siri, "\",", "\"Jenis\": \"mmmt\"}"))
 db$import(file("minit.json"))

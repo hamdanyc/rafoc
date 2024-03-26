@@ -17,7 +17,7 @@ library(dplyr)
 # Connect to the database
 con <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
-minit <- db$find('{"Siri": "1/24", "Jenis": "mmmt"}')
+minit <- db$find('{"Siri": "2/24", "Jenis": "mmmt"}')
 
 ```
 <style>body {text-align: justify}</style>
@@ -26,21 +26,32 @@ minit <- db$find('{"Siri": "1/24", "Jenis": "mmmt"}')
 \newline  
 \textbf{\underline{DI SERAMBI WISMA PERWIRA ATM, KUALA LUMPUR}}
 
-### HADIR 
+### HADIR: 
 
 ```{r hadir, echo=FALSE}
 # lst <- paste(minit$Hadir$nama,minit$Hadir$Singkatan,minit$Hadir$Jawatan,sep = " - ")
 lst <- tibble("Nama"=unlist(minit$Hadir$Nama),"Singkatan"=unlist(minit$Hadir$Singkatan),"Jawatan"=unlist(minit$Hadir$Jawatan))
 
 # print Nama, Singkatan, Jawatan with fixed column width 
-lst %>%  
+lst %>% 
+  filter(!grepl("Presiden",Jawatan)) %>% 
   kbl(booktabs = T,longtable = TRUE) %>% 
   kable_styling(latex_options = "hold_position",position = "left") %>% 
   column_spec(1, width = "9.5cm") %>%
   column_spec(2, width = "2cm") %>%
   column_spec(3, width = "5cm")
 ```
-
+### TURUT HADIR:
+```{r turut}
+lst %>% 
+  filter(grepl("Presiden",Jawatan)) %>% 
+  kbl(booktabs = T,longtable = TRUE) %>% 
+  kable_styling(latex_options = "hold_position",position = "left") %>% 
+  column_spec(1, width = "9.5cm") %>%
+  column_spec(2, width = "2cm") %>%
+  column_spec(3, width = "5cm")
+```
+\newpage
 ### AGENDA 1: `r minit$Agenda_1$Perkara`
 
 ```{r agenda 1, echo=FALSE}
@@ -176,3 +187,15 @@ C. SUSUNAN ATURCARA
 | 14. Persembahan hiburan | 2315-2345 | Diiringi Kombo TUDM |
 | 15. Penyerahan gambar kenangan kepada DYMM YDPA, Tuanku Raja Perlis, PM dan VVIP di meja Diraja | 2350 | Presiden RAFOC mohon perkenan DYMM SPB YDPA untuk menyempurnakan acara |
 | 16. DYMM YDPA dan DYMM Raja Permaisuri Agung, Tuanku Raja Perlis dan DYMM Tuanku Raja Perempuan Perlis, PM dan isteri meninggalkan majlis | 2359 | Lagu Negaraku dimainkan |
+
+D. SKOP KERJA PENYEDIA PENGURUSAN MAJLIS (EV)
+
+|Siri | Skop Kerja | Dapatan |
+|-----|-------------------|--------|
+|1.   |Kutipan dana (Fundraising) | RM500,000 |
+|2.   |Juruacara majlis         | |
+|3.   |Acara lelongan, Cabutan bertuah | |
+|4.   |Buku aturcara            | |
+|5.   |Penyampaian cenderahati tetamu Diraja/Permaisuri, PM/Isteri | |
+|6.   |Jemputan dan promosi     | |
+|7.   |Persembahan audio-visual | |
