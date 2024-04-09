@@ -56,6 +56,7 @@ rs %>%
   mutate(nama = stringr::str_to_title(nama)) %>% 
   select(mth, no_tentera, nama, pkt) %>%
   group_by(mth) %>% 
+  arrange(.by_group = TRUE) %>% 
   knitr::kable(caption = "Senarai Ahli Baharu", row.names = TRUE, 
                col.names = c("Siri", "Bln", "No. Tentera", "Nama", "Pangkat")) %>% 
   collapse_rows(columns = 2)
