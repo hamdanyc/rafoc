@@ -18,13 +18,23 @@ DB_SVR <- Sys.getenv("DB_SVR")
 db <- mongo(collection = "minit", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))
 
 # convert json to a single line
-system("tr -d '\n' < minit_mmm_2_24.json > minit.json && sed -i -e '$a\n' minit.json")
+system("tr -d '\n' < minit_upload.json > minit.json && sed -i -e '$a\n' minit.json")
 
 # Get doc from db ----
-# qry <- paste0('{"Siri": "', siri, "\",", "\"Jenis\": \"exco\"}")
-siri <- "2/24"
-rs <- db$find(paste0('{"Siri": "', siri, '", "Jenis": "mmmt"}'))
-if (nrow(rs) != 0) db$remove(paste0('{"Siri": "', siri, "\",", "\"Jenis\": \"mmmt\"}"))
+siri <- "1/24"
+jenis <- "exco"
+
+# Create a named list
+doc <- list(Siri = siri, Jenis = jenis)
+
+# Convert named list to JSON query
+query <- toJSON(doc, auto_unbox = TRUE) %>% 
+  as.character()
+
+# Find a document in a MongoDB collection
+rs <- db$find(query) 
+
+if (nrow(rs) != 0) db$remove(query)
 db$import(file("minit.json"))
 
 # From google sheet ----
@@ -57,7 +67,7 @@ update_json <- jsonlite::toJSON(update_document, auto_unbox = TRUE)
 
 # Perform the update operation
 db$update(
-  query = paste0('{"Siri": "', siri, '", "Jenis": "mmmt"}'),
+  query = query,
   update = update_json,
   upsert = TRUE
 )
