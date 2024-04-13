@@ -20,11 +20,11 @@ source("ahli_rs.R")
 
 URI <- Sys.getenv("MG_URI")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
-minit <- db$find('{"Siri": "4m/23", "Jenis": "exco"}')
+minit <- db$find('{"Siri": "1m/24", "Jenis": "exco"}')
 
 ```
 
-\textbf{\underline{MAKLUM BALAS MINIT MESYUARAT JAWATANKUASA SIRI 4/23}} 
+\textbf{\underline{MAKLUM BALAS MINIT MESYUARAT JAWATANKUASA SIRI 1/24}} 
 \newline
 \textbf{\underline{DI SERAMBI WISMA PERWIRA ATM, KUALA LUMPUR}}
 \newline
@@ -93,11 +93,10 @@ paste("@.  ",minit$Agenda_6$Keterangan)  %>%
 
 ```{r kembaran, echo=FALSE}
 paste("",minit$Kembaran$Perkara)  %>% 
-  kbl(col.names = "","html", booktabs = T) %>% 
+  kbl(col.names = "","html", booktabs = T, position = "h") %>% 
   kable_styling(full_width = TRUE,position = "left")
 
 ```
-\newpage
 
 ## Ringkasan Pendaftaran Ahli Baharu
 Senarai ahli baharu yang telah mendaftar sebagai ahli RAFOC pada tahun 2024.
@@ -106,20 +105,11 @@ Jumlah pada 31 Dis 2023: 962 orang
 Daftar 1 Jan 2024 -  `r format(Sys.Date(),"%d %b %Y")`: `r nrow(rs)` orang    
 Jumlah Keseluruhan : `r nrow(rs) + 962` orang
 
-```{r ahli, echo=FALSE}
-# print list of new members ----
-rs %>% 
-  mutate(nama = stringr::str_to_title(nama)) %>% 
-  select(no_tentera, nama, pkt) %>%
-  knitr::kable(caption = "Senarai Ahli Baharu", row.names = TRUE,
-               col.names = c("Siri", "No. Tentera", "Nama", "Pangkat"))
-```
-
 ```{r by_pkt, echo=FALSE}
 # group by pkt ----
 rs %>% 
   group_by(pkt) %>%
   summarise(n = n()) %>%
   knitr::kable(caption = "Jumlah Ahli Baharu Mengikut Pangkat", row.names = TRUE,
-               col.names = c("Pangkat", "Jumlah"))
+               col.names = c("Pangkat", "Jumlah"), position = "h")
 ```

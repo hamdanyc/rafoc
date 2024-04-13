@@ -21,7 +21,7 @@ db <- mongo(collection = "minit", db = "rafoc", url = paste0("mongodb://", USER_
 system("tr -d '\n' < minit_upload.json > minit.json && sed -i -e '$a\n' minit.json")
 
 # Get doc from db ----
-siri <- "1/24"
+siri <- "1m/24"
 jenis <- "exco"
 
 # Create a named list
