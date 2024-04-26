@@ -21,11 +21,13 @@ ui <- fluidPage(
     sidebarPanel(
       textInput("id","Masukkan id"),
       radioButtons("src", "Pilih:",
-                   c("No Tentera" = "no_ten",
-                     "No Kp" = "no_kp")),
+                   c("No Kp" = "no_kp",
+                     "No Tentera" = "no_ten")),
       textOutput("nama"),
       textOutput("kp"),
       textOutput("nten"),
+      textOutput("ntel"),
+      textOutput("email"),
       br(),
       textOutput("almt1"),
       textOutput("almt2"),
@@ -65,6 +67,10 @@ server <- function(input, output, clientData, session) {
   output$kp <- renderText({paste0("No Kp: ",df()$no_kp)})
   
   output$nten <- renderText({paste0("No Ten: ",df()$no_tentera)})
+  
+  output$ntel <- renderText({paste0("Tel: ",df()$no_tel)})
+  
+  output$email <- renderText({paste0("Email: ",df()$email)})
   
   output$almt1 <- renderText({paste0("Alamat: ",df()$alamat_tetap1)})
 
