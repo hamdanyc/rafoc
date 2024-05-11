@@ -6,6 +6,7 @@ library(dplyr)
 library(janitor)
 library(googlesheets4)
 library(jsonlite)
+library(lubridate)
 
 # Connect to MongoDB ----
 # url <- readLines(con=".url.txt")
@@ -35,6 +36,7 @@ rs <- read_sheet(ss, sheet = 1) %>%
          no_tel = stringr::str_replace_all(no_tel,"-",""),
          no_tel = stringr::str_replace_all(no_tel," ",""),
          no_tentera = stringr::str_replace_all(no_tentera,"N|T|/",""),
+         mth = month(timestamp),
          alamat = stringr::str_replace_all(alamat,"\n"," ")) %>% 
   filter(no_kp != "") %>% 
   filter(nama != "") %>% 
@@ -107,7 +109,9 @@ contact <- rs %>%
            "Organization 1 - Type" = "","Organization 1 - Name" = "RAFOC","Organization 1 - Yomi Name" = "",
            "Organization 1 - Title" = "","Organization 1 - Department" = "",
            "Organization 1 - Symbol" = "","Organization 1 - Location" = "","Organization 1 - Job Description" = "") %>% 
-    select(Name,"Given Name","Additional Name","Family Name",
+  filter(mth == month(today()))
+
+  contact %>%  select(Name,"Given Name","Additional Name","Family Name",
            "Yomi Name","Given Name Yomi","Additional Name Yomi",
            "Family Name Yomi","Name Prefix","Name Suffix",
            "Initials","Nickname","Short Name","Maiden Name",
@@ -116,10 +120,11 @@ contact <- rs %>%
            "Sensitivity","Priority","Subject","Notes","Language","Photo","Group Membership",
            "E-mail 1 - Type","E-mail 1 - Value","E-mail 2 - Type","E-mail 2 - Value",
            "Phone 1 - Type","Phone 1 - Value","Phone 2 - Type","Phone 2 - Value",
+           mth,
            "Organization 1 - Type","Organization 1 - Name",
            "Organization 1 - Yomi Name","Organization 1 - Title",
            "Organization 1 - Department","Organization 1 - Symbol",
-           "Organization 1 - Location","Organization 1 - Job Description")
+           "Organization 1 - Location","Organization 1 - Job Description") 
 names(contact) <- column_names
            
 readr::write_csv(rs, "ahli_mohon.csv")
