@@ -22,7 +22,7 @@ qn <- function(negeri) {
 qnull <- db$find('{"alamat_tetap2": "NA"}', fields='{"_id": 0, "no_tentera": 1, "nama": 1, "no_kp": 1, 
           "alamat_tetap1": 1, "alamat_tetap2": 1, "pkt": 1}')
 pers <- qnull %>% 
-  filter(!no_kp %in% rf$no_kp)
+  filter(!no_kp %in% rs$no_kp)
 
 # select no_kp,nama,no_tentera,alamat_tetap1,alamat_tetap2,email
 # filter is not from rafoc_master
@@ -64,10 +64,10 @@ for (i in 1:nrow(pers)) {
                     params = vars)
 }
 
-# query db for pattern in alamat_tetap1 or alamat_tetap2
-# rs <- db$find('{"$or": [{"alamat_tetap1": {"$regex": "KEDAH"}}, {"alamat_tetap2": {"$regex": "KEDAH"}}]}', 
-#               fields='{"_id": 0, "no_tentera": 1, "nama": 1, "no_kp": 1, 
-#               "alamat_tetap1": 1, "alamat_tetap2": 1, "pkt": 1}')
+# query db for pattern in alamat_tetap1 or alamat_tetap2 ----
+rs <- db$find('{"$or": [{"alamat_tetap1": {"$regex": "KEDAH"}}, {"alamat_tetap2": {"$regex": "KEDAH"}}]}',
+              fields='{"_id": 0, "no_tentera": 1, "nama": 1, "no_kp": 1,
+              "alamat_tetap1": 1, "alamat_tetap2": 1, "pkt": 1}')
 
 # close connection ----
 db$disconnect()
