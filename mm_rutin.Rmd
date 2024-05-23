@@ -1,0 +1,16 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## Initial Update mmt db from spreadsheet (list of guests)
+The script connects to a MongoDB database, retrieves data from a Google Spreadsheet, and updates the MongoDB collection (mmt) with the data from the spreadsheet.
+
+```{r init}
+source("mm_init.R")
+```
+## Preview Guest List
+
+```{r print guest list}
+rmarkdown::render("mm_tb_v1.Rmd",output_file = "tetamu.pdf")
+```
