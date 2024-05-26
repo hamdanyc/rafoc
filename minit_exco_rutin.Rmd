@@ -1,0 +1,28 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## Initial Update mmt db from spreadsheet (list of guests)
+The script connects to a MongoDB database, retrieves data from a Google Spreadsheet, and updates the MongoDB collection (ahli) with the data from the spreadsheet.
+
+```{r init}
+source("minit_import_json2.R")
+```
+
+## Minit Exco
+
+```{r print, include=FALSE}
+library(kableExtra)
+library(mongolite)
+library(dplyr)
+
+# Connect to the database. Run minit_import2_json.R to modify db.
+# mongodb://[username:password@]host1[:port1]/?authSource=user-data
+
+URI <- Sys.getenv("MG_URI")
+db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
+minit <- db$find('{"Siri": "1/24", "Jenis": "exco"}')
+source("ahli_rs.R")
+rmarkdown::render("minit_exco_prt.Rmd",output_file = "minit_exco.pdf")
+```

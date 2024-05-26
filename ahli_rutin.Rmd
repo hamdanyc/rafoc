@@ -1,0 +1,16 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## Initial Update mmt db from spreadsheet (list of guests)
+The script connects to a MongoDB database, retrieves data from a Google Spreadsheet, and updates the MongoDB collection (ahli) with the data from the spreadsheet.
+
+```{r init}
+source("ahli_init.R")
+```
+## Preview Ahli List
+
+```{r print guest list}
+rmarkdown::render("ahli_lst.Rmd",output_file = "ahli_lst.pdf")
+```
