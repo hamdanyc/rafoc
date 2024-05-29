@@ -57,8 +57,8 @@ rs %>%
   select(mth, no_tentera, nama, pkt) %>%
   group_by(mth) %>% 
   arrange(.by_group = TRUE) %>% 
-  knitr::kable(caption = "Senarai Ahli Baharu", row.names = TRUE, 
-               col.names = c("Siri", "Bln", "No. Tentera", "Nama", "Pangkat")) %>% 
-  collapse_rows(columns = 2)
+  knitr::kable(col.names = c("Bln","No Ten","Nama","Pkt")) %>% 
+  collapse_rows(columns = 1)
+
 ```
 

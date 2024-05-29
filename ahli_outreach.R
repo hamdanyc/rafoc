@@ -65,7 +65,7 @@ for (i in 1:nrow(pers)) {
 }
 
 # query db for pattern in alamat_tetap1 or alamat_tetap2 ----
-rs <- db$find('{"$or": [{"alamat_tetap1": {"$regex": "KEDAH"}}, {"alamat_tetap2": {"$regex": "KEDAH"}}]}',
+rs <- db$find('{"$or": [{"alamat_tetap1": {"$regex": "KUALA LUMPUR"}}, {"alamat_tetap2": {"$regex": "KUALA LUMPUR"}}]}',
               fields='{"_id": 0, "no_tentera": 1, "nama": 1, "no_kp": 1,
               "alamat_tetap1": 1, "alamat_tetap2": 1, "pkt": 1}')
 
