@@ -87,21 +87,46 @@ paste("@.  ",minit$Agenda_6$Keterangan)  %>%
   kable_styling(full_width = TRUE,position = "left")
 
 ```
-\newpage
 
 ### KEMBARAN-KEMBARAN: 
 
 ```{r kembaran, echo=FALSE}
-lst <- tibble("Siri"=unlist(minit$Kembaran$Siri),"Perkara"=unlist(minit$Kembaran$Tajuk),"Keterangan"=unlist(minit$Kembaran$Keterangan))
-paste(minit$Kembaran$Siri[1], minit$Kembaran$Tajuk[1])  %>% 
+siri <- unlist(minit$Kembaran$Siri)
+tajuk <- unlist(minit$Kembaran$Tajuk)
+keterangan <- unlist(minit$Kembaran$Keterangan)
+paste(siri[1],tajuk[1])  %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
-paste(minit$Kembaran$Keterangan[1])  %>% 
+paste(siri[2],tajuk[2])  %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-
 ```
+\newpage
+
+```{r kembaran a, echo=FALSE}
+
+paste(siri[1],tajuk[1])  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+paste(keterangan[1])  %>%
+  kbl(col.names = "","html", booktabs = T) %>%
+  kable_styling(full_width = TRUE,position = "left")
+```
+\newpage
+
+```{r kembaran B}
+
+paste(siri[2],tajuk[2])  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+paste(keterangan[2])  %>%
+  kbl(col.names = "","html", booktabs = T) %>%
+  kable_styling(full_width = TRUE,position = "left")
+```
+\newpage
 
 ## Ringkasan Pendaftaran Ahli Baharu
 Senarai ahli baharu yang telah mendaftar sebagai ahli RAFOC pada tahun 2024.
