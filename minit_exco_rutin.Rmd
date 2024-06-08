@@ -1,28 +1,72 @@
 ---
 title: "R Notebook"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 ## Initial Update mmt db from spreadsheet (list of guests)
 The script connects to a MongoDB database, retrieves data from a Google Spreadsheet, and updates the MongoDB collection (ahli) with the data from the spreadsheet.
 
 ```{r init}
-source("minit_import_json2.R")
+source("minit_import2_json.R")
 ```
 
 ## Minit Exco
 
-```{r print, include=FALSE}
+```{r print, echo=FALSE}
 library(kableExtra)
 library(mongolite)
 library(dplyr)
+library(jsonlite)
 
 # Connect to the database. Run minit_import2_json.R to modify db.
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
+# Get doc from db ----
+siri <- "2m/24"
+jenis <- "exco"
 
+# Create a named list
+doc <- list(Siri = siri, Jenis = jenis)
+
+# Convert named list to JSON query
+query <- toJSON(doc, auto_unbox = TRUE) %>% 
+  as.character()
+
+# Find a document in a MongoDB collection
 URI <- Sys.getenv("MG_URI")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
-minit <- db$find('{"Siri": "1/24", "Jenis": "exco"}')
+minit <- db$find(query) 
+
 source("ahli_rs.R")
 rmarkdown::render("minit_exco_prt.Rmd",output_file = "minit_exco.pdf")
+```
+## Maklum balas Minit Exco
+
+```{r print, echo=FALSE}
+library(kableExtra)
+library(mongolite)
+library(dplyr)
+library(jsonlite)
+
+# Connect to the database. Run minit_import2_json.R to modify db.
+# mongodb://[username:password@]host1[:port1]/?authSource=user-data
+# Get doc from db ----
+siri <- "2m/24"
+jenis <- "exco"
+
+# Create a named list
+doc <- list(Siri = siri, Jenis = jenis)
+
+# Convert named list to JSON query
+query <- toJSON(doc, auto_unbox = TRUE) %>% 
+  as.character()
+
+# Find a document in a MongoDB collection
+URI <- Sys.getenv("MG_URI")
+db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
+minit <- db$find(query) 
+
+source("ahli_rs.R")
+rmarkdown::render("minit_exco_db_mbls.Rmd",output_file = "maklumbalas_exco.pdf")
 ```

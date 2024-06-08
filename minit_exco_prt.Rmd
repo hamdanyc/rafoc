@@ -11,7 +11,7 @@ always_allow_html: true
 
 ### HADIR
 
-```{r hadir}
+```{r hadir, echo=FALSE}
 lst <- tibble("Nama"=unlist(minit$Hadir$Nama),"Singkatan"=unlist(minit$Hadir$Singkatan),"Jawatan"=unlist(minit$Hadir$Jawatan)) 
 
 # print Nama, Singkatan, Jawatan with fixed column width 
@@ -25,7 +25,7 @@ lst %>%
 
 ### TIDAK HADIR (DENGAN MAAF)
 
-```{r tidak hadir}
+```{r tidak hadir, echo=FALSE}
 nst <- tibble("Nama"=unlist(minit$Tidak_hadir$Nama),"Singkatan"=unlist(minit$Tidak_hadir$Singkatan),"Jawatan"=unlist(minit$Tidak_hadir$Jawatan))
 nst %>% 
   kbl(booktabs = T) %>% 

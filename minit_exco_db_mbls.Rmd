@@ -20,11 +20,11 @@ source("ahli_rs.R")
 
 URI <- Sys.getenv("MG_URI")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
-minit <- db$find('{"Siri": "1m/24", "Jenis": "exco"}')
+minit <- db$find('{"Siri": "2m/24", "Jenis": "exco"}')
 
 ```
 
-\textbf{\underline{MAKLUM BALAS MINIT MESYUARAT JAWATANKUASA SIRI 1/24}} 
+\textbf{\underline{MAKLUM BALAS MINIT MESYUARAT JAWATANKUASA SIRI 2/24}} 
 \newline
 \textbf{\underline{DI SERAMBI WISMA PERWIRA ATM, KUALA LUMPUR}}
 \newline
@@ -92,8 +92,13 @@ paste("@.  ",minit$Agenda_6$Keterangan)  %>%
 ### KEMBARAN-KEMBARAN: 
 
 ```{r kembaran, echo=FALSE}
-paste("",minit$Kembaran$Perkara)  %>% 
-  kbl(col.names = "","html", booktabs = T, position = "h") %>% 
+lst <- tibble("Siri"=unlist(minit$Kembaran$Siri),"Perkara"=unlist(minit$Kembaran$Tajuk),"Keterangan"=unlist(minit$Kembaran$Keterangan))
+paste(minit$Kembaran$Siri[1], minit$Kembaran$Tajuk[1])  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+paste(minit$Kembaran$Keterangan[1])  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
 ```
