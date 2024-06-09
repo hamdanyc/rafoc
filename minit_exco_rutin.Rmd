@@ -5,7 +5,7 @@ output:
     df_print: paged
 ---
 
-## Initial Update mmt db from spreadsheet (list of guests)
+## Penyediaan Minit
 The script connects to a MongoDB database, retrieves data from a Google Spreadsheet, and updates the MongoDB collection (ahli) with the data from the spreadsheet.
 
 ```{r init}
@@ -23,7 +23,7 @@ library(jsonlite)
 # Connect to the database. Run minit_import2_json.R to modify db.
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
 # Get doc from db ----
-siri <- "2m/24"
+siri <- "2/24"
 jenis <- "exco"
 
 # Create a named list
@@ -41,7 +41,7 @@ minit <- db$find(query)
 source("ahli_rs.R")
 rmarkdown::render("minit_exco_prt.Rmd",output_file = "minit_exco.pdf")
 ```
-## Maklum balas Minit Exco
+## Maklum Balas Minit Exco
 
 ```{r print, echo=FALSE}
 library(kableExtra)
@@ -67,6 +67,5 @@ URI <- Sys.getenv("MG_URI")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
 minit <- db$find(query) 
 
-source("ahli_rs.R")
 rmarkdown::render("minit_exco_db_mbls.Rmd",output_file = "maklumbalas_exco.pdf")
 ```

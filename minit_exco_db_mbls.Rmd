@@ -10,11 +10,16 @@ always_allow_html: true
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, comment=NA)
 
+pagebreak <- function() {
+  cat("\\newpage")
+}
+
 library(kableExtra)
 library(mongolite)
 library(dplyr)
 
-source("ahli_rs.R")
+# source("ahli_rs.R")
+load("ahli.RData")
 # Connect to the database
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
 
@@ -90,10 +95,11 @@ paste("@.  ",minit$Agenda_6$Keterangan)  %>%
 
 ### KEMBARAN-KEMBARAN: 
 
-```{r kembaran, echo=FALSE}
+```{r kembaran, echo=FALSE, results='asis'}
 siri <- unlist(minit$Kembaran$Siri)
 tajuk <- unlist(minit$Kembaran$Tajuk)
 keterangan <- unlist(minit$Kembaran$Keterangan)
+
 paste(siri[1],tajuk[1])  %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
@@ -101,31 +107,42 @@ paste(siri[1],tajuk[1])  %>%
 paste(siri[2],tajuk[2])  %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
-```
-\newpage
 
-```{r kembaran a, echo=FALSE}
-
-paste(siri[1],tajuk[1])  %>% 
+paste(siri[3],tajuk[3])  %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
+
+# Kembaran A
+pagebreak()
+paste(siri[1],tajuk[1])  %>% 
+    kbl(col.names = "","html", booktabs = T) %>% 
+    kable_styling(full_width = TRUE,position = "left") 
 
 paste(keterangan[1])  %>%
   kbl(col.names = "","html", booktabs = T) %>%
   kable_styling(full_width = TRUE,position = "left")
-```
-\newpage
 
-```{r kembaran B}
-
+# Kembaran B
+pagebreak()
 paste(siri[2],tajuk[2])  %>% 
-  kbl(col.names = "","html", booktabs = T) %>% 
-  kable_styling(full_width = TRUE,position = "left")
+    kbl(col.names = "","html", booktabs = T) %>% 
+    kable_styling(full_width = TRUE,position = "left") 
 
 paste(keterangan[2])  %>%
   kbl(col.names = "","html", booktabs = T) %>%
   kable_styling(full_width = TRUE,position = "left")
+
+# Kembaran C
+pagebreak()
+paste(siri[3],tajuk[3])  %>% 
+    kbl(col.names = "","html", booktabs = T) %>% 
+    kable_styling(full_width = TRUE,position = "left") 
+
+paste(keterangan[3])  %>%
+  kbl(col.names = "","html", booktabs = T) %>%
+  kable_styling(full_width = TRUE,position = "left")
 ```
+
 \newpage
 
 ## Ringkasan Pendaftaran Ahli Baharu

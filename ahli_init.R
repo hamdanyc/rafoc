@@ -129,5 +129,6 @@ names(contact) <- column_names
            
 readr::write_csv(rs, "ahli_mohon.csv")
 readr::write_csv(contact, "ahli_contact.csv")
+save(list= "rs",file="ahli.RData")
 
 
