@@ -67,5 +67,5 @@ URI <- Sys.getenv("MG_URI")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
 minit <- db$find(query) 
 
-rmarkdown::render("minit_exco_db_mbls.Rmd",output_file = "maklumbalas_exco.pdf")
+rmarkdown::render("minit_exco_mbls.Rmd",output_file = "maklumbalas_exco.pdf")
 ```

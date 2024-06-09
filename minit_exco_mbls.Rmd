@@ -1,0 +1,142 @@
+---
+title: |
+  ![](logo_srt_rasmi.png){width=6.5in}
+output:
+  pdf_document: default
+  html_document: default
+always_allow_html: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, comment=NA)
+
+pagebreak <- function() {
+  if(knitr::is_latex_output())
+    return("\\newpage")
+}
+
+library(kableExtra)
+library(mongolite)
+library(dplyr)
+
+# source("ahli_rs.R")
+load("ahli.RData")
+# Connect to the database
+# mongodb://[username:password@]host1[:port1]/?authSource=user-data
+
+URI <- Sys.getenv("MG_URI")
+db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
+minit <- db$find('{"Siri": "2m/24", "Jenis": "exco"}')
+
+```
+
+\textbf{\underline{MAKLUM BALAS MINIT MESYUARAT JAWATANKUASA SIRI 2/24}} 
+\newline
+\textbf{\underline{DI SERAMBI WISMA PERWIRA ATM, KUALA LUMPUR}}
+\newline
+\textbf{\underline{PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000}}
+
+### AGENDA 2: `r minit$Agenda_2$Perkara`
+
+```{r agenda 2, echo=FALSE}
+paste("@.  ",minit$Agenda_2$Keterangan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+paste("@.  **Keputusan**.",minit$Agenda_2$Keputusan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+```
+
+### AGENDA 3: `r minit$Agenda_3$Perkara` 
+
+```{r agenda 3, echo=FALSE}
+paste("@.  ",minit$Agenda_3$Keterangan)  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+paste("@.  **Keputusan**.",minit$Agenda_3$Keputusan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```
+
+### AGENDA 4: `r minit$Agenda_4$Perkara`
+
+@.   **Pendaftaran ahli**. Jumlah ahli pada 31 Dis 2023 adalah 962. Jumlah ahli berakhir `r format(Sys.Date(),"%d %b %Y")` adalah `r nrow(rs) + 962`, tambahan `r nrow(rs)` ahli. Pengesahan pendaftaran telah disampaikan secara emel.    
+
+```{r agenda 4, echo=FALSE}
+paste("@.  ",minit$Agenda_4$Keterangan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+paste("@.  **Keputusan**.",minit$Agenda_4$Keputusan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```
+
+### AGENDA 5: `r minit$Agenda_5$Perkara` 
+
+```{r agenda 5, echo=FALSE}
+paste("@.  ",minit$Agenda_5$Keterangan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+paste("@.  **Keputusan**.",minit$Agenda_5$Keputusan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```
+
+### AGENDA 6: PERKARA-PERKARA BAHARU DARIPADA AJK
+
+```{r agenda 6, echo=FALSE}
+paste("@.  ",minit$Agenda_6$Keterangan)  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```
+
+### KEMBARAN-KEMBARAN: 
+
+```{r kembaran, echo=FALSE, results='asis'}
+siri <- unlist(minit$Kembaran$Siri)
+tajuk <- unlist(minit$Kembaran$Tajuk)
+keterangan <- unlist(minit$Kembaran$Keterangan)
+
+paste(siri[1],tajuk[1])  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+paste(siri[2],tajuk[2])  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+paste(siri[3],tajuk[3])  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+for (i in 1:length(siri)){
+  cat("\\newpage")
+  cat("\n\n")
+  cat(paste(siri[i],tajuk[i]))
+  cat("\n\n")
+  cat(keterangan[i])
+  cat("\n\n")
+}
+```
+
+\newpage
+
+## Ringkasan Pendaftaran Ahli Baharu
+Senarai ahli baharu yang telah mendaftar sebagai ahli RAFOC pada tahun 2024.
+
+Jumlah pada 31 Dis 2023: 962 orang    
+Daftar 1 Jan 2024 -  `r format(Sys.Date(),"%d %b %Y")`: `r nrow(rs)` orang    
+Jumlah Keseluruhan : `r nrow(rs) + 962` orang
+
+```{r by_pkt, echo=FALSE}
+# group by pkt ----
+rs %>% 
+  group_by(pkt) %>%
+  summarise(n = n()) %>%
+  knitr::kable(caption = "Jumlah Ahli Baharu Mengikut Pangkat", row.names = TRUE,
+               col.names = c("Pangkat", "Jumlah"), position = "h")
+```
