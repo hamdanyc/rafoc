@@ -9,28 +9,11 @@ always_allow_html: true
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, comment=NA)
-
-pagebreak <- function() {
-  if(knitr::is_latex_output())
-    return("\\newpage")
-}
-
-library(kableExtra)
-library(mongolite)
-library(dplyr)
-
-# source("ahli_rs.R")
-load("ahli.RData")
-# Connect to the database
-# mongodb://[username:password@]host1[:port1]/?authSource=user-data
-
-URI <- Sys.getenv("MG_URI")
-db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
-minit <- db$find('{"Siri": "2m/24", "Jenis": "exco"}')
-
+siri <- substr(minit$Siri,1,1) %>% 
+  paste0(substr(minit$Siri,3,5))
 ```
 
-\textbf{\underline{MAKLUM BALAS MINIT MESYUARAT JAWATANKUASA SIRI 2/24}} 
+\textbf{\underline{MAKLUM BALAS MINIT MESYUARAT JAWATANKUASA SIRI `r siri`}} 
 \newline
 \textbf{\underline{DI SERAMBI WISMA PERWIRA ATM, KUALA LUMPUR}}
 \newline

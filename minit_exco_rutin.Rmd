@@ -23,7 +23,7 @@ library(jsonlite)
 # Connect to the database. Run minit_import2_json.R to modify db.
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
 # Get doc from db ----
-siri <- "2/24"
+siri <- "3/24"
 jenis <- "exco"
 
 # Create a named list
@@ -36,10 +36,21 @@ query <- toJSON(doc, auto_unbox = TRUE) %>%
 # Find a document in a MongoDB collection
 URI <- Sys.getenv("MG_URI")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
-minit <- db$find(query) 
+# minit <- db$find(query) 
+# Try to find the document
+n <- nrow(db$find(query))
 
-source("ahli_rs.R")
-rmarkdown::render("minit_exco_prt.Rmd",output_file = "minit_exco.pdf")
+if(n==0) {
+  tryCatch({
+    message('Oops! Doc not found')
+  })
+} else {
+  # source("ahli_rs.R")
+  minit <- db$find(query)
+  load("ahli.RData")
+  rmarkdown::render("minit_exco_prt.Rmd",output_file = "minit_exco.pdf")
+}
+
 ```
 ## Maklum Balas Minit Exco
 
@@ -52,7 +63,7 @@ library(jsonlite)
 # Connect to the database. Run minit_import2_json.R to modify db.
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
 # Get doc from db ----
-siri <- "2m/24"
+siri <- "2/24"
 jenis <- "exco"
 
 # Create a named list
@@ -61,11 +72,18 @@ doc <- list(Siri = siri, Jenis = jenis)
 # Convert named list to JSON query
 query <- toJSON(doc, auto_unbox = TRUE) %>% 
   as.character()
-
 # Find a document in a MongoDB collection
 URI <- Sys.getenv("MG_URI")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
-minit <- db$find(query) 
+n <- nrow(db$find(query))
 
-rmarkdown::render("minit_exco_mbls.Rmd",output_file = "maklumbalas_exco.pdf")
+if(n==0) {
+  tryCatch({
+    message('Oops! Doc not found')
+  })
+} else {
+  minit <- db$find(query) 
+  load("ahli.RData")
+  rmarkdown::render("minit_exco_mbls.Rmd",output_file = "maklumbalas_exco.pdf")
+}
 ```
