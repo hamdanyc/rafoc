@@ -23,7 +23,7 @@ library(jsonlite)
 # Connect to the database. Run minit_import2_json.R to modify db.
 # mongodb://[username:password@]host1[:port1]/?authSource=user-data
 # Get doc from db ----
-siri <- "3/24"
+siri <- "1m/23"
 jenis <- "exco"
 
 # Create a named list
@@ -40,7 +40,7 @@ db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
 # Try to find the document
 n <- nrow(db$find(query))
 
-if(n==0) {
+if(n==0 || nchar(siri)>4) {
   tryCatch({
     message('Oops! Doc not found')
   })
@@ -77,7 +77,7 @@ URI <- Sys.getenv("MG_URI")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
 n <- nrow(db$find(query))
 
-if(n==0) {
+if(n==0 || nchar(siri)<5) {
   tryCatch({
     message('Oops! Doc not found')
   })
