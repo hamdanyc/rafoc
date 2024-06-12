@@ -7,10 +7,100 @@ output: html_notebook
 The script connects to a MongoDB database, retrieves data from a Google Spreadsheet, and updates the MongoDB collection (ahli) with the data from the spreadsheet.
 
 ```{r init}
-knitr::read_chunk("ahli_init.R")
-```
-## Preview Ahli List
+# Init ----
+library(mongolite)
+library(dplyr)
+library(janitor)
+library(googlesheets4)
+library(jsonlite)
+library(lubridate)
 
+# Connect to MongoDB ----
+USER_ID <- Sys.getenv("USER_ID2")
+PASSWORD <- Sys.getenv("PASSWORD")
+DB_SVR <- Sys.getenv("DB_SVR")
+db <- mongo(collection = "ahli", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))
+```
+# Capaian Google Sheet
+
+```{r Google}
+ss <- gs4_get("https://docs.google.com/spreadsheets/d/1AFRvt7wmRFepVThPW3ikItWRWxdSeZz91K9utUqbTS0/edit?resourcekey#gid=621805772")
+rs <- read_sheet(ss, sheet = 1) %>% 
+  clean_names() %>%
+  rename(no_kp = no_kad_pengenalan_mykad, pkt = pangkat_ketika_bersara) %>%
+  mutate(no_kp = as.character(no_kp), no_tel = as.character(no_tel),
+         no_kp = stringr::str_replace_all(no_kp," ",""),
+         no_kp = stringr::str_replace_all(no_kp,"-",""),
+         no_tel = stringr::str_replace_all(no_tel,"-",""),
+         no_tel = stringr::str_replace_all(no_tel," ",""),
+         no_tentera = stringr::str_replace_all(no_tentera,"N|T|/",""),
+         mth = month(timestamp),
+         alamat = stringr::str_replace_all(alamat,"\n"," ")) %>% 
+  filter(no_kp != "") %>% 
+  filter(nama != "") %>% 
+  distinct(no_kp, .keep_all = TRUE) 
+```
+# Cetak Senarai Ahli
 ```{r print guest list}
 rmarkdown::render("ahli_lst.Rmd",output_file = "ahli_lst.pdf")
+```
+# Statistik
+
+```{r by_pkt}
+# group by pkt ----
+tot <- rs %>% 
+  summarise(pkt= "Keseluruhan", n = n())
+
+rs %>% 
+  group_by(pkt) %>%
+  summarise(n = n()) %>%
+  bind_rows(tot) %>% 
+  knitr::kable(caption = "Jumlah Ahli Baharu Mengikut Pangkat", row.names = TRUE, booktab = TRUE, position = "h",
+               col.names = c("Pangkat", "Jumlah"))
+```
+# Senarai Ahli Baharu
+
+```{r ahli}
+# print list of new members ----
+rs %>% 
+  mutate(nama = stringr::str_to_title(nama)) %>% 
+  select(mth, no_tentera, nama, pkt) %>%
+  group_by(mth) %>% 
+  arrange(.by_group = TRUE) %>% 
+  knitr::kable(col.names = c("Bln","No Ten","Nama","Pkt")) %>% 
+  collapse_rows(columns = 1)
+
+```
+# Kemaskini Pangkalan Data
+
+```{r Db Update}
+# db$update from data frame rs ----
+for (i in 1:nrow(rs)) {
+  data <- toJSON(list(
+    no_kp = rs$no_kp[i],
+    alamat_tetap1 = stringr::str_to_upper(rs$alamat[i]),
+    alamat_tetap2 = "",
+    nama = stringr::str_to_upper(rs$nama[i]),
+    no_tentera = rs$no_tentera[i],
+    pkt = rs$pkt[i],
+    email = rs$e_mail[i],
+    ttp = rs$tarikh_bersara[i],
+    no_tel = rs$no_tel[i]
+  ), auto_unbox = TRUE)
+  
+  db$update(
+    paste0('{"no_kp": "', rs$no_kp[i], '"}'),
+    paste0('{"$set": ', data, '}'),
+    upsert = TRUE
+  )
+}
+
+# close connection ----
+db$disconnect()
+```
+# Kemaskini Daftar
+
+```{r contact}
+source("ahli_contact.R")
+
 ```
