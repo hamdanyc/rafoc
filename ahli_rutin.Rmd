@@ -1,5 +1,5 @@
 ---
-title: "R Notebook"
+title: "Ahli Baharu"
 output: html_notebook
 ---
 
@@ -46,6 +46,17 @@ rmarkdown::render("ahli_lst.Rmd",output_file = "ahli_lst.pdf")
 ```
 # Statistik
 
+```{r by mth}
+# group by pkt ----
+tot <- rs %>% 
+  summarise(n = n())
+
+rs %>% 
+  group_by(mth) %>%
+  summarise(n = n()) %>%
+  bind_rows(tot)
+```
+
 ```{r by_pkt}
 # group by pkt ----
 tot <- rs %>% 
@@ -54,9 +65,7 @@ tot <- rs %>%
 rs %>% 
   group_by(pkt) %>%
   summarise(n = n()) %>%
-  bind_rows(tot) %>% 
-  knitr::kable(caption = "Jumlah Ahli Baharu Mengikut Pangkat", row.names = TRUE, booktab = TRUE, position = "h",
-               col.names = c("Pangkat", "Jumlah"))
+  bind_rows(tot) 
 ```
 # Senarai Ahli Baharu
 
@@ -66,9 +75,7 @@ rs %>%
   mutate(nama = stringr::str_to_title(nama)) %>% 
   select(mth, no_tentera, nama, pkt) %>%
   group_by(mth) %>% 
-  arrange(.by_group = TRUE) %>% 
-  knitr::kable(col.names = c("Bln","No Ten","Nama","Pkt")) %>% 
-  collapse_rows(columns = 1)
+  arrange(.by_group = TRUE)
 
 ```
 # Kemaskini Pangkalan Data
@@ -104,3 +111,4 @@ db$disconnect()
 source("ahli_contact.R")
 
 ```
+
