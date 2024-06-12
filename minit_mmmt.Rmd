@@ -1,0 +1,186 @@
+---
+title: |
+  ![](logo_srt_rasmi.png){width=6.5in}
+output:
+  pdf_document: default
+  html_document: default
+always_allow_html: true
+---
+
+<style>body {text-align: justify}</style>
+
+\textbf{\underline{NOTA MESYUARAT MST '24 SIRI `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000}}
+\newline  
+\textbf{\underline{DI SERAMBI WISMA PERWIRA ATM, KUALA LUMPUR}}
+
+### HADIR: 
+
+```{r hadir, echo=FALSE}
+# lst <- paste(minit$Hadir$nama,minit$Hadir$Singkatan,minit$Hadir$Jawatan,sep = " - ")
+lst <- tibble("Nama"=unlist(minit$Hadir$Nama),"Singkatan"=unlist(minit$Hadir$Singkatan),"Jawatan"=unlist(minit$Hadir$Jawatan))
+
+# print Nama, Singkatan, Jawatan with fixed column width 
+lst %>% 
+  filter(!grepl("Presiden",Jawatan)) %>% 
+  kbl(booktabs = T,longtable = TRUE) %>% 
+  kable_styling(latex_options = "hold_position",position = "left") %>% 
+  column_spec(1, width = "9.5cm") %>%
+  column_spec(2, width = "2cm") %>%
+  column_spec(3, width = "5cm")
+```
+### TURUT HADIR:
+
+```{r turut, echo=FALSE}
+lst %>% 
+  filter(grepl("Presiden",Jawatan)) %>% 
+  kbl(booktabs = T,longtable = TRUE) %>% 
+  kable_styling(latex_options = "hold_position",position = "left") %>% 
+  column_spec(1, width = "9.5cm") %>%
+  column_spec(2, width = "2cm") %>%
+  column_spec(3, width = "5cm")
+```
+\newpage
+### AGENDA 1: `r minit$Agenda_1$Perkara`
+
+```{r agenda 1, echo=FALSE}
+tibble::tibble("Siri"="1.","Perkara"="Pendahuluan","Perbincangan dan Keputusan"=minit$Agenda_1$Keterangan,"Tindakan"=minit$Agenda_1$Keputusan)  %>% 
+  kbl(longtable = TRUE) %>% 
+  kable_styling(position = "left",full_width = FALSE) %>% 
+  column_spec(1,width = "0.5cm") %>% 
+  column_spec(2,width = "4cm") %>% 
+  column_spec(3,width = "9cm") %>% 
+  column_spec(4,width = "2cm")
+
+```
+### AGENDA 2: `r minit$Agenda_2$Perkara`
+
+```{r agenda 2, echo=FALSE}
+# agenda 2
+tibble::tibble("Siri"="2.","Perkara"="Mesyuarat MST Siri 2/24","Perbincangan dan Keputusan"=minit$Agenda_2$Keterangan,"Tindakan"=minit$Agenda_2$Keputusan)  %>% 
+  kbl(longtable = TRUE) %>% 
+  kable_styling(position = "left",full_width = FALSE) %>% 
+  column_spec(1,width = "0.5cm") %>% 
+  column_spec(2,width = "4cm") %>% 
+  column_spec(3,width = "9cm") %>% 
+  column_spec(4,width = "2cm")
+
+```
+
+### AGENDA 3: `r minit$Agenda_3$Perkara`
+
+```{r agenda 3, echo=FALSE}
+
+tibble::tibble("Perkara"= unlist(minit$Agenda_3$Tajuk),"Perbincangan dan Keputusan"=unlist(minit$Agenda_3$Keterangan),
+               "Tindakan"=unlist(minit$Agenda_3$Keputusan)) %>%
+  dplyr::mutate("Siri"=paste0(row_number()+2,".")) %>%
+  select(Siri,Perkara,`Perbincangan dan Keputusan`,Tindakan) %>% 
+  kbl(longtable = TRUE) %>% 
+  kable_styling(position = "left",full_width = FALSE) %>%
+  column_spec(1,width = "0.5cm") %>% 
+  column_spec(2,width = "4cm") %>% 
+  column_spec(3,width = "9cm") %>% 
+  column_spec(4,width = "2cm")
+```
+
+### AGENDA 4: `r minit$Agenda_4$Perkara` 
+
+```{r agenda 4, echo=FALSE}
+tibble::tibble("Siri"="2.","Perkara"=unlist(minit$Agenda_4$Tajuk),
+               "Perbincangan dan Keputusan"=unlist(minit$Agenda_4$Keterangan),"Tindakan"=unlist(minit$Agenda_4$Keputusan)) %>%
+  dplyr::mutate("Siri"=paste0(row_number()+length(unlist(minit$Agenda_3$Tajuk))+2,".")) %>%
+  kbl(longtable = TRUE) %>% 
+  kable_styling(position = "left",full_width = FALSE) %>% 
+  column_spec(1,width = "0.5cm") %>% 
+  column_spec(2,width = "4cm") %>% 
+  column_spec(3,width = "9cm") %>% 
+  column_spec(4,width = "2cm")
+
+```
+
+### PENUTUP 
+
+```{r penutup, echo=FALSE}
+paste(length(minit$Agenda_3$Tajuk[[1]])+length(minit$Agenda_4$Tajuk[[1]])+3,minit$Penutup,sep=". ")  %>%
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+paste("Di Sediakan Oleh:",minit$Disediakan)  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+```
+\newpage
+### Kembaran-kembaran:
+
+A. SENARAI AJK DAN TUGAS
+
+| Siri | Nama | Jawatan/Portfolio | Keterangan/Catatan |
+|---|---------------|---------------|---------------|
+| 1 | Lt Jen Dato’ Sri Abdul Aziz bin Ibrahim (Bersara) | Presiden | Penaung |
+| 2 | Laksma Mohamad Imran bin Abd Hamid TLDM (Bersara) | Timbalan Presiden | Jualan Meja. Responsible for managing any sales or promotional activities at the dinner. |
+| 3 | Mej Jen Datuk Mohd Halim Khalid (Bersara) | Naib Presisen Darat | Penyambut Tetamu VVIP |
+| 4 | Lt Kdr Phua Hean Sim TLDM (Bersara) | Naib Presiden Laut | Penyambut Tetamu VVIP |
+| 5 | Lt Kol Hj Mior Mohamad Zubir bin Mior Yahya TUDM (Bersara) | Naib Presiden Udara | Penyambut Tetamu VVIP, Timbalan Pengerusi MMM '24 |
+| 6 | Mej Jen Dato' Mohd Arif Soo (Bersara) | AJK Darat | Pengerusi MMM '24 |
+| 7 | Mej Jen Dato' Yusri (Bersara) | AJK Darat | Penyambut Tetamu VVIP |
+| 8 | Kol Hamdan Yaccob (Bersara) | Sekretariat, Audio Visual | Responsible for coordinating and overseeing all aspects of the annual dinner, including venue, food and beverage arrangements, and invitations. Responsible for the special audio-visual presentation at the dinner. |
+| 9 | Kol Mohd Kamal bin Omar (Bersara) | Hiburan | Responsible for coordinating entertainment and audio-visual aspects of the dinner, including music, performances, and multimedia presentations. |
+| 10 | Kept Tajudin bin Hj Yahya TLDM (Bersara) | Pengiktirafan Tauliah ke-50 Tahun | Responsible for the issuance of certificates of recognition for the new intake or members on the 50th commision anniversary. |
+| 11 | Lt Kol Mohd Yusof bin Abd Razak (Bersara) | AJK Darat (Terbuka) |  |
+| 12 | Lt Kol Dzulkarnain bin Abdullah (Bersara) | Hiburan |  |
+| 13 | Lt Kol Ramli Kinta (Bersara) | Event Management/Program | Responsible for managing the event and creating the program |
+| 14 | Kdr Syed Salim bin Syed Osman TLDM (Bersara) | AJK Laut (Terbuka) |  |
+| 15 | Lt Kol Abdullah Khir bin Mohd Saidi TUDM (Bersara) | Kewangan | handling financial matters related to the dinner |
+| 16 | Lt Kol Hashimah bt Hj. Hassan TUDM (Bersara) | F&B | arranging food and beverage services |
+| 17 | Mej Dr. Bibi Zarjan (Bersara) | Pengacara Majlis |  |
+| 18 | Mej Amir Majid | Pengiktirafan Tauliah ke-50 Tahun |  |
+| 19 | Mej Tengku Nazri (Bersara) | SUK 2, Venue/Invitation/Coord | Responsible for securing the venue, sending out invitations, and coordinating logistics for the event. |
+| 20 | Mej Ismail bin Malik TUDM (Bersara) | AJK Udara (Terbuka) |  |
+| 21 | Mej Ganeson | Seating arrangements | Responsible for organizing the seating arrangements |
+| 22 | Lt Kdr Hj. Yusalie bin Yushak TLDM (Bersara) | Pengacara Majlis |  |
+| 23 | Kapt Asmah bt Abdul Kadir (Bersara) | Souvenir Book/Pengiklanan | Responsible for creating a souvenir book for sale and handling advertising for the event. |
+
+B. SKOP KERJA PENYEDIA PENGURUSAN MAJLIS (EM)
+
+|Siri | Skop Kerja | Dapatan |
+|-----|-------------------|--------|
+|1.   |Kutipan dana (Fundraising) | RM500,000 |
+|2.   |Juruacara majlis         | |
+|3.   |Acara lelongan, Cabutan bertuah | |
+|4.   |Buku aturcara            | |
+|5.   |Penyampaian cenderahati tetamu Diraja/Permaisuri, PM/Isteri | |
+|6.   |Jemputan dan promosi     | |
+|7.   |Persembahan audio-visual | |
+
+C. SUSUNAN ATURCARA
+
+| Aktiviti | Masa | Catatan |
+|--------------------|---|---------------|
+| 1. Ketibaan para tetamu | 1130 | Pre-luncheon drink |
+| 2. Ketibaan Tetamu VVIP | 1140 | Disambut oleh AJK |
+| 3. Ketibaan PAT | 1150 |  |
+| 4. Ketibaan Menteri Pertahanan | 1200 |  |
+| 5. Ketibaan YAB PM |1210  |  |
+| 6. Keberangkatan tiba DYMM Tuanku Raja Perlis dan DYMM Tuanku Raja Perempuan Perlis | 1220 | Penyerahan Jambangan Bunga kepada DYMM Raja Perempuan Perlis |
+| 7. Keberangkatan tiba DYMM SPB YDPA dan DYMM Raja Permaisuri Agung | 1230 | Penyerahan Jambangan Bunga kepada DYMM Raja Permaisuri Agung |
+|  | - | Diiringi ke ruang khas sesi bergambar |
+|  | - | AJK bersedia di ruang khas untuk sesi bergambar |
+| 8. DYMM SPB YDPA dan DYMM Raja Permaisuri Agung, Tuanku Raja Perlis dan DYMM Tuanku Raja Perempuan Perlis, PM dan isteri serta VVIP ke bilik menunggu | 1240 | AJK diperkenalkan kepada DYMM SPB YDPA, DYMM Tuanku Raja Perlis dan PM|
+| 9. Semua tetamu dijemput masuk ke dewan santapan | 1245 |  |
+| 10. Keberangkatan DYMM YDPA dan DYMM Raja Permaisuri Agung, Tuanku Raja Perlis dan DYMM Tuanku Raja Perempuan Perlis, PM dan isteri serta VVIP ke dewan santapan | 1250 | Diringi bagpipe |
+|  | - | Juru acara umumkan tetamu dan pasangan berdiri |
+|  | - | Lagu Negaraku dimainkan disusuli lagu veteran |
+|  | - | Bacaan doa |
+| 11. Santapan dimulakan | 1300-1350 | Diiringi Kombo BKTD |
+|  | - | Montaj Aktiviti RAFOC |
+| 12. Ucapan Presiden RAFOC | 1355 |  |
+| 15. Penyerahan gambar kenangan kepada DYMM YDPA, Tuanku Raja Perlis, PM dan VVIP di meja Diraja | 1400 | Presiden RAFOC mohon perkenan DYMM SPB YDPA untuk menyempurnakan acara |
+| 16. DYMM YDPA dan DYMM Raja Permaisuri Agung, Tuanku Raja Perlis dan DYMM Tuanku Raja Perempuan Perlis, PM dan isteri meninggalkan majlis | 1415 | Lagu Negaraku dimainkan |
+
+D. KATEGORI MEJA DAN TAJAAN
+
+| Siri | Kategori | Jumlah Tajaan | Sasaran |
+|---|---------|----------------|---|
+| 1. | Diamond | 100,000 dan ke atas | 2 |
+| 2. | Emerald | 50,000 - 99,999 | 3 |
+| 3. | Ruby | 10,000 - 49,999 | 5 |
+| 4. | Sapphire | 5,000 - 9,999 | 10 |

@@ -5,42 +5,87 @@ output:
     df_print: paged
 ---
 
-## Penyediaan Minit
+## Semak Pangkalan Data
 The script connects to a MongoDB database, retrieves data from a Google Spreadsheet, and updates the MongoDB collection (ahli) with the data from the spreadsheet.
 
 ```{r init}
-source("minit_import2_json.R")
+
+library(mongolite)
+library(dplyr)
+library(jsonlite)
+library(googlesheets4)
+library(kableExtra)
+
+# Load db ----
+USER_ID <- Sys.getenv("USER_ID2")
+PASSWORD <- Sys.getenv("PASSWORD")
+DB_SVR <- Sys.getenv("DB_SVR")
+db <- mongo(collection = "minit", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))
+
+# Get doc from db ----
+siri <- "3/24"
+jenis <- "mmmt"
+doc <- list(Siri = siri, Jenis = jenis)
+query <- toJSON(doc, auto_unbox = TRUE) %>% 
+  as.character()
+```
+
+# Kemaskini Senarai Kehadiran
+
+```{r Get att list and update}
+
+n <- nrow(db$find(query))
+
+if(n==0 || nchar(siri)>4 || jenis != "exco") {
+  tryCatch({
+    message('Oops! Doc not found')
+  })
+} else {
+  # Get attendance list from Google sheet ----
+  # in folder rafoc <- mesy jk <- ajk
+  ss <- gs4_get("https://docs.google.com/spreadsheets/d/1WUpXso8buhZAgC1Ya4uFGTFw3fiTE4ligyAFfPJ_nt4/edit#gid=0")
+  dfy <- read_sheet(ss, sheet = 1) %>% 
+    select(Nama, Singkatan, Jawatan, Hadir) %>% 
+    filter(Hadir == "Ya")
+  dft <- read_sheet(ss, sheet = 1) %>% 
+    filter(Hadir == "Tidak")
+  
+  # Update document
+  update_document <- list(
+    "$set" = list(
+      Hadir = list(
+        Nama = dfy$Nama,
+        Singkatan = dfy$Singkatan,
+        Jawatan = dfy$Jawatan
+      ),
+      Tidak_hadir = list(
+        Nama = dft$Nama,
+        Singkatan = dft$Singkatan,
+        Jawatan = dft$Jawatan
+      )
+    )
+  )
+  
+  # Convert the update document to JSON
+  update_json <- jsonlite::toJSON(update_document, auto_unbox = TRUE)
+  
+  # Perform the update operation
+  db$update(
+    query = query,
+    update = update_json,
+    upsert = TRUE
+  )
+}
 ```
 
 ## Minit Exco
 
-```{r print, echo=FALSE}
-library(kableExtra)
-library(mongolite)
-library(dplyr)
-library(jsonlite)
-
-# Connect to the database. Run minit_import2_json.R to modify db.
-# mongodb://[username:password@]host1[:port1]/?authSource=user-data
-# Get doc from db ----
-siri <- "1m/23"
-jenis <- "exco"
-
-# Create a named list
-doc <- list(Siri = siri, Jenis = jenis)
-
-# Convert named list to JSON query
-query <- toJSON(doc, auto_unbox = TRUE) %>% 
-  as.character()
-
-# Find a document in a MongoDB collection
-URI <- Sys.getenv("MG_URI")
-db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
+```{r print minutes of meeting, echo=FALSE}
 # minit <- db$find(query) 
 # Try to find the document
 n <- nrow(db$find(query))
 
-if(n==0 || nchar(siri)>4) {
+if(n==0 || nchar(siri)>4 || jenis != "exco") {
   tryCatch({
     message('Oops! Doc not found')
   })
@@ -55,26 +100,7 @@ if(n==0 || nchar(siri)>4) {
 ## Maklum Balas Minit Exco
 
 ```{r print, echo=FALSE}
-library(kableExtra)
-library(mongolite)
-library(dplyr)
-library(jsonlite)
 
-# Connect to the database. Run minit_import2_json.R to modify db.
-# mongodb://[username:password@]host1[:port1]/?authSource=user-data
-# Get doc from db ----
-siri <- "2/24"
-jenis <- "exco"
-
-# Create a named list
-doc <- list(Siri = siri, Jenis = jenis)
-
-# Convert named list to JSON query
-query <- toJSON(doc, auto_unbox = TRUE) %>% 
-  as.character()
-# Find a document in a MongoDB collection
-URI <- Sys.getenv("MG_URI")
-db <- mongolite::mongo(collection="minit", db="rafoc", url=URI)
 n <- nrow(db$find(query))
 
 if(n==0 || nchar(siri)<5) {
@@ -87,3 +113,18 @@ if(n==0 || nchar(siri)<5) {
   rmarkdown::render("minit_exco_mbls.Rmd",output_file = "maklumbalas_exco.pdf")
 }
 ```
+## Mesyuarat MMMT
+
+```{r mm}
+n <- nrow(db$find(query))
+
+if(n==0 || nchar(siri)>4 || jenis != "mmmt") {
+  tryCatch({
+    message('Oops! Doc not found')
+  })
+} else {
+  minit <- db$find(query)
+  rmarkdown::render("minit_mmmt.Rmd",output_file = "minit_mmmt.pdf")
+}
+```
+
