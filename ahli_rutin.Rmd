@@ -7,7 +7,7 @@ output: html_notebook
 The script connects to a MongoDB database, retrieves data from a Google Spreadsheet, and updates the MongoDB collection (ahli) with the data from the spreadsheet.
 
 ```{r init}
-source("ahli_init.R")
+knitr::read_chunk("ahli_init.R")
 ```
 ## Preview Ahli List
 
