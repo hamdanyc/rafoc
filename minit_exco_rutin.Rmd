@@ -17,13 +17,11 @@ library(googlesheets4)
 library(kableExtra)
 
 # Load db ----
-USER_ID <- Sys.getenv("USER_ID2")
-PASSWORD <- Sys.getenv("PASSWORD")
-DB_SVR <- Sys.getenv("DB_SVR")
-db <- mongo(collection = "minit", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))
+MG_URL <- Sys.getenv("MG_URL")
+db <- mongo(collection = "minit", db = "rafoc", url = MG_URL)
 
 # Get doc from db ----
-siri <- "4/23"
+siri <- "2/24"
 jenis <- "exco"
 doc <- list(Siri = siri, Jenis = jenis)
 query <- toJSON(doc, auto_unbox = TRUE) %>% 
