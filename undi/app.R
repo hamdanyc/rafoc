@@ -37,7 +37,7 @@ calon <- c("Lt Jen Dato’ Sri Abdul Aziz bin Ibrahim, (Bersara)",
 
 # Define UI ----
 ui <- fluidPage(
-  titlePanel("Pemilihan AJK RAFOC Atas Talian"),
+  titlePanel("Pemilihan AJK RAFOC 2024"),
   
   sidebarLayout(
     sidebarPanel(
@@ -58,9 +58,9 @@ ui <- fluidPage(
             non_selected_header = "Senarai:",
             selected_header = "Pilihan Anda:"
           )
-        )
-      ),
-      actionButton("submit_btn", "Submit")
+        ),
+        actionButton("submit_btn", "Submit")
+      )
     )
   )
 )
