@@ -37,7 +37,7 @@ calon <- c("Lt Jen Dato’ Sri Abdul Aziz bin Ibrahim, (Bersara)",
 
 # Define UI ----
 ui <- fluidPage(
-  titlePanel("Pemilihan AJK RAFOC 2024"),
+  titlePanel("Pemilihan AJK Eksekutif RAFOC 2024"),
   tags$style(HTML("
     body {
             background-color: purple;
@@ -51,7 +51,6 @@ ui <- fluidPage(
     mainPanel(
       textOutput("login_status"),
       textOutput("rec_found"),
-      actionButton("exit","Keluar"),
       conditionalPanel(
         condition = "output.login_status == 'Log masuk berjaya'",
         multiInput(
@@ -65,6 +64,7 @@ ui <- fluidPage(
           )
         ),
         actionButton("submit_btn", "Submit"),
+        actionButton("exit","Keluar"),
       )
     )
   )
@@ -117,6 +117,8 @@ server <- function(input, output, session) {
     doc <- data.frame("no_kp" = user_id, "selection" = selection)
     db_undi$insert(doc)
     showNotification("Terima kasih", duration = 5)
+    db_ahli$disconnect()
+    db_undi$disconnect()
   })
   
   observeEvent(input$exit,{
