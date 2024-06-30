@@ -38,17 +38,22 @@ calon <- c("Lt Jen Dato’ Sri Abdul Aziz bin Ibrahim, (Bersara)",
 # Define UI ----
 ui <- fluidPage(
   titlePanel("Pemilihan AJK RAFOC 2024"),
-  
+  tags$style(HTML("
+    body {
+            background-color: purple;
+            color: white;
+            }")),
   sidebarLayout(
     sidebarPanel(
-      textInput("user_id", "Masukkan No Kp Awam:"),
+      textInput("user_id", "Log masuk No Kp Awam:"),
       actionButton("login_btn", "Login"),
     ),
     mainPanel(
       textOutput("login_status"),
       textOutput("rec_found"),
+      actionButton("exit","Keluar"),
       conditionalPanel(
-        condition = "output.login_status == 'Login successful'",
+        condition = "output.login_status == 'Log masuk berjaya'",
         multiInput(
           inputId = "selection", label = "Calon-calon :",
           choices = calon,
@@ -59,7 +64,7 @@ ui <- fluidPage(
             selected_header = "Pilihan Anda:"
           )
         ),
-        actionButton("submit_btn", "Submit")
+        actionButton("submit_btn", "Submit"),
       )
     )
   )
@@ -76,11 +81,11 @@ server <- function(input, output, session) {
     member_exists <-  db_ahli$count(query = paste0('{"no_kp": "',user_id, '"}'))
 
     if (member_exists == 0) {
-      return("User ID does not belong to a member. Please sign up.")
+      return("Anda belum menjadi ahli. Sila daftar.")
     } else if (user_exists != 0) {
-      return("You have already voted")
+      return("Anda telah mengundi sebelum ini.")
     } else {
-      return("Login successful")
+      return("Log masuk berjaya")
           }
   })
   
@@ -95,7 +100,7 @@ server <- function(input, output, session) {
   
   # Flag rec found
   output$rec_found <- renderText({
-    if (user_verified() == "Login successful" | user_verified() == "You have already voted"){
+    if (user_verified() == "Log masuk berjaya" | user_verified() == "Anda telah mengundi sebelum ini."){
       ahli <- db_ahli$find(query = paste0('{"no_kp": "',input$user_id, '"}'))
       return(paste0(ahli$nama, ", ", ahli$pkt, "(BERSARA)"))
     }
@@ -111,7 +116,13 @@ server <- function(input, output, session) {
     # }
     doc <- data.frame("no_kp" = user_id, "selection" = selection)
     db_undi$insert(doc)
+    showNotification("Terima kasih", duration = 5)
   })
+  
+  observeEvent(input$exit,{
+    removeUI(selector = "body")
+  })
+  
 }
 
 # Run the application ----
