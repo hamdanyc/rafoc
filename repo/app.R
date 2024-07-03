@@ -36,6 +36,7 @@ ui <- fluidPage(
     value = c(1)
   ),
   actionButton("view_btn", "Papar"),
+  br(),
   mainPanel(
     uiOutput("document_viewer")
   )
