@@ -9,9 +9,10 @@ library(googlesheets4)
 library(jsonlite)
 
 # Connect to MongoDB 
+# Init db
+# Get password from environment variable
 # url <- readLines(con=".url.txt")
 # db <- mongolite::mongo(collection="ahli", db="rafoc", url=url)
-# Get password from environment variable
 
 USER_ID <- Sys.getenv("USER_ID2")
 PASSWORD <- Sys.getenv("PASSWORD")
