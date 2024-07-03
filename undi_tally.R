@@ -15,7 +15,8 @@ ft <- db$aggregate('[
         "$count": {}
       }
     }
-  }, {
+  }, 
+  {
     "$sort": {
       "count": -1
     }
