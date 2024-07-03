@@ -1,0 +1,127 @@
+---
+title: "![](logo_srt_rasmi.png){width=6.5in}"
+output:
+  pdf_document: default
+always_allow_html: yes
+---
+
+\textbf{\underline{MINIT MESYUARAT AGUNG TAHUNAN `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000}} \newline \textbf{\underline{DI 104 KOMPENI KPTD, KUALA LUMPUR}}
+
+### HADIR
+
+Lihat Kembaran A
+
+### AGENDA 1: `r minit$Agenda_1$Perkara`
+
+```{r agenda 1, echo=FALSE}
+paste("@.  ",minit$Agenda_1$Keterangan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+paste("@.  Keputusan.",minit$Agenda_1$Keputusan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```
+
+### AGENDA 2: `r minit$Agenda_2$Perkara`
+
+```{r agenda 2, echo=FALSE}
+paste("@.  ",minit$Agenda_2$Keterangan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+paste("@.  Keputusan.",minit$Agenda_2$Keputusan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+```
+
+### AGENDA 3: `r minit$Agenda_3$Perkara`
+
+```{r agenda 3, echo=FALSE}
+paste("@.  ",minit$Agenda_3$Keterangan)  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+paste("@.  Keputusan.",minit$Agenda_3$Keputusan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```
+
+### AGENDA 4: `r minit$Agenda_4$Perkara`
+
+```{r agenda 4, echo=FALSE}
+paste("@.  ",minit$Agenda_4$Keterangan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+paste("@.  Keputusan.",minit$Agenda_4$Keputusan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```
+
+### AGENDA 5: `r minit$Agenda_5$Perkara`
+
+```{r agenda 5, echo=FALSE}
+paste("@.  ",minit$Agenda_5$Keterangan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+paste("@.  Keputusan.",minit$Agenda_5$Keputusan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```
+
+### AGENDA 6: `r minit$Agenda_6$Perkara`
+
+```{r agenda 6, echo=FALSE}
+paste("@.  ",minit$Agenda_6$Keterangan)  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```
+
+### AGENDA 7: `r minit$Agenda_7$Perkara`
+
+```{r agenda 7, echo=FALSE}
+paste("@.  ",minit$Agenda_7$Keterangan)  %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```
+
+### PENUTUP
+
+```{r Penutup, echo=FALSE}
+paste("@.  ",minit$Penutup) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+```
+
+ \hspace{2.5cm}![](Kol_Hamdan.png){width="25%"}    
+Disediakan Oleh:.................................   
+
+ \hspace{3cm}Kol Hamdan Bin Yaccob (B)
+
+ \hspace{2.5cm}![](dsaa_sign.png){width="35%"}  
+Diluluskan Oleh:.................................  
+
+ \hspace{2.5cm}Lt Jen Dato' Sri Abdul Aziz Bin Ibrahim (B)
+
+```{r Disediakan, eval=FALSE, include=FALSE}
+paste("Disediakan Oleh:",minit$Disediakan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+paste("Diluluskan Oleh:",minit$Diluluskan) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+```
+\newpage
+
+### Kembaran A
+
+```{r Kembaran A, echo=FALSE}
+
+paste(minit$Kembaran) %>% 
+  kbl(col.names = "","html", booktabs = T) %>% 
+  kable_styling(full_width = TRUE,position = "left")
+
+```
