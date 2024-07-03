@@ -16,7 +16,7 @@ calon <- c("Lt Jen Dato’ Sri Abdul Aziz bin Ibrahim, (Bersara)",
            "Lt Kdr Phua Hean Sim, TLDM, (Bersara)",
            "Lt Kol Hj Mior Mohamad Zubir bin Mior Yahya, TUDM, (Bersara)",
            "Mej Jen Dato' Mohd Arif Soo (Bersara)",
-           "Mej Jen Dato'  Yusri bin Hj Anwar (Bersara)",
+           "Mej Jen Dato' Yusri bin Hj Anwar (Bersara)",
            "Kol Mohd Kamal bin Omar, (Bersara)",
            "Kept Tajudin bin Hj Yahya, TLDM, (Bersara)",
            "Lt Kol Mohd Yusof bin Abd Razak (Bersara)",
@@ -37,20 +37,21 @@ calon <- c("Lt Jen Dato’ Sri Abdul Aziz bin Ibrahim, (Bersara)",
 
 # Define UI ----
 ui <- fluidPage(
+  tags$img(src = "rafoc_cyan.png", width = "100px", height = "100px"),
   titlePanel("Pemilihan AJK Eksekutif RAFOC 2024"),
   tags$style(HTML("
     body {
-            background-color: purple;
-            color: white;
-            }")),
+            background-color: cyan;
+            color: blue;
+          }")),
   sidebarLayout(
     sidebarPanel(
-      textInput("user_id", "Log masuk No Kp Awam:"),
+      textInput("user_id", "Log masuk (No Kp Awam)"),
       actionButton("login_btn", "Login"),
     ),
     mainPanel(
-      textOutput("login_status"),
       textOutput("rec_found"),
+      textOutput("login_status"),
       conditionalPanel(
         condition = "output.login_status == 'Log masuk berjaya'",
         multiInput(
@@ -73,7 +74,7 @@ ui <- fluidPage(
 # Define server logic ----
 server <- function(input, output, session) {
 
-  # Check user ID and allow login if it exists
+  # Check user ID and allow login if it exists ----
   user_verified <- reactive({
     req(input$login_btn)
     user_id <- input$user_id
@@ -81,7 +82,7 @@ server <- function(input, output, session) {
     member_exists <-  db_ahli$count(query = paste0('{"no_kp": "',user_id, '"}'))
 
     if (member_exists == 0) {
-      return("Anda belum menjadi ahli. Sila daftar.")
+      return("Anda belum menjadi ahli. Sila daftar di https://forms.gle/y7pym2rJRkXqqb3d9")
     } else if (user_exists != 0) {
       return("Anda telah mengundi sebelum ini.")
     } else {
@@ -104,10 +105,9 @@ server <- function(input, output, session) {
       ahli <- db_ahli$find(query = paste0('{"no_kp": "',input$user_id, '"}'))
       return(paste0(ahli$nama, ", ", ahli$pkt, "(BERSARA)"))
     }
-      
   })
   
-  # Insert document to MongoDB on submit
+  # Insert document to MongoDB on submit ----
   observeEvent(input$submit_btn, {
     user_id <- input$user_id
     selection <- input$selection
