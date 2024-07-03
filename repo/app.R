@@ -8,11 +8,13 @@ library(googlesheets4)
 library(kableExtra)
 
 ui <- fluidPage(
-  title = "Shiny Application",
-  theme = bslib::bs_theme(4),
-  h1(
-    "Repositori Minit Mesyuarat"
-  ),
+  tags$img(src = "rafoc_cyan.png", width = "100px", height = "100px"),
+  titlePanel("Repositori Minit Mesyuarat"),
+  tags$style(HTML("
+    body {
+            background-color: cyan;
+            color: blue;
+          }")),
   selectInput(
     inputId = "jenis",
     label = "Jenis",
@@ -23,7 +25,7 @@ ui <- fluidPage(
     inputId = "tahun",
     label = "Tahun",
     min = 22,
-    max = 24,
+    max = 25,
     value = c(22)
   ),
   sliderInput(
@@ -46,9 +48,6 @@ server <- function(input, output) {
   db <- mongo(collection = "minit", db = "rafoc", url = MG_URL)
   
   # Get doc from db ----
-  # siri <- paste0(input$siri, input$tahun)
-  # jenis <- input$jenis
-  
   # Function to query document from MongoDB
   getDocument <- function(siri, jenis) {
     
@@ -71,8 +70,12 @@ server <- function(input, output) {
  
   # Render document viewer when View Document button is clicked
   observeEvent(input$view_btn, {
-    siri <- paste0(input$siri, "/", input$tahun)
     jenis <- input$jenis
+    siri <- case_when(
+      jenis == "Mesyuarat Agong Tahunan" ~ as.character(input$tahun),
+      TRUE ~ paste0(input$siri, "/", input$tahun)
+    )
+    # siri <- paste0(input$siri, "/", input$tahun)
     minit <- getDocument(siri, jenis)
     input <- case_when(
       jenis == "Jawatankuasa" ~ "exco.Rmd",
@@ -86,7 +89,7 @@ server <- function(input, output) {
         output_file = "report.pdf"
       )
       output$document_viewer <- renderUI({
-        tags$iframe(style="height:600px; width:130%", src="report.pdf")
+        tags$iframe(style="height:600px; width:150%", src="report.pdf")
       })
     } else {
       output$document_viewer <- renderText("Dokumen tidak ditemukan.")
