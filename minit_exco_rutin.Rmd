@@ -21,7 +21,7 @@ MG_URL <- Sys.getenv("MG_URL")
 db <- mongo(collection = "minit", db = "rafoc", url = MG_URL)
 
 # Get doc from db ----
-siri <- "2/24"
+siri <- "3/24"
 jenis <- "exco"
 doc <- list(Siri = siri, Jenis = jenis)
 query <- toJSON(doc, auto_unbox = TRUE) %>% 

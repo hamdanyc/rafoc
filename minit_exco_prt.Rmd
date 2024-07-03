@@ -74,7 +74,7 @@ paste("@.  **Keputusan**.",minit$Agenda_3$Keputusan) %>%
 
 ### AGENDA 4: `r minit$Agenda_4$Perkara`
 
-@.   **Pendaftaran ahli**. Jumlah ahli pada 31 Dis 2023 adalah 962. Jumlah ahli berakhir `r format(Sys.Date(),"%d %b %Y")` adalah `r nrow(rs) + 962`, tambahan `r nrow(rs)` ahli. Pengesahan pendaftaran telah disampaikan secara emel.    
+@.   **Pendaftaran ahli**. Jumlah ahli pada 31 Dis 2023 adalah 962. Jumlah ahli berakhir `r format(as.Date(minit$Tarikh),"%d %b %Y")` adalah `r nrow(rs) + 962`, tambahan `r nrow(rs)` ahli. Pengesahan pendaftaran telah disampaikan secara emel.    
 
 ```{r agenda 4, echo=FALSE}
 paste("@.  ",minit$Agenda_4$Keterangan) %>% 
@@ -115,7 +115,6 @@ paste("@.  ",minit$Penutup) %>%
   kable_styling(full_width = TRUE,position = "left")
 ```
 
-\newpage
 \hspace {2.5cm}![](Kol_Hamdan.png){width="27%"}    
 Disediakan Oleh:.................................   
 \hspace {2.5cm}Kol Hamdan Bin Yaccob (B)
