@@ -16,10 +16,8 @@ library(jsonlite)
 library(lubridate)
 
 # Connect to MongoDB ----
-USER_ID <- Sys.getenv("USER_ID2")
-PASSWORD <- Sys.getenv("PASSWORD")
-DB_SVR <- Sys.getenv("DB_SVR")
-db <- mongo(collection = "ahli", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))
+MG_URL <- Sys.getenv("MG_URL")
+db <- mongo(collection = "ahli", db = "rafoc", url = MG_URL)
 ```
 # Capaian Google Sheet
 
@@ -44,7 +42,7 @@ rs <- read_sheet(ss, sheet = 1) %>%
 ```{r print guest list}
 rmarkdown::render("ahli_lst.Rmd",output_file = "ahli_lst.pdf")
 ```
-# Statistik
+# Statistik Mengikut Bulan
 
 ```{r by mth}
 # group by pkt ----
@@ -56,6 +54,7 @@ rs %>%
   summarise(n = n()) %>%
   bind_rows(tot)
 ```
+# Statistik Mengikut Pangkat
 
 ```{r by_pkt}
 # group by pkt ----
