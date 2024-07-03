@@ -42,7 +42,7 @@ ui <- fluidPage(
   )
 )
 
-# Define server logic required to draw a histogram
+# Define server logic
 server <- function(input, output) {
   # Load db ----
   MG_URL <- Sys.getenv("MG_URL")
@@ -70,20 +70,23 @@ server <- function(input, output) {
   }
  
   # Render document viewer when View Document button is clicked
+  # Click to find & view ----
   observeEvent(input$view_btn, {
     jenis <- input$jenis
     siri <- case_when(
       jenis == "Mesyuarat Agong Tahunan" ~ as.character(input$tahun),
       TRUE ~ paste0(input$siri, "/", input$tahun)
     )
-    # siri <- paste0(input$siri, "/", input$tahun)
+
     minit <- getDocument(siri, jenis)
     input <- case_when(
       jenis == "Jawatankuasa" ~ "exco.Rmd",
       jenis == "Majlis Makan Malam" ~ "mmmt.Rmd",
       jenis == "Mesyuarat Agong Tahunan" ~ "agm.Rmd"
     )
-    if (!is.null(minit)) {
+    
+    # Doc found & render ----
+    if (!is.null(minit)) { 
       rmarkdown::render(
         input = input,
         output_dir = "www/",
