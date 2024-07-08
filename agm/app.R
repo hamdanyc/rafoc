@@ -130,11 +130,11 @@ ui <- grid_page(
               card_body(
                 tags$iframe(style="height:600px; width:100%", src="minit_agm.pdf"),
                 selectInput(
-                  inputId = "momIn",
+                  inputId = "momSelect",
                   label = "Kandungan",
                   choices = list(
                     "Memuaskan" = "Memuaskan",
-                    "Sederhana" = "Memuaskan",
+                    "Sederhana" = "Sederhana",
                     "Tidak berkenaan" = "Tidak berkenaan"
                   )
                 ),
@@ -201,7 +201,7 @@ server <- function(input, output) {
     user_id <- input$user_id
     selection <- input$introSelect
     komen <- input$introText
-    doc <- data.frame("no_kp" = user_id, "selection" = selection, "komen" = komen)
+    doc <- data.frame("no_kp" = user_id, "kata_aluan" = selection, "komen" = komen)
     db_agm$insert(doc)
     showNotification("Terima kasih", duration = 5)
     db_ahli$disconnect()
@@ -213,19 +213,7 @@ server <- function(input, output) {
     user_id <- input$user_id
     selection <- input$yrpSelect
     komen <- input$yrpText
-    doc <- data.frame("no_kp" = user_id, "selection" = selection, "komen" = komen)
-    db_agm$insert(doc)
-    showNotification("Terima kasih", duration = 5)
-    db_ahli$disconnect()
-    db_agm$disconnect()
-  })
-  
-  # Minit AGM ----
-  observeEvent(input$mom_btn, {
-    user_id <- input$user_id
-    selection <- input$momSelect
-    komen <- input$momText
-    doc <- data.frame("no_kp" = user_id, "selection" = selection, "komen" = komen)
+    doc <- data.frame("no_kp" = user_id, "laporan_tahunan" = selection, "komen" = komen)
     db_agm$insert(doc)
     showNotification("Terima kasih", duration = 5)
     db_ahli$disconnect()
@@ -237,7 +225,19 @@ server <- function(input, output) {
     user_id <- input$user_id
     selection <- input$annSelect
     komen <- input$annText
-    doc <- data.frame("no_kp" = user_id, "selection" = selection, "komen" = komen)
+    doc <- data.frame("no_kp" = user_id, "laporan_akaun" = selection, "komen" = komen)
+    db_agm$insert(doc)
+    showNotification("Terima kasih", duration = 5)
+    db_ahli$disconnect()
+    db_agm$disconnect()
+  })
+  
+  # Minit AGM ----
+  observeEvent(input$mom_btn, {
+    user_id <- input$user_id
+    selection <- input$momSelect
+    komen <- input$momText
+    doc <- data.frame("no_kp" = user_id, "minit_agm" = selection, "komen" = komen)
     db_agm$insert(doc)
     showNotification("Terima kasih", duration = 5)
     db_ahli$disconnect()
