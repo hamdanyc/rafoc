@@ -165,7 +165,9 @@ ui <- grid_page(
   ),
   grid_card(
     area = "area2",
-    card_body(h1("Mesyuarat Agong Tahunan RAFOC ke-14"))
+    card_body(h1("Mesyuarat Agong Tahunan RAFOC ke-14")),
+    card_body(h3("Sabtu, 10 Ogos 2024, 10 am - Serambi, Wisma Perwira ATM")),
+    card_body(p("Untuk mengundi, sila ke https://hamdan-yaccob.shinyapps.io/undi/"))
   )
 )
 
