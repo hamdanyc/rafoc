@@ -50,7 +50,8 @@ ui <- grid_page(
             card(
               full_screen = TRUE,
               card_body(
-                tags$iframe(style="height:300px; width:70%", src="cny.mp4"),
+                tags$video(src = "cny.mp4", type = "video/mp4", height = "400px", controls = NA),
+                # tags$iframe(style="height:300px; width:70%", src="cny.mp4"),
                 selectInput(
                   inputId = "introSelect",
                   label = "Kandungan",
@@ -165,9 +166,11 @@ ui <- grid_page(
   ),
   grid_card(
     area = "area2",
-    card_body(h1("Mesyuarat Agong Tahunan RAFOC ke-14")),
-    card_body(h3("Sabtu, 10 Ogos 2024, 10 am - Serambi, Wisma Perwira ATM")),
-    card_body(p("Untuk mengundi, sila ke https://hamdan-yaccob.shinyapps.io/undi/"))
+    tags$img(src = "rafoc_cyan.png", width = "100px", height = "100px"),
+    card_body(h3("Mesyuarat Agong Tahunan RAFOC ke-14"),height = "30%",fill = FALSE),
+    card_body(h5("Sabtu, 10 Ogos 2024, 10 am - Serambi, Wisma Perwira ATM",
+                 height = "30%", fill = FALSE)),
+    tags$a(href="https://hamdan-yaccob.shinyapps.io/undi/", "Hantar undian di pautan ini")
   )
 )
 
