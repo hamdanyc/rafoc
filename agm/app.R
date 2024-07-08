@@ -1,8 +1,7 @@
 library(shiny)
-library(plotly)
 library(gridlayout)
 library(bslib)
-library("shinyWidgets")
+library(shinyWidgets)
 library(mongolite)
 library(readr)
 library(dplyr)
@@ -34,6 +33,17 @@ ui <- grid_page(
       conditionalPanel(
         condition = "output.nama > ''",
         tabsetPanel(
+          # Notis ----
+          nav_panel(
+            title = "Notis",
+            card(
+              full_screen = TRUE,
+              card_body(
+                tags$iframe(style="height:300px; width:70%", src="notis.pdf"),
+                
+              )
+            )
+          ),
           # Kata-kata aluan ----
           nav_panel(
             title = "Kata-kata Aluan Presiden",
@@ -66,7 +76,7 @@ ui <- grid_page(
             card(
               full_screen = TRUE,
               card_body(
-                tags$iframe(style="height:600px; width:100%", src="report.pdf"),
+                tags$iframe(style="height:600px; width:100%", src="laporan_2023.pdf"),
                 selectInput(
                   inputId = "yrpSelect",
                   label = "Kandungan",
@@ -106,7 +116,9 @@ ui <- grid_page(
                   inputId = "annText",
                   label = "Komen dan Ulasan",
                   value = "Komen anda ..."
-                )
+                ),
+                actionButton(inputId = "ann_btn", label = "Hantar",
+                             width = "150px", class = "btn-success")
               )
             )
           ),
@@ -129,7 +141,9 @@ ui <- grid_page(
                   inputId = "momText",
                   label = "Komen dan Ulasan",
                   value = "Komen anda ..."
-                )
+                ),
+                actionButton(inputId = "mom_btn", label = "Hantar",
+                             width = "150px", class = "btn-success")
               )
             )
           )
