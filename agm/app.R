@@ -31,7 +31,7 @@ ui <- grid_page(
     area = "area0",
     card_body(
       conditionalPanel(
-        condition = "output.nama > ''",
+        condition = "output.nama > '' & output.nama != 'Untuk ahli sahaja'",
         tabsetPanel(
           # Notis ----
           nav_panel(
@@ -122,6 +122,7 @@ ui <- grid_page(
               )
             )
           ),
+          # Minit AGM ----
           nav_panel(
             title = "Minit MAT ke-13",
             card(
@@ -188,9 +189,59 @@ server <- function(input, output) {
   output$nama <- renderText({
     if (user_verified() == "Found"){
       ahli <- db_ahli$find(query = paste0('{"no_kp": "',input$user_id, '"}'))
-      # return("ahli")
       return(paste0(ahli$nama, ", ", ahli$pkt, "(BERSARA)"))
     }
+    else{
+      return("Untuk ahli sahaja")
+    }
+  })
+  
+  # Kata-kata aluan ----
+  observeEvent(input$intro_btn, {
+    user_id <- input$user_id
+    selection <- input$introSelect
+    komen <- input$introText
+    doc <- data.frame("no_kp" = user_id, "selection" = selection, "komen" = komen)
+    db_agm$insert(doc)
+    showNotification("Terima kasih", duration = 5)
+    db_ahli$disconnect()
+    db_agm$disconnect()
+  })
+  
+  # Laporan tahunan ----
+  observeEvent(input$yrp_btn, {
+    user_id <- input$user_id
+    selection <- input$yrpSelect
+    komen <- input$yrpText
+    doc <- data.frame("no_kp" = user_id, "selection" = selection, "komen" = komen)
+    db_agm$insert(doc)
+    showNotification("Terima kasih", duration = 5)
+    db_ahli$disconnect()
+    db_agm$disconnect()
+  })
+  
+  # Minit AGM ----
+  observeEvent(input$mom_btn, {
+    user_id <- input$user_id
+    selection <- input$momSelect
+    komen <- input$momText
+    doc <- data.frame("no_kp" = user_id, "selection" = selection, "komen" = komen)
+    db_agm$insert(doc)
+    showNotification("Terima kasih", duration = 5)
+    db_ahli$disconnect()
+    db_agm$disconnect()
+  })
+  
+  # Laporan akaun ----
+  observeEvent(input$ann_btn, {
+    user_id <- input$user_id
+    selection <- input$annSelect
+    komen <- input$annText
+    doc <- data.frame("no_kp" = user_id, "selection" = selection, "komen" = komen)
+    db_agm$insert(doc)
+    showNotification("Terima kasih", duration = 5)
+    db_ahli$disconnect()
+    db_agm$disconnect()
   })
   
 }
