@@ -34,6 +34,7 @@ ui <- grid_page(
       conditionalPanel(
         condition = "output.nama > ''",
         tabsetPanel(
+          # Kata-kata aluan ----
           nav_panel(
             title = "Kata-kata Aluan Presiden",
             card(
@@ -41,7 +42,7 @@ ui <- grid_page(
               card_body(
                 tags$iframe(style="height:300px; width:70%", src="cny.mp4"),
                 selectInput(
-                  inputId = "introIn",
+                  inputId = "introSelect",
                   label = "Kandungan",
                   choices = list(
                     "Memuaskan" = "Memuaskan",
@@ -53,10 +54,13 @@ ui <- grid_page(
                   inputId = "introText",
                   label = "Komen dan Ulasan",
                   value = "Komen anda ..."
-                )
+                ),
+                actionButton(inputId = "intro_btn", label = "Hantar",
+                             width = "150px", class = "btn-success")
               )
             )
           ),
+          # Laporan tahunan ----
           nav_panel(
             title = "Laporan Tahunan",
             card(
@@ -64,7 +68,7 @@ ui <- grid_page(
               card_body(
                 tags$iframe(style="height:600px; width:100%", src="report.pdf"),
                 selectInput(
-                  inputId = "yrpIn",
+                  inputId = "yrpSelect",
                   label = "Kandungan",
                   choices = list(
                     "Memuaskan" = "Memuaskan",
@@ -76,10 +80,13 @@ ui <- grid_page(
                   inputId = "yrpText",
                   label = "Komen dan Ulasan",
                   value = "Komen anda ..."
-                )
+                ),
+                actionButton(inputId = "yrp_btn", label = "Hantar",
+                             width = "150px", class = "btn-success")
               )
             )
           ),
+          # Laporan akaun ----
           nav_panel(
             title = "Laporan Akaun",
             card(
@@ -87,7 +94,7 @@ ui <- grid_page(
               card_body(
                 tags$iframe(style="height:600px; width:100%", src="akaun.pdf"),
                 selectInput(
-                  inputId = "annIn",
+                  inputId = "annSelect",
                   label = "Kandungan",
                   choices = list(
                     "Memuaskan" = "Memuaskan",
