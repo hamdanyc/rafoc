@@ -166,7 +166,7 @@ ui <- grid_page(
   ),
   grid_card(
     area = "area2",
-    tags$img(src = "rafoc_cyan.png", width = "100px", height = "100px"),
+    tags$img(src = "rafoc_cyan.png", width = "90px", height = "100px"),
     card_body(h3("Mesyuarat Agong Tahunan RAFOC ke-14"),height = "30%",fill = FALSE),
     card_body(h5("Sabtu, 10 Ogos 2024, 10 am - Serambi, Wisma Perwira ATM",
                  height = "30%", fill = FALSE)),
