@@ -11,6 +11,7 @@ library(dplyr)
 # Load db ----
 MG_URL <- Sys.getenv("MG_URL")
 db_ahli <- mongo(collection = "ahli", db = "rafoc", url = MG_URL)
+db_agm <- mongo(collection = "agm", db = "rafoc", url = MG_URL)
 
 # ui ----
 ui <- grid_page(
@@ -19,7 +20,7 @@ ui <- grid_page(
     "area0 area0"
   ),
   row_sizes = c(
-    "240px",
+    "250px",
     "1fr"
   ),
   col_sizes = c(
