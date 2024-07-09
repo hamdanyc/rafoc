@@ -166,7 +166,7 @@ ui <- grid_page(
   ),
   grid_card(
     area = "area2",
-    tags$img(src = "rafoc_cyan.png", width = "90px", height = "100px"),
+    tags$img(src = "rafoc_logo.png", width = "90px", height = "100px"),
     card_body(h3("Mesyuarat Agong Tahunan RAFOC ke-14"),height = "30%",fill = FALSE),
     card_body(h5("Sabtu, 10 Ogos 2024, 10 am - Serambi, Wisma Perwira ATM",
                  height = "30%", fill = FALSE)),
@@ -190,11 +190,17 @@ server <- function(input, output) {
     }
   })
   
-  # Flag rec found
+  # login ----
   output$nama <- renderText({
     if (user_verified() == "Found"){
       ahli <- db_ahli$find(query = paste0('{"no_kp": "',input$user_id, '"}'))
-      return(paste0(ahli$nama, ", ", ahli$pkt, "(BERSARA)"))
+      nama <- stringr::str_to_title(ahli$nama)
+      pkt <- stringr::str_to_title(ahli$pkt)
+      tkh <- lubridate::now(tz="Asia/Kuala_Lumpur")
+      doc <- data.frame("no_kp" = input$user_id, "nama" = nama, 
+                        "pkt" = pkt, "tkh" = tkh)
+      db_agm$insert(doc)
+      return(paste0(nama, ", ", pkt, "(B)"))
     }
     else{
       return("Untuk ahli sahaja")
