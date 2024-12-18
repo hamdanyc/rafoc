@@ -32,7 +32,7 @@ ui <- fluidPage(
     inputId = "siri",
     label = "Siri",
     min = 1,
-    max = 4,
+    max = 7,
     value = c(1)
   ),
   actionButton("view_btn", "Papar"),

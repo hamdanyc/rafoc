@@ -19,11 +19,11 @@ library(dplyr)
 
 con <- readLines(con=".url.txt")
 db <- mongolite::mongo(collection="minit", db="rafoc", url=con)
-minit <- db$find('{"Siri": "23", "Jenis": "agm"}')
+minit <- db$find('{"Siri": "24", "Jenis": "agm"}')
 
 ```
 
-\textbf{\underline{MINIT MESYUARAT AGUNG TAHUNAN `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000}} \newline \textbf{\underline{DI 104 KOMPENI KPTD, KUALA LUMPUR}}
+\textbf{\underline{MINIT MESYUARAT AGUNG TAHUNAN `r paste0("20",minit$Siri)` PADA `r minit$Tarikh` JAM 1000}} \newline \textbf{\underline{DI BILIK MINDA1, WISMA PERWIRA ATM, KUALA LUMPUR}}
 
 ### HADIR
 

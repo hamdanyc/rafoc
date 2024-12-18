@@ -6,10 +6,9 @@ library(mongolite)
 library(dplyr)
 library(DT)
 
-# Connect to the database
-# mongodb://[username:password@]host1[:port1]/?authSource=user-data
-con <- readLines(con=".url.txt")
-db <- mongolite::mongo(collection="mmmt", db="rafoc", url=con)
+# conn db ----
+MG_URL <- Sys.getenv("MG_URL")
+db <- mongo(collection = "mmmr_24", db = "rafoc", url = MG_URL)
 
 # library(DT)
 # datatable(df, rownames = FALSE) %>%
@@ -36,7 +35,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   output$table <- DT::datatable(mm, options = list(searchHighlight = TRUE)) %>% 
     formatStyle(columns = "Menu", 
-                background = styleEqual(c("Ayam", "Daging", "Ikan", "Vegetarian"), c("green", "red", "yellow", "purple"))) %>% 
+                background = styleEqual(c("Ayam", "Daging", "Ikan", "Muhibbah"), c("green", "red", "yellow", "purple"))) %>% 
     DT::renderDataTable()
 }
 

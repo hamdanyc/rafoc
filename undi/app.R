@@ -1,6 +1,6 @@
 # Load required libraries
 library(shiny)
-library("shinyWidgets")
+library(shinyWidgets)
 library(mongolite)
 library(readr)
 library(dplyr)
@@ -11,7 +11,6 @@ MG_URL <- Sys.getenv("MG_URL")
 db_undi <- mongo(collection = "undi", db = "rafoc", url = MG_URL)
 db_ahli <- mongo(collection = "ahli", db = "rafoc", url = MG_URL)
 calon <- c("Lt Jen Dato’ Sri Abdul Aziz bin Ibrahim, (Bersara)",
-           "Laksma Mohamad Imran bin Abd Hamid, TLDM (Bersara)",
            "Mej Jen Datuk Mohd Halim Khalid (Bersara)",
            "Lt Kdr Phua Hean Sim, TLDM, (Bersara)",
            "Lt Kol Hj Mior Mohamad Zubir bin Mior Yahya, TUDM, (Bersara)",
@@ -64,8 +63,15 @@ ui <- fluidPage(
             selected_header = "Pilihan Anda:"
           )
         ),
-        actionButton("submit_btn", "Submit"),
+        actionButton("submit_btn", "Hantar"),
         actionButton("exit","Keluar"),
+        br(),
+        br(),
+        tags$ol(
+          tags$li("Klik nama calon dipilih untuk ke kotak kanan"), 
+          tags$li("Pilih calon-calon diminati"), 
+          tags$li("Tekan hantar, setelah selesai")
+        )
       )
     )
   )

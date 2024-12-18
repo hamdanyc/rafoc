@@ -13,7 +13,7 @@ library(lubridate)
 # db <- mongolite::mongo(collection="ahli", db="rafoc", url=url)
 # Get password from environment variable
 
-USER_ID <- Sys.getenv("USER_ID2")
+USER_ID <- Sys.getenv("USER_ID")
 PASSWORD <- Sys.getenv("PASSWORD")
 DB_SVR <- Sys.getenv("DB_SVR")
 db <- mongo(collection = "ahli", db = "rafoc", url = paste0("mongodb://", USER_ID, ":", PASSWORD, "@", DB_SVR))

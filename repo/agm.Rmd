@@ -5,7 +5,7 @@ output:
 always_allow_html: yes
 ---
 
-\textbf{\underline{MINIT MESYUARAT AGUNG TAHUNAN `r minit$Siri` PADA `r toupper(format(as.Date(minit$Tarikh,format = "%d/%m/%y"),"%d %b %Y"))` JAM 1000}} \newline \textbf{\underline{DI 104 KOMPENI KPTD, KUALA LUMPUR}}
+\textbf{\underline{MINIT MESYUARAT AGUNG TAHUNAN `r paste0("20",minit$Siri)` PADA `r minit$Tarikh` JAM 1000}} \newline \textbf{\underline{WISMA PERWIRA ATM, KUALA LUMPUR}}
 
 ### HADIR
 
