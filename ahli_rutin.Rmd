@@ -1,9 +1,12 @@
 ---
 title: "Ahli Baharu"
 output: html_notebook
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Initial Update mmt db from spreadsheet (list of guests)
+
 The script connects to a MongoDB database, retrieves data from a Google Spreadsheet, and updates the MongoDB collection (ahli) with the data from the spreadsheet.
 
 ```{r init}
@@ -19,6 +22,7 @@ library(lubridate)
 MG_URL <- Sys.getenv("MG_URL")
 db <- mongo(collection = "ahli", db = "rafoc", url = MG_URL)
 ```
+
 # Capaian Google Sheet
 
 ```{r Google}
@@ -38,10 +42,13 @@ rs <- read_sheet(ss, sheet = 1) %>%
   filter(nama != "") %>% 
   distinct(no_kp, .keep_all = TRUE) 
 ```
+
 # Cetak Senarai Ahli
+
 ```{r print guest list}
 rmarkdown::render("ahli_lst.Rmd",output_file = "ahli_lst.pdf")
 ```
+
 # Statistik Mengikut Bulan
 
 ```{r by mth}
@@ -54,6 +61,7 @@ rs %>%
   summarise(n = n()) %>%
   bind_rows(tot)
 ```
+
 # Statistik Mengikut Pangkat
 
 ```{r by_pkt}
@@ -66,17 +74,20 @@ rs %>%
   summarise(n = n()) %>%
   bind_rows(tot) 
 ```
+
 # Senarai Ahli Baharu
 
 ```{r ahli}
 # print list of new members ----
+
 rs %>% 
-  mutate(nama = stringr::str_to_title(nama)) %>% 
-  select(mth, no_tentera, nama, pkt) %>%
-  group_by(mth) %>% 
-  arrange(.by_group = TRUE)
+  mutate(siri = row_number(),nama = stringr::str_to_title(nama)) |> 
+  select(siri, no_tentera, nama, pkt, done) |> 
+  filter(is.na(done)) |> 
+  knitr::kable(col.names = c("Siri","No Ten","Nama","Pkt","Flag"))
 
 ```
+
 # Kemaskini Pangkalan Data
 
 ```{r Db Update}
@@ -104,10 +115,15 @@ for (i in 1:nrow(rs)) {
 # close connection ----
 db$disconnect()
 ```
+
 # Kemaskini Daftar
 
 ```{r contact}
 source("ahli_contact.R")
-
 ```
 
+# Kemaskini RData (Agenda 4: Statistik ahli pd minit mesy AJK)
+
+```{r save}
+save(list= "rs",file="ahli.RData")
+```

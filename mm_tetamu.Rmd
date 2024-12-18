@@ -1,0 +1,111 @@
+---
+title: "![](logo_srt_rasmi.png){width=6.5in}"
+output:
+  pdf_document:
+    latex_engine: xelatex
+  html_notebook: default
+---
+
+```{r init, include=FALSE}
+# db ----
+library(kableExtra)
+library(mongolite)
+library(dplyr)
+library(googlesheets4)
+
+# conn db ----
+MG_URL <- Sys.getenv("MG_URL")
+db <- mongo(collection = "mmmr_24", db = "rafoc", url = MG_URL)
+tbl <- db$find('{}')
+
+# close connection 
+db$disconnect()
+
+# read google spreadsheet file from google drive ----
+# senarai tetamu MMM
+# tb_id as in table id
+# index as title header for tb_id
+
+ss <- gs4_get("https://docs.google.com/spreadsheets/d/1rDW3zgMxTDc4O7CLb2B88eeZotk4z9o3kLhtz0q2A4E/edit#gid=1561291431")
+tb <- read_sheet(ss, sheet = 7)
+tb_id <- paste(tb$No_Meja,tb$Designasi,sep = "|")
+
+tb_cnt <- tbl %>% 
+  # filter(Tindakan != "Tidak hadir") %>% 
+  mutate(Meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+  filter(Meja != "NA") %>% 
+  group_by(Meja) %>%
+  summarise(n=n())
+
+# index <- setNames(tb_cnt$n,tb_cnt$Meja)
+index <- setNames(tb$Kapasiti,paste(tb$No_Meja,tb$Designasi,sep = "|"))
+```
+
+### Senarai Tetamu Mengikut Meja (dikemaskini pada `r format(Sys.Date(), "%d %b %Y")`)
+
+```{r tbl list, echo=FALSE}
+tbl %>% 
+  # filter(Tindakan != "Tidak hadir") %>% 
+  mutate(Meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+  group_by(Meja) %>%
+  arrange(Meja) %>%
+  mutate(Siri = row_number(),Flag = if_else(stringr::str_detect(Catatan,":khas"),"P.Sijil","")) %>%
+  select(Siri, Meja, Nama, "Kategori"=Status, Menu, Flag) %>% 
+  kbl(booktabs = T, longtable = TRUE, centering = FALSE) %>%
+  kable_styling(full_width = T, position = "left", repeat_header_text = "\\textit{... sambungan}",
+                latex_options = c("hold_position", "repeat_header")) %>% 
+  column_spec(1,width = "1.0cm") %>%
+  column_spec(2,width = "1.7cm") %>% 
+  column_spec(3,width = "5.0cm") %>% 
+  column_spec(4,width = "2.0cm") %>%
+  column_spec(5,width = "2.0cm") %>%
+  column_spec(6,width = "2.0cm") %>%
+  # column_spec(7,width = "1.8cm") %>%
+  pack_rows(index = index)
+
+```
+
+\newpage
+
+## Ringkasan:
+
+```{r menu, echo=FALSE, message=FALSE, warning=FALSE}
+# tbl %>% 
+#   mutate(Meja = factor(No_Meja, levels = stringr::str_sort(unique(No_Meja), numeric = TRUE))) %>% 
+#   group_by(Meja) %>%
+#   arrange(Meja) %>%
+#   summarise(n=n()) %>% 
+#   kbl(booktabs = T, longtable = TRUE) %>%
+#   collapse_rows()
+
+# tbl_sum <- tbl %>%
+#   summarise(Meja = "Jumlah",n=n())
+
+# tbl %>%
+#   filter(Tindakan == "Hadir") %>%
+#   group_by(Meja) %>%
+#   summarise(n=n()) %>% 
+#   bind_rows(tbl_sum) %>% 
+#   kbl(booktabs = T, centering = FALSE)
+
+```
+
+### Charge d'affair : AJK menyantuni tetamu kluster tanggungjawab
+
+| Siri | Kluster                      | Charge d'affaires                                            |
+|----|--------------------------------|--------------------------------------------------------------|
+| 1.   | Emerald,Sapphire, Ruby & Khas           | Lt Kol Hj Mior Mohamad Zubir bin Mior Yahya, TUDM, (Bersara)- **Ketua** |
+| 2.   | RF1,RF3,RF5,RF7,RF13 & RF15             | Lt Kol Mohammad Zainuri bin Embong, TUDM (Bersara)           |
+| 3.   | RF2,RF4,RF6,RF8,RF16 & RF14             | Mej Amir Ahmad bin Abd Majid, (Bersara)                      |
+| 4.   | RF17,RF19,RF21,RF23,RF25, RF27, RF29 & RF31 | Mej Mohd Taufik Omar (Bersara)                               |
+| 5.   | RF18,RF20,RF22,RF24,RF26, RF28, RF30 & RF32 | Mej Tengku Ahmad Nazri bin Tengku Abdul Jalil (Bersara)      |
+| 6.   | RF33,RF35,RF37,RF39 & RF41              | Lt Kdr Hj. Mohamed Yusalie bin Yushak TLDM, (Bersara)        |
+| 7.   | RF34,RF36,RF38 & RF40                   | Mej Mior Rosli bin Mior Mohd Jaafar TUDM, (Bersara)          |
+
+```{r Lagend, echo=FALSE}
+
+tb |> 
+  select(No_Meja, Designasi) |> 
+    kbl(booktabs = T, longtable = TRUE, centering = FALSE)
+```
+

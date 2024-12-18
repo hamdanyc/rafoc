@@ -76,36 +76,16 @@ paste("@.  ",minit$Agenda_6$Keterangan)  %>%
   kable_styling(full_width = TRUE,position = "left")
 
 ```
+\newpage
 
 ### KEMBARAN-KEMBARAN: 
 
-```{r kembaran, echo=FALSE, results='asis'}
-siri <- unlist(minit$Kembaran$Siri)
-tajuk <- unlist(minit$Kembaran$Tajuk)
-keterangan <- unlist(minit$Kembaran$Keterangan)
-
-paste(siri[1],tajuk[1])  %>% 
+```{r kembaran, echo=FALSE}
+paste("",minit$Kembaran$Perkara)  %>% 
   kbl(col.names = "","html", booktabs = T) %>% 
   kable_styling(full_width = TRUE,position = "left")
 
-paste(siri[2],tajuk[2])  %>% 
-  kbl(col.names = "","html", booktabs = T) %>% 
-  kable_styling(full_width = TRUE,position = "left")
-
-paste(siri[3],tajuk[3])  %>% 
-  kbl(col.names = "","html", booktabs = T) %>% 
-  kable_styling(full_width = TRUE,position = "left")
-
-for (i in 1:length(siri)){
-  cat("\\newpage")
-  cat("\n\n")
-  cat(paste(siri[i],tajuk[i]))
-  cat("\n\n")
-  cat(keterangan[i])
-  cat("\n\n")
-}
 ```
-
 \newpage
 
 ## Ringkasan Pendaftaran Ahli Baharu

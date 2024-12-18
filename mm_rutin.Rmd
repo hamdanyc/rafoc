@@ -1,5 +1,5 @@
 ---
-title: "Majlis Makan Tahunan"
+title: "Majlis Makan Malam"
 output: html_notebook
 ---
 
@@ -7,10 +7,57 @@ output: html_notebook
 The script connects to a MongoDB database, retrieves data from a Google Spreadsheet, and updates the MongoDB collection (mmt) with the data from the spreadsheet.
 
 ```{r init}
-source("mm_init.R")
-```
-## Preview Guest List
+# init ----
+library(kableExtra)
+library(mongolite)
+library(dplyr)
+library(googlesheets4)
+library(jsonlite)
 
+# conn db ----
+MG_URL <- Sys.getenv("MG_URL")
+db <- mongo(collection = "mmmr_24", db = "rafoc", url = MG_URL)
+tbl <- db$find('{}')
+```
+## Update Guest List
+
+```{r Update list}
+# Init DB
+db$remove('{}')
+
+# read google spreadsheet rafoc.mmmt file from google drive ----
+# senarai tetamu MMM
+ss <- gs4_get("https://docs.google.com/spreadsheets/d/1rDW3zgMxTDc4O7CLb2B88eeZotk4z9o3kLhtz0q2A4E/edit#gid=1561291431")
+guest <- read_sheet(ss, sheet = 1)
+
+# db$update from data frame guest ----
+guest <- mutate(guest, Catatan = if_else(is.na(Catatan)," ",Catatan))
+for (i in 1:nrow(guest)) {
+  data <- toJSON(list(
+    Nama = guest$Nama[i],
+    Kategori = guest$Kategori[i],
+    Menu = guest$Menu[i],
+    No_Meja = guest$No_Meja[i],
+    Status = guest$Status[i],
+    Catatan = guest$Catatan[i]), auto_unbox = TRUE)
+  
+  db$update(
+    paste0('{"Nama": "', guest$Nama[i], '"}'),
+    paste0('{"$set": ', data, '}'),
+    upsert = TRUE
+  )
+}
+
+# close connection 
+db$disconnect()
+```
+
+## Preview Guest List
+```{r Preview guest list}
+tail(guest$Nama,n=15)
+```
+
+## Print Guest List
 ```{r print guest list}
-rmarkdown::render("mm_tb_v1.Rmd",output_file = "tetamu.pdf")
+rmarkdown::render("mm_tetamu.Rmd",output_file = "tetamu.pdf")
 ```

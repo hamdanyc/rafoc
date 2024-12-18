@@ -21,8 +21,8 @@ MG_URL <- Sys.getenv("MG_URL")
 db <- mongo(collection = "minit", db = "rafoc", url = MG_URL)
 
 # Get doc from db ----
-siri <- "3/24"
-jenis <- "exco"
+siri <- "7/24"
+jenis <- "mmmt"
 doc <- list(Siri = siri, Jenis = jenis)
 query <- toJSON(doc, auto_unbox = TRUE) %>% 
   as.character()
@@ -34,7 +34,7 @@ query <- toJSON(doc, auto_unbox = TRUE) %>%
 
 n <- nrow(db$find(query))
 
-if(n==0 || nchar(siri)>4 || jenis != "exco") {
+if(n==0 || nchar(siri)>4 || jenis != "mmmt") {
   tryCatch({
     message('Oops! Doc not found')
   })
@@ -120,7 +120,7 @@ if(n==0 || nchar(siri)<5) {
 
 ```{r mm}
 # Get doc from db ----
-siri <- "3/24"
+siri <- "7/24"
 jenis <- "mmmt"
 doc <- list(Siri = siri, Jenis = jenis)
 query <- toJSON(doc, auto_unbox = TRUE) %>% 
