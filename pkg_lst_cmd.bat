@@ -1,0 +1,1 @@
+awk '/library/ && !/#|\./' *.R *.Rmd |sed 's/library(\(.*\))/\1/g' | sort -ibfu -o pkgs.txt

@@ -50,7 +50,7 @@ ui <- grid_page(
             card(
               full_screen = TRUE,
               card_body(
-                tags$video(src = "cny.mp4", type = "video/mp4", height = "400px", controls = NA),
+                tags$video(src = "dsaa.mp4", type = "video/mp4", height = "400px", controls = NA),
                 # tags$iframe(style="height:300px; width:70%", src="cny.mp4"),
                 selectInput(
                   inputId = "introSelect",

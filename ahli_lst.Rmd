@@ -56,6 +56,7 @@ rs %>%
   mutate(nama = stringr::str_to_title(nama)) %>% 
   select(mth, no_tentera, nama, pkt) %>%
   group_by(mth) %>% 
+  filter(mth == month(today())) |>
   arrange(.by_group = TRUE) %>% 
   knitr::kable(col.names = c("Bln","No Ten","Nama","Pkt")) %>% 
   collapse_rows(columns = 1)
